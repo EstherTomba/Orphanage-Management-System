@@ -1,0 +1,17 @@
+
+    .left-space {
+        margin-left: 15px;
+    }
+    #childListt {
+        display: none;
+    }
+    #blockList {
+        display: none;
+    }
+    #medicalList {
+        display: none ;
+    }
+    #counsellor{
+        display: none ;
+    }
+    

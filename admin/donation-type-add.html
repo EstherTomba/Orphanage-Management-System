@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Side Navigation Bar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h2>Admin Dashboard</h2>
+            <ul>
+                <li onclick="showChildList()"><a href="#">Childs</a></li>
+                <div id="childList">
+                    <li class="left-space"><a href="child-admission.html">Child Admission</a></li>
+                    <li class="left-space"><a href="child-transfer.html">Child Transfer</a></li>
+                    <li class="left-space"><a href="child-approval.html">Child Approvals</a></li>
+                </div>
+                <li onclick="showBlock()"><a href="#">Block</a></li>
+                <div id="blockList">
+                    <li class="left-space"><a href="block.html">Blocks</a></li>
+                    <li class="left-space"><a href="block-room.html">Block Room</a></li>
+                </div>
+
+                <li><a href="user.html">Users</a></li>
+                <li><a href="medical-record.html">Medical Records</a></li>
+
+
+                <li onclick="showCounsellorList()"><a href="#">Counsellor</a></li>
+                <div id="counsellorList">
+                    <li class="left-space"><a href="counsellor.html">Counsellors</a></li>
+                    <li class="left-space"><a href="counsellor-appointment.html">Counsellor Appointment</a></li>
+                </div>
+
+                <li onclick="showDonationList()"><a href="#">Donation</a></li>
+                <div id="donationList"> 
+                    <li class="left-space"><a href="donation-type.html">Donation Type</a></li>
+                    <li class="left-space"><a href="donation.html">Donation</a></li>
+                </div> 
+                <li><a href="activity-category.html">Activity Categories</a></li>
+                <li><a href="activity.html">Activities</a></li>
+                <li><a href="event.html">Events</a></li>
+                <li><a href="contact.html">Contacts</a></li>
+                <li><a href="help.html">Help</a></li>
+                <li><a href="profile.html"></i>Profile</a></li>
+                <li><a href="../login.html" style="color: red;">Logout</a></li>
+            </ul>
+        </div>
+        <div class="main_content">
+            <div class="header" style="color: red; font-size: 20px;">Add Donation Type
+            </div>
+            <div class="info">
+             <form action="">
+               
+                 <div>
+                     <input type="text" placeholder="Name">
+                 </div>
+                 <div>
+                     <input type="submit" value="Save">
+                 </div>
+             </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="js/header.js"></script>
+
+
+
+</html>
