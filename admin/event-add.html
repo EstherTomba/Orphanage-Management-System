@@ -53,26 +53,26 @@
             <div class="header" style="color: red; font-size: 20px;">Add Event
             </div>
             <div class="info">
-             <form action="">
+                <form name="eventAddForm" method="POST" onsubmit="return eventAddValidation()">
                
                  <div>
-                     <input type="text" placeholder="Name">
+                     <input type="text" name="name" id="name" placeholder="Name">
                  </div>
                  <div>
-                    <input type="file">
+                    <input type="file" name="image" id="image">
                 </div>
                  <div>
-                    <input type="text" placeholder="Addres">
+                    <input type="text" name="address" name="address" placeholder="Addres">
                 </div>
                
                 <div>
-                    <input type="date">
+                    <input type="date" name="date" id="date">
                 </div>
                 <div>
-                    <input type="time">
+                    <input type="time" name="time" id="time">
                 </div>
                 <div>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Description"></textarea>
+                    <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
                 </div>
                  <div>
                      <input type="submit" value="Save">
@@ -84,6 +84,7 @@
 </body>
 
 <script src="js/header.js"></script>
+<script src="js/validation.js"></script>
 
 
 

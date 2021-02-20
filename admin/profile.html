@@ -53,51 +53,45 @@
             <div class="header" style="color: red; font-size: 20px;">Profile
             </div>
             <div class="info">
-             <form action="">
-                <img src="images/im1.jpg " style="width:100px; height: 100px; border-radius: 50px; margin-left: 45%;" alt="">
+             <form name="profileForm" method="POST" onsubmit="return profileValidation()">
+                <img src="../images/images.jpg" style="width:100px; height: 100px; border-radius: 50px; margin-left: 45%;" alt="">
                
                  <div>
-                     <input type="text" placeholder=" First Name">
+                     <input type="text" name="firstName" id="firstName" placeholder=" First Name">
                  </div>
                  <div>
-                    <input type="text" placeholder="Last Name">
+                    <input type="text" name="lastName" id="lastName" placeholder="Last Name">
                 </div>
                 <div>
-                    <input type="text" placeholder="UserName">
+                    <input type="text" name="userName" id="userName" placeholder="UserName">
                 </div>
                  <div>
-                    <input type="text" placeholder="Addres">
-                </div>
-               
-               
-                <div>
-                    <input type="text" placeholder="Email">
+                    <input type="text" name="address" id="address" placeholder="Addres">
                 </div>
                 <div>
-                    <input type="text" placeholder="Phone Number">
+                    <input type="text" name="email" id="email" placeholder="Email">
                 </div>
                 <div>
-                    <input type="date">
+                    <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">
                 </div>
                 <div>
-                    <select name="" id="">
-                        <option value="">Select Gender</option>
-                        <option value="">Male</option>
-                        <option value="">Female</option>
-                    </select>
+                    <input name="dob" id="dob" type="text" placeholder="01/02/1990" value="01/02/1990">
                 </div>
                 <div>
-                    <select name="" id="">
+                    <input name="gender" id="gender" type="text" placeholder="Gender" value="Male">
+                </div>
+                <div>
+                    <select name="roomId" id="roomId">
                         <option value="">Select Block Room</option>
-                        <option value="">Holy Angels R.1 </option>
-                        <option value="">Saint Joseph B.2</option>
+                        <option value="1">Holy Angels R.1 </option>
+                        <option value="2">Saint Joseph B.2</option>
                     </select>
                 </div>
                 <div>
-                    <select name="" id="">
+                    <select name="isAdmin" id="isAdmin">
                         <option value="">Is Admin</option>
-                        <option value="">Yes </option>
-                        <option value="">No</option>
+                        <option value="1">Yes </option>
+                        <option value="2">No</option>
                     </select>
                 </div>
                  <div>
@@ -113,6 +107,7 @@
 </body>
 
 <script src="js/header.js"></script>
+<script src="js/validation.js"></script>
 
 
 

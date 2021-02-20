@@ -36,10 +36,10 @@
                 </div>
 
                 <li onclick="showDonationList()"><a href="#">Donation</a></li>
-                <div id="donationList"> 
+                <div id="donationList">
                     <li class="left-space"><a href="donation-type.html">Donation Type</a></li>
                     <li class="left-space"><a href="donation.html">Donation</a></li>
-                </div> 
+                </div>
                 <li><a href="activity-category.html">Activity Categories</a></li>
                 <li><a href="activity.html">Activities</a></li>
                 <li><a href="event.html">Events</a></li>
@@ -53,69 +53,70 @@
             <div class="header" style="color: red; font-size: 20px;">User Add
             </div>
             <div class="info">
-                <form  name="userAddForm" method="POST" onsubmit="return userAddValidation()">
-                   <div>
-                    <input type="text" name="firstName" id="firstName" placeholder="First Name">   
-                   </div>
-                   <div>
-                    <input type="text" name="lastName" id="lastName" placeholder="Last Name">   
-                   </div>
-                   <div>
-                    <input type="text" name="userName" id="userName" placeholder="User Name">   
-                   </div>
-                   <div>
-                    <input type="text" name="email" id="email"   placeholder="Email">   
-                   </div>
-                   <div>
-                    <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">   
-                   </div>
-                   <div>
-                    <input type="text" name="address" id="address" placeholder="Address">   
-                   </div>
-                   <div>
-                       <select name="gender" id="userGender">
-                           <option value="">Select a Gender</option>
-                           <option value="1">Male</option>
-                           <option value="2">Female</option>
-                       </select>
-                   </div>
-                   <div>
-                       <input type="date" name="date" id="date">
-                   </div>
-                   <div>
-                    <select name="roomId" id="roomId">
-                        <option value="">Select a Room</option>
-                        <option value="1">Saint Joseph R.1B</option>
-                        <option value="2">Holy Angels R.1A</option>
-                    </select> 
-                   </div>
-                   <div>
-                       <input type="text" name="bloodGroup" id="bloodGroup"  placeholder="Blood Group">
-                   </div>
-                   <div>
-                    <select name="isAdmin" id="isAdmin">
-                        <option value="">Is Admin</option>
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
-                    </select> 
-                   </div>
-                   <div>
-                    <select name="isStaff" id="isStaff">
-                        <option value="">Is Staff</option>
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
-                    </select> 
-                   </div>
-                   <div>
-                       <input type="password" name="password" id="password"   placeholder="Password">
-                   </div>
-                   <div>
-                    <input type="password" name="conformPassword" id="conformPassword"  placeholder="Conform Password">
-                </div>
-                   <div>
-                       <input type="submit" value="Save">
-                   </div>
-               </form>
+                <form name="userAddForm" method="POST" onsubmit="return userAddValidation()">
+                    <div>
+                        <input type="text" name="firstName" id="firstName" placeholder="First Name">
+                    </div>
+                    <div>
+                        <input type="text" name="lastName" id="lastName" placeholder="Last Name">
+                    </div>
+                    <div>
+                        <input type="text" name="userName" id="userName" placeholder="User Name">
+                    </div>
+                    <div>
+                        <input type="text" name="email" id="email" placeholder="Email">
+                    </div>
+                    <div>
+                        <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">
+                    </div>
+                    <div>
+                        <input type="text" name="address" id="address" placeholder="Address">
+                    </div>
+                    <div>
+                        <select name="gender" id="userGender">
+                            <option value="">Select a Gender</option>
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="date" name="dob" id="dob">
+                    </div>
+                    <div>
+                        <select name="roomId" id="roomId">
+                            <option value="">Select a Room</option>
+                            <option value="1">Saint Joseph R.1B</option>
+                            <option value="2">Holy Angels R.1A</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" name="bloodGroup" id="bloodGroup" placeholder="Blood Group">
+                    </div>
+                    <div>
+                        <select name="isAdmin" id="isAdmin">
+                            <option value="">Is Admin</option>
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select name="isStaff" id="isStaff">
+                            <option value="">Is Staff</option>
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="password" name="password" id="password" placeholder="Password">
+                    </div>
+                    <div>
+                        <input type="password" name="conformPassword" id="conformPassword"
+                            placeholder="Conform Password">
+                    </div>
+                    <div>
+                        <input type="submit" value="Save">
+                    </div>
+                </form>
 
             </div>
         </div>

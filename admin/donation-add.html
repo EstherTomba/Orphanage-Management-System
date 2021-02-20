@@ -53,37 +53,37 @@
             <div class="header" style="color: red; font-size: 20px;">Add Donation 
             </div>
             <div class="info">
-           <form action="">
+                <form name="donationAddForm" method="POST" onsubmit="return donationAddValidation()">
                <div>
-                <input type="text" placeholder="First Name">
+                <input type="text" name="firstName" id="firstName" placeholder="First Name">
                </div>
                <div>
-                <input type="text" placeholder="Last Name">  
+                <input type="text" name="lastName" id="lastName"  placeholder="Last Name">  
                </div>
                <div>
-                <input type="text" placeholder="Phone Number">  
+                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">  
                </div>
                <div>
-                <input type="text" placeholder="Email">  
+                <input type="text" name="email" id="email" placeholder="Email">  
                </div>
                <div>
-                <input type="text" placeholder="Address">  
+                <input type="text" name="address" id="address"  placeholder="Address">  
                </div>
                <div>
-                <input type="number" placeholder="Amount">  
+                <input type="number" name="amount" id="amount" placeholder="Amount">  
                </div>
               
                <div>
-                   <select name="" id="">
+                   <select name="donationTypeId" id="donationTypeId">
                        <option value="">Select Donation Type</option>
-                       <option value="">Cash</option>
-                       <option value="">Mpesa</option>
-                       <option value="">Others</option>
+                       <option value="1">Cash</option>
+                       <option value="2">Mpesa</option>
+                       <option value="3">Others</option>
 
                    </select>   
                </div>
                <div>
-                <textarea name="" id="" cols="30" rows="10" placeholder="Description"></textarea>
+                <textarea name="" id="" cols="30" rows="10" name="description" id="description"  placeholder="Description"></textarea>
             </div>
                <div>
                 <input type="submit" value="Save">
@@ -95,6 +95,7 @@
 </body>
 
 <script src="js/header.js"></script>
+<script src="js/validation.js"></script>
 
 
 

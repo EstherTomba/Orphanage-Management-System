@@ -53,26 +53,26 @@
             <div class="header" style="color: red; font-size: 20px;">Add Counsellor Appointment
             </div>
             <div class="info">
-              <form action="">
+                <form name="counsellorAddAppointmentForm" method="POST" onsubmit="return counsellorAddAppointmentValidation()">
                   <div>
-                    <select name="" id="">
+                    <select name="orphanId" id="orphanId">
                         <option value="">Select Orphan</option>
-                        <option value="">John Ayiga</option>
-                        <option value="">Samuel Nandasaba</option>
+                        <option value="1">John Ayiga</option>
+                        <option value="2">Samuel Nandasaba</option>
                     </select>
                   </div>
                   <div>
-                      <select name="" id="">
+                      <select name="counsellorId" id="counsellorId">
                           <option value="">Select Counsellor</option>
-                          <option value="">Moses Kamau</option>
-                          <option value="">David Kitetu</option>
+                          <option value="1">Moses Kamau</option>
+                          <option value="2">David Kitetu</option>
                       </select>
                   </div>
                   <div>
-                    <input type="date">
+                    <input name="date" id="date" type="date">
                   </div>
                   <div>
-                    <input type="time">
+                    <input name="time" id="time" type="time">
                   </div>
                   <div>
                       <input type="submit" value="Save">
@@ -85,6 +85,7 @@
 </body>
 
 <script src="js/header.js"></script>
+<script src="js/validation.js"></script>
 
 
 

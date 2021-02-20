@@ -53,10 +53,10 @@
             <div class="header" style="color: red; font-size: 20px;">Add Donation Type
             </div>
             <div class="info">
-             <form action="">
+                <form name="donationTypeAddForm" method="POST" onsubmit="return donationTypeAddValidation()">
                
                  <div>
-                     <input type="text" placeholder="Name">
+                     <input type="text" name="name" placeholder="Name">
                  </div>
                  <div>
                      <input type="submit" value="Save">
@@ -68,6 +68,7 @@
 </body>
 
 <script src="js/header.js"></script>
+<script src="js/validation.js"></script>
 
 
 

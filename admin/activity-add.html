@@ -53,24 +53,24 @@
             <div class="header" style="color: red; font-size: 20px;">Add Activity 
             </div>
             <div class="info">
-                <form action="">
+                <form name="activityAddForm" method="POST" onsubmit="return activityAddValidation()">
                     <div>
-                        <select name="" id="">
+                        <select name="activityCategoryId" id="activityCategoryId">
                             <option value="">Select Activity Category</option>
-                            <option value="">Cleaning</option>
-                            <option value="">Prayer</option>
-                            <option value="">Football</option>
+                            <option value="1">Cleaning</option>
+                            <option value="2">Prayer</option>
+                            <option value="3">Football</option>
                         </select>
                     </div>
                     <div>
-                        <input type="text" placeholder="Name">
+                        <input type="text" name="name" id="name"  placeholder="Name">
                     </div>
                     
                    <div>
-                      <input type="file" value="">
+                      <input type="file" name="image" id="image"  value="">
                    </div>
                    <div>
-                       <textarea name="" id="" cols="30" rows="10" placeholder="Description"></textarea>
+                       <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
                    </div>
                    <div>
                        <input type="submit" value="Save">
@@ -83,6 +83,7 @@
 </body>
 
 <script src="js/header.js"></script>
+<script src="js/validation.js"></script>
 
 
 
