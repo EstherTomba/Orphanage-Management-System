@@ -38,10 +38,10 @@
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui dolorem placeat veniam! Sit quos aperiam eum deleniti, optio repellat assumenda, culpa iure cupiditate quae voluptatibus eos, minima rem velit temporibus.
                     </p>
                 </div>
-             <form action="" style="position: fixed; bottom: 0px; width: 83%;" >
+             <form  name="contactAdminForm" method="POST" onsubmit="return contactAdminValidation()"action="" style="position: fixed; bottom: 0px; width: 83%;" >
                
                 <div>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
+                    <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
                 </div>
                 
                  <div>
@@ -52,5 +52,6 @@
         </div>
     </div>
 </body>
+<script src="js/validation.js"></script>
 
 </html>
