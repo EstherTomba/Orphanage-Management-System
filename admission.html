@@ -29,30 +29,55 @@
 
         </header>
         <div class="banner-area">
-            <h2>contact</h2>
+            <h2>Admission</h2>
         </div>
         <div class="content-area">
             <div class="wrapper">
                 <h2></h2>
                 <form  name="blockRoomForm" method="POST" onsubmit="return contactValidation()">
                 <div>
-                    <input type="text" placeholder="First Name">
+                    <input type="text" placeholder="Applicant First Name">
                 </div>
                 <div>
-                    <input type="text" placeholder="Last Name">
+                    <input type="text" placeholder="Applicant Last Name">
                 </div>
                 <div>
-                    <input type="email" placeholder="Email ">
+                    <input type="email" placeholder="Applicant Email ">
                 </div>
                 <div>
-                    <input type="text" placeholder="Phone Number">
+                    <input type="text" placeholder=" Applicant Phone Number">
                 </div>
                 <div>
-                    <input type="text" placeholder="Subject">
+                    <input type="text" placeholder="Applicant Address">
+                </div>
+                <div>
+                    <label for="" style="float: left;">ID/Passport</label>
+                    <input type="file" placeholder="">
+                </div>
+                <div>
+                    <input type="text" placeholder="Child First Name">
+                </div>
+                <div>
+                    <input type="text" placeholder="Child Last Name">
+                </div>
+                <div>
+                    <label for="dob" style="float: left;">Date of Birth</label>
+                    <input type="date" name="dob" id="dob" placeholder="">
+                </div>
+                <div>
+                    <select name="gender" id="gender">
+                        <option value="">Select Gender</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="text" placeholder="Blood Group">
                 </div>
                 <div>
                     <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
                 </div>
+
                 <div>
                     <input type="submit" value="Send">
                 </div>

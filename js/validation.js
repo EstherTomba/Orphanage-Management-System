@@ -23,3 +23,7 @@ function restPasswordValidation() {
         return false;
     }
 }
+
+function contactValidation() {
+    alert("hello");
+}

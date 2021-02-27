@@ -107,8 +107,7 @@ function userAddValidation() {
     var lastName = document.forms["userAddForm"]["lastName"].value;
     var gender = document.forms["userAddForm"]["gender"].value;
     var dob = document.forms["userAddForm"]["dob"].value;
-    var bloodGroup = document.forms["userAddForm"]["bloodGroup"].value;
-
+    var role = document.forms["userAddForm"]["role"].value;
     var password = document.forms["userAddForm"]["password"].value;
     var conformPassword = document.forms["userAddForm"]["conformPassword"].value;
 
@@ -127,11 +126,11 @@ function userAddValidation() {
     } else if (dob == '') {
         alert("Date of birth is required");
         document.userAddForm.dob.focus();
-        return false;
-    } else if (bloodGroup == '') {
-        alert("Blood Group is required");
-        document.userAddForm.bloodGroup.focus();
-        return false;
+        return false; 
+    }  else if (role == '') {
+        alert("Role is required");
+        document.userAddForm.role.focus();
+        return false; 
     } else if (password == '') {
         alert("Enter the Password");
         document.userAddForm.password.focus();
