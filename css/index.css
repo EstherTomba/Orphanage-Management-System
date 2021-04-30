@@ -6,6 +6,22 @@ body{
     text-align: center;
 
 }
+.error {
+    padding: 10px;
+    border: 1px solid #a94442; 
+    color: #a94442; 
+    background: #f2dede; 
+    /* margin-left: 10px; */
+    font-size: 14px;
+}
+.success {
+    padding: 0px 2px;
+    border: 1px solid #3c763d;
+    color: #3c763d; 
+    background: #dff0d8; 
+    font-size: 14px;
+    text-align: center;
+}
 .wrapper{
     width: 1170px;
     margin: 0 auto;
@@ -41,37 +57,48 @@ nav a{
 }
 .banner-area{
     width: 100%;
-    height: 500px;
-    position: fixed;
-    top: 100px;
-    background-image: url(../images/images.jpg);
+    height: 100vh;
+    background-image: url(../images/images4.jpg);
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center center;
 }
 .banner-area h2{
-    padding-top: 8%;
+    padding-top: 400px;
+    font-size: 40px;
+    text-transform: uppercase;
+    /* color: #4b4276; */
+    color: white;
+}
+.banner{
+    width: 100%;
+    height: 60vh;
+    background-image: url(../images/images4.jpg);
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+}
+.banner h2{
+    padding-top: 200px;
     font-size: 40px;
     text-transform: uppercase;
     color: #4b4276;
-    }
-    .content-area{
-        width: 100%;
-        position: relative;
-        top: 450px;
-        background: #ddd;
-        height: 1500px;
-    }
-    .content-area h2{
-        letter-spacing: 4px;
-        padding-top: 30px;
-        font-size: 40px;
-        margin: 0;
-    }
-    .content-area p{
-        padding: 2% 0;
-        line-height: 30px;
-    }
+    /* color: white; */
+}
+.content-area{
+    width: 100%;
+    background: #ddd;
+}
+.content-area h2{
+    letter-spacing: 4px;
+    padding-top: 30px;
+    font-size: 40px;
+    margin: 0;
+}
+.content-area p{
+    padding: 2% 0;
+    line-height: 30px;
+}
     .footer {
         width: 100%;
         padding: 15px;

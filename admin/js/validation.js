@@ -104,11 +104,11 @@ function blockRoomValidation() {
 // USER ADD VALIDATION
 function userAddValidation() {
     var firstName = document.forms["userAddForm"]["firstName"].value;
-    var lastName = document.forms["userAddForm"]["lastName"].value;
-    var gender = document.forms["userAddForm"]["gender"].value;
-    var dob = document.forms["userAddForm"]["dob"].value;
-    var role = document.forms["userAddForm"]["role"].value;
-    var password = document.forms["userAddForm"]["password"].value;
+    var lastName  = document.forms["userAddForm"]["lastName"].value;
+    var gender    = document.forms["userAddForm"]["gender"].value;
+    var dob       = document.forms["userAddForm"]["dob"].value;
+    var role      = document.forms["userAddForm"]["role"].value;
+    var password  = document.forms["userAddForm"]["password"].value;
     var conformPassword = document.forms["userAddForm"]["conformPassword"].value;
 
     if (firstName == '') {
@@ -371,7 +371,6 @@ function helpResponseValidation() {
 function profileValidation() {
     var firstName = document.forms["profileForm"]["firstName"].value;
     var lastName = document.forms["profileForm"]["lastName"].value;
-    var userName = document.forms["profileForm"]["userName"].value;
     var address = document.forms["profileForm"]["address"].value;
     var email = document.forms["profileForm"]["email"].value;
     var phoneNumber = document.forms["profileForm"]["phoneNumber"].value;
@@ -387,10 +386,6 @@ function profileValidation() {
     } else if(lastName == '') {
         alert("Last Name is required");
         document.profileForm.lastName.focus();
-        return false; 
-    } else if(userName == '') {
-        alert("UserName is required");
-        document.profileForm.userName.focus();
         return false; 
     } else if(address == '') {
         alert("Address is required");
@@ -424,5 +419,32 @@ function profileValidation() {
 
 }
 
+// CHANGE PASSWORD
+function changePasswordValidation() {
+    var oldPassword = document.forms["changePasswordForm"]["oldPassword"].value;
+    var newPassword = document.forms["changePasswordForm"]["newPassword"].value;
+    var confirmNewPassword = document.forms["changePasswordForm"]["confirmNewPassword"].value;
+    if(oldPassword == '') {
+        alert("Please enter Old Password");
+        document.changePasswordForm.oldPassword.focus();
+        return false;
+    }else if(newPassword == '') {
+        alert("Please enter New  Password");
+        document.changePasswordForm.newPassword.focus();
+        return false; 
+    } else if(newPassword.length < 6 ) {
+        alert("Password should be greater than 6 charaters");
+        document.changePasswordForm.newPassword.focus();
+        return false; 
+    }else if(confirmNewPassword == '') {
+        alert("Please enter Confirm  Password");
+        document.changePasswordForm.confirmNewPassword.focus();
+        return false;  
+    }else if (newPassword != confirmNewPassword) {
+        alert("Password do not match");
+        document.changePasswordForm.confirmNewPassword.focus();
+        return false;
+    }
 
+}
 

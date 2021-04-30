@@ -68,3 +68,34 @@ function contactAdminValidation() {
     } 
 
 }
+// CHANGE PASSWORD
+function changePasswordValidation() {
+    var oldPassword = document.forms["changePasswordForm"]["oldPassword"].value;
+    var newPassword = document.forms["changePasswordForm"]["newPassword"].value;
+    var confirmNewPassword = document.forms["changePasswordForm"]["confirmNewPassword"].value;
+    if(oldPassword == '') {
+        alert("Please enter Old Password");
+        document.changePasswordForm.oldPassword.focus();
+        return false;
+    }else if(newPassword == '') {
+        alert("Please enter New  Password");
+        document.changePasswordForm.newPassword.focus();
+        return false; 
+    } else if(newPassword.length < 6 ) {
+        alert("Password should be greater than 6 charaters");
+        document.changePasswordForm.newPassword.focus();
+        return false; 
+    }else if(confirmNewPassword == '') {
+        alert("Please enter Confirm  Password");
+        document.changePasswordForm.confirmNewPassword.focus();
+        return false;  
+    }else if (newPassword != confirmNewPassword) {
+        alert("Password do not match");
+        document.changePasswordForm.confirmNewPassword.focus();
+        return false;
+    }
+    
+
+  
+}
+

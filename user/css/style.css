@@ -8,6 +8,22 @@
 body{
     background: #f3f5f9;
 }
+.error {
+    padding: 10px;
+    border: 1px solid #a94442; 
+    color: #a94442; 
+    background: #f2dede; 
+    /* margin-left: 10px; */
+    font-size: 14px;
+}
+.success {
+    padding: 0px 2px;
+    border: 1px solid #3c763d;
+    color: #3c763d; 
+    background: #dff0d8; 
+    font-size: 14px;
+    text-align: center;
+}
 .wrapper{
     display: flex;
     position: relative;

@@ -63,7 +63,7 @@ function admissionValidation() {
     var email = document.forms["admissionForm"]["email"].value;
     var applicantPhoneNumber = document.forms["admissionForm"]["applicantPhoneNumber"].value;
     var applicantAddress = document.forms["admissionForm"]["applicantAddress"].value;
-    var file = document.forms["admissionForm"]["file"].value;
+    var applicantID = document.forms["admissionForm"]["applicantID"].value;
     var childFirstName = document.forms["admissionForm"]["childFirstName"].value;
     var childLastName = document.forms["admissionForm"]["childLastName"].value;
     var dob = document.forms["admissionForm"]["dob"].value;
@@ -90,8 +90,8 @@ function admissionValidation() {
         alert("Applicant Address  is required");
         document.admissionForm.applicantAddress.focus();
         return false;
-    }else if(file == '') {
-        alert("File is required");
+    }else if(applicantID == '') {
+        alert("ID or Passport Number is required");
         document.admissionForm.file.focus();
         return false; 
     }else if(childFirstName == '') {
@@ -119,5 +119,48 @@ function admissionValidation() {
         document.admissionForm.message.focus();
         return false; 
     }
-    
+}
+// DONATION VALIDATION
+function donationValidation() {
+    var firstName = document.forms["donationtForm"]["firstName"].value;
+    var lastName = document.forms["donationtForm"]["lastName"].value;
+    var email = document.forms["donationtForm"]["email"].value;
+    var phoneNumber = document.forms["donationtForm"]["phoneNumber"].value;
+    var address = document.forms["donationtForm"]["address"].value;
+    var donationTypeId = document.forms["donationtForm"]["donationTypeId"].value;
+    var amount = document.forms["donationtForm"]["amount"].value;
+    var description = document.forms["donationtForm"]["description"].value;
+    if (firstName == '') {
+        alert("First Name is required");
+        document.donationtForm.firstName.focus();
+        return false;
+    } else if (lastName == '') {
+        alert("Last Name is required");
+        document.donationtForm.lastName.focus();
+        return false;
+    } else if (email == '') {
+        alert("Email is required");
+        document.donationtForm.email.focus();
+        return false;
+    } else if (phoneNumber == '') {
+        alert("Phone Number is required");
+        document.donationtForm.phoneNumber.focus();
+        return false;
+    } else if (address == '') {
+        alert("Address is required");
+        document.donationtForm.address.focus();
+        return false;
+    } else if (donationTypeId == '') {
+        alert("Donation Type is required");
+        document.donationtForm.donationTypeId.focus();
+        return false;
+    } else if (amount == '') {
+        alert("Amount is required");
+        document.donationtForm.amount.focus();
+        return false;
+    } else if (description == '') {
+        alert("Description write your message here");
+        document.donationtForm.description.focus();
+        return false;
+    }
 }
