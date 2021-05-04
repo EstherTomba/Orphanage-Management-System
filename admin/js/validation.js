@@ -1,13 +1,8 @@
 // CHILD APPROVAL VALIDATION
 function childApprovalValidation() {
-    var approvalId = document.forms["childApprovalForm"]["approvalId"].value;
     var status = document.forms["childApprovalForm"]["status"].value;
     var description = document.forms["childApprovalForm"]["description"].value;
-    if (approvalId == '') {
-        alert("Approval is required");
-        document.childApprovalForm.approvalId.focus();
-        return false;
-    } else if (status == '') {
+    if (status == '') {
         alert("Status is required");
         document.childApprovalForm.status.focus();
         return false;

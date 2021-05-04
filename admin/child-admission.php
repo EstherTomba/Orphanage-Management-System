@@ -22,11 +22,15 @@
     <?php include("header.php")?>
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">Child Admission
-                <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
+                <!-- <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
                     <a href="child-approval-add.php" style="color: white;">Approved</a>  
-                  </button> 
+                  </button>  -->
             </div>
             <div class="info">
+                <?php
+                    include('../error.php');
+                    include('../success.php');
+                ?> 
                 <table>
                     <tr>
                         <th>Applicant First Name</th>
@@ -42,7 +46,7 @@
                         while($row = mysqli_fetch_assoc($admissionResult)) {
                             ?>
                                 <tr>
-                                    <td><a href="child-approval-details.php?id=<?php echo $row['childAdmissionId'] ?>"><?php echo $row['applicantFirstName'] ?></a></td>
+                                    <td><a href="child-approval-add.php?id=<?php echo $row['childAdmissionId'] ?>"><?php echo $row['applicantFirstName'] ?></a></td>
                                     <td><?php echo $row['applicantLastName'] ?></td>
                                     <td><?php echo $row['applicantEmail'] ?></td>
                                     <td><?php echo $row['applicantPhoneNumber'] ?></td>

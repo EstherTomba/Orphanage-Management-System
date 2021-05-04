@@ -21,10 +21,14 @@
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">Child Transfer
                 <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
-                    <a href="child-transfer-add.php" style="color: white;">Transfer</a>  
+                    <a href="child-transfer-add.php" style="color: white;">Transfer Orphan</a>  
                   </button> 
             </div>
             <div class="info">
+                <?php 
+                    include('../error.php');
+                    include('../success.php');
+                ?>
                 <table>
                     <tr>
                         <th>First Name</th>
@@ -37,15 +41,19 @@
 
 
                     <?php  
-                        $childTransferQuery="SELECT user.firstName, user.lastName, orphantransfer.orphanageName,
-                        orphantransfer.orphanageEmail, orphantransfer.orphanagePhoneNumber1,orphantransfer.createdAt 
-                        FROM orphantransfer INNER JOIN user ON orphantransfer.orphanId=user.userId  ORDER BY  orphantransfer.createdAt DESC";
+                        $childTransferQuery ="SELECT * FROM orphantransfer ORDER BY createdAt DESC";
                         $childTransferResult = mysqli_query($con, $childTransferQuery);
                         while($row = mysqli_fetch_assoc($childTransferResult)) {
+                            $orphanId = $row['orphanId'];
+                            $userQuery ="SELECT * FROM user WHERE userId='$orphanId' ORDER BY createdAt DESC";
+                            $userResult = mysqli_query($con, $userQuery);
+                            if($userResult) {
+                                $userData = $userResult->fetch_assoc();
+                            }
                             ?>
                                 <tr>
-                                    <td><a href="child-approval.php"><?php echo $row['firstName'] ?></a></td>
-                                    <td><?php echo $row['lastName'] ?></td>
+                                    <td><a href="child-transfer-details.php?id=<?php echo $row['orphanTransferId'] ?>"><?php echo $userData['firstName'] ?></a></td>
+                                    <td><a href="child-transfer-details.php?id=<?php echo $row['orphanTransferId'] ?>"><?php echo $userData['lastName'] ?></a></td>
                                     <td><?php echo $row['orphanageName'] ?></td>
                                     <td><?php echo $row['orphanageEmail'] ?></td>
                                     <td><?php echo $row['orphanagePhoneNumber1'] ?></td>

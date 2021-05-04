@@ -30,27 +30,27 @@
                     include('../error.php');
                     include('../success.php');
                 ?>
-            <?php
-                $query="SELECT * FROM block ORDER BY createdAt DESC";
-                $blockResult = mysqli_query($con, $query);
-                while($row = mysqli_fetch_assoc($blockResult)) {
-                    ?>
-                        <a href="block-details.php?id=<?php echo $row['blockId'] ?>">
-                            <div style="width:100%; background-color: white;">
-                                <div>
-                                    <img src="../uploads/<?php echo $row['image'] ?>" width="100%" height="300px" alt="">
+                <?php
+                    $query="SELECT * FROM block ORDER BY createdAt DESC";
+                    $blockResult = mysqli_query($con, $query);
+                    while($row = mysqli_fetch_assoc($blockResult)) {
+                        ?>
+                            <a href="block-details.php?id=<?php echo $row['blockId'] ?>">
+                                <div style="width:100%; background-color: white;">
+                                    <div>
+                                        <img src="../uploads/<?php echo $row['image'] ?>" width="100%" height="300px" alt="">
+                                    </div>
+                                    <h1 style="text-align: center; padding-bottom: 15px; padding-top: 10px;">
+                                        <?php echo $row['blockName'] ?>
+                                        <div>Room numbers: <?php echo $row['totalRoomNumber'] ?> </div>
+                                        <div style= "font-size:13px">Date: <?php echo date('M d Y',strtotime($row['createdAt'])) ?></div>
+                                    </h1>
                                 </div>
-                                <h1 style="text-align: center; padding-bottom: 15px; padding-top: 10px;">
-                                    <?php echo $row['blockName'] ?>
-                                    <div>Room numbers: <?php echo $row['totalRoomNumber'] ?> </div>
-                                    <div style= "font-size:13px">Date: <?php echo date('M d Y',strtotime($row['createdAt'])) ?></div>
-                                </h1>
-                            </div>
-                        </a>
-                        <hr style="margin-bottom: 10px;">
-                    <?php
-                }
-            ?>
+                            </a>
+                            <hr style="margin-bottom: 10px;">
+                        <?php
+                    }
+                ?>
             </div>
         </div>
     </div>

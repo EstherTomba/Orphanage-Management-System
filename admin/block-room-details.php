@@ -44,7 +44,7 @@
                                 $blockRoomResult= mysqli_query($con, $blockRoomQuery);
                                 while($row = mysqli_fetch_assoc($blockRoomResult)) {
                                     ?>
-                                    <option value="<?php echo $row['blockId'] ?>" <?php if ($roomData['blockId'] == $row['blockId']) echo 'selected="selected"'; ?>><?php echo $row['blockName'] ?></option>
+                                        <option value="<?php echo $row['blockId'] ?>" <?php if ($roomData['blockId'] == $row['blockId']) echo 'selected="selected"'; ?>><?php echo $row['blockName'] ?></option>
                                     <?php 
                                 }
                             ?>

@@ -1,5 +1,8 @@
 <?php
      require_once('db.php');
+         // ===============================================================================================
+                                        // INSERT
+    // ===============================================================================================
     //CREATE A NEW USER
     if(isset($_POST['createNewUser'])){
         $firstName   = mysqli_real_escape_string($con, $_POST['firstName']);
@@ -86,7 +89,37 @@
         } else {
             array_push($errors, "Error, Could not create the account.");
         }
-        
+    }
+
+     // TRANSFER CHILD
+     if(isset($_POST['transferChild'])) {
+        $orphanId = mysqli_real_escape_string($con, $_POST['orphanId']);
+        $orphanageName = mysqli_real_escape_string($con, $_POST['orphanageName']);
+        $orphanageEmail = mysqli_real_escape_string($con, $_POST['orphanageEmail']);
+        $orphanagePhoneNumber1 = mysqli_real_escape_string($con, $_POST['orphanagePhoneNumber1']);
+        $orphanagePhoneNumber2 = mysqli_real_escape_string($con, $_POST['orphanagePhoneNumber2']);
+        $orphanageWebsite = mysqli_real_escape_string($con, $_POST['orphanageWebsite']);
+        $orphanageAddress = mysqli_real_escape_string($con, $_POST['orphanageAddress']);
+        // CHECK IF USER ALREADY TRANSFER
+        $userQuery = "SELECT * FROM orphantransfer WHERE orphanId='$orphanId'";
+        $userResult = mysqli_query($con, $userQuery); 
+        $user = mysqli_fetch_assoc($userResult);
+        if($user) {
+            if($user['orphanId'] == $orphanId ){
+                array_push($errors, "Orphan already transfered.");
+            }
+        }
+        if(count($errors) == 0 ){
+            $transferQuery = "INSERT INTO orphantransfer (orphanId,orphanageAddress,orphanageName,orphanagePhoneNumber1,orphanagePhoneNumber2,orphanageEmail,orphanageWebsite) 
+            VALUES ('$orphanId', '$orphanageAddress','$orphanageName','$orphanagePhoneNumber1','$orphanagePhoneNumber2','$orphanageEmail','$orphanageWebsite')";
+            $transferResult = mysqli_query($con, $transferQuery);
+            if($transferResult) {
+                $_SESSION['success'] = "Orphan transfer successfully";
+                header('Location: child-transfer.php');
+            } else {
+                array_push($errors, "Error, Could not create.");
+            }
+        }
     }
 
     
@@ -456,6 +489,28 @@
         }
     }
 
+    // UPDATE CHILD TRANSFER
+    if(isset($_POST['updateTransferChild'])) {
+        $orphanId = mysqli_real_escape_string($con, $_POST['orphanId']);
+        $orphanTransferId = mysqli_real_escape_string($con, $_POST['orphanTransferId']);
+        $orphanageName = mysqli_real_escape_string($con, $_POST['orphanageName']);
+        $orphanageEmail = mysqli_real_escape_string($con, $_POST['orphanageEmail']);
+        $orphanagePhoneNumber1 = mysqli_real_escape_string($con, $_POST['orphanagePhoneNumber1']);
+        $orphanagePhoneNumber2 = mysqli_real_escape_string($con, $_POST['orphanagePhoneNumber2']);
+        $orphanageWebsite =  mysqli_real_escape_string($con, $_POST['orphanageWebsite']);
+        $orphanageAddress =  mysqli_real_escape_string($con, $_POST['orphanageAddress']);
+        $orphanageQuery = "UPDATE orphantransfer SET orphanId='$orphanId',orphanageAddress='$orphanageAddress',orphanageName='$orphanageName',
+        orphanagePhoneNumber1='$orphanagePhoneNumber1',orphanagePhoneNumber2='$orphanagePhoneNumber2',orphanageEmail='$orphanageEmail',orphanageWebsite='$orphanageWebsite'
+         WHERE orphanTransferId='$orphanTransferId'";
+        $orphanageResult = mysqli_query($con, $orphanageQuery);
+        if($orphanageResult) {
+            $_SESSION['success'] = " updated successfully";
+            header('Location: child-transfer.php');
+        } else {
+            array_push($errors, "Error, Could not update the account.");
+        }
+    }
+
 
     // UPDATE DONATION
     if(isset($_POST['updateRoom'])) {
@@ -573,6 +628,75 @@
             // }
         } else {
             array_push($errors, "Error, Could not respond.");
+        }
+    }
+
+    // UPDATE APPROVAL
+    if(isset($_POST['updateApproval'])) {
+        $userId = $_SESSION['userId'];
+        $childAdmissionId= mysqli_real_escape_string($con, $_POST['childAdmissionId']);
+        $status= mysqli_real_escape_string($con, $_POST['status']);
+        $applicantEmail= mysqli_real_escape_string($con, $_POST['applicantEmail']);
+        $description= mysqli_real_escape_string($con, $_POST['description']);
+        $childApprovalId= mysqli_real_escape_string($con, $_POST['childApprovalId']);
+
+        $updateApprovalQuery = "UPDATE childapproval SET childAdmissionId='$childAdmissionId',status='$status',staffid='$userId',description='$description'
+        WHERE childApprovalId='$childApprovalId'";
+        $updateApprovalResult = mysqli_query($con, $updateApprovalQuery);
+        if($updateApprovalResult) {
+            // SEND EMAIL
+            // $to = $email;
+            // $sub = 'Contact Coms';
+            // $msg = $message;
+            // $sendEmail = mail($to, $sub, $msg);
+            // if($sendEmail) {
+                $_SESSION['success'] = "Approval updated successfully";
+                header('Location: child-approval.php');
+            // } else {
+            //     array_push($errors, "Error, Could not send email.");
+            // }
+        } else {
+            array_push($errors, "Error, Could not update profile.");
+        }
+    }
+
+
+    // ADD APPROVAL
+    if(isset($_POST['addApproval'])) {
+        $userId = $_SESSION['userId'];
+        $childAdmissionId= mysqli_real_escape_string($con, $_POST['childAdmissionId']);
+        $status= mysqli_real_escape_string($con, $_POST['status']);
+        $applicantEmail= mysqli_real_escape_string($con, $_POST['applicantEmail']);
+        $description= mysqli_real_escape_string($con, $_POST['description']);
+         // CHECK IF THE CHILD ADMISSION ID ALREADY EXISTS
+         $checkAdmissionIDQuery  = "SELECT * FROM childapproval WHERE childAdmissionId='$childAdmissionId' LIMIT 1";
+         $checkAdmissionIDResult = mysqli_query($con, $checkAdmissionIDQuery);
+         $admission = mysqli_fetch_assoc($checkAdmissionIDResult);
+         if($admission) {
+            if($admission['childAdmissionId'] == $childAdmissionId ){
+                array_push($errors, "Admission already checked.");
+            }
+         }
+         
+         if(count($errors) == 0 ){
+             $approvalQuery = "INSERT INTO childapproval (childAdmissionId,status,staffid,description) VALUES
+             ('$childAdmissionId', '$status', '$userId', '$description')";
+             $approvalResult = mysqli_query($con, $approvalQuery);
+             if($approvalResult) {
+                 // SEND EMAIL
+                // $to = $email;
+                // $sub = 'Contact Coms';
+                // $msg = $message;
+                // $sendEmail = mail($to, $sub, $msg);
+                // if($sendEmail) {
+                    $_SESSION['success'] = "Request approved successfully";
+                    header('Location: child-approval.php');
+                // } else {
+                //     array_push($errors, "Error, Could not send email.");
+                // }
+             } else {
+                 array_push($errors, "Error, Could not create the account.");
+             }
         }
     }
 

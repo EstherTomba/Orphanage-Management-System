@@ -21,7 +21,7 @@
     <?php include("header.php")?>
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">
-            <a href="block-room.php">Block Room </a>/Add
+                <a href="block-room.php">Block Room </a>/Add
             </div>
             <div class="info">
                     

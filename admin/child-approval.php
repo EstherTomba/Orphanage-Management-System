@@ -20,11 +20,15 @@
     <?php include("header.php")?>
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">Child Approvals
-                <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
+                <!-- <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
                     <a href="child-approval-add.php" style="color: white;">Approval</a>  
-                  </button> 
+                  </button>  -->
             </div>
             <div class="info">
+                <?php
+                    include('../error.php');
+                    include('../success.php');
+                ?> 
                 <table>
                     <tr>
                         <th>Applicant First Name</th>
@@ -35,17 +39,21 @@
                         <th>Date</th>
                     </tr>
                     <?php 
-                        $childApprovalQuery="SELECT childadmission.applicantFirstName, childadmission.applicantLastName, childadmission.applicantEmail,
-                        childadmission.applicantPhoneNumber, childapproval.childAdmissionId, childapproval.status,childapproval.createdAt 
-                        FROM childapproval INNER JOIN childadmission ON childapproval.childAdmissionId=childadmission.childAdmissionId  ORDER BY  childapproval.createdAt DESC";
+                        $childApprovalQuery= "SELECT * FROM childapproval ORDER BY createdAt DESC";
                         $childApprovalResult = mysqli_query($con, $childApprovalQuery);
                         while($row = mysqli_fetch_assoc($childApprovalResult)) {
+                            $childAdmissionId = $row['childAdmissionId'];
+                            $admissionQuery= "SELECT * FROM childadmission WHERE childAdmissionId='$childAdmissionId'";
+                            $admissionResult = mysqli_query($con, $admissionQuery);
+                            if($admissionResult) {
+                                $admissionData = $admissionResult->fetch_assoc();
+                            }
                             ?>
                                 <tr>
-                                    <td><a href="child-approval-add.php"><?php echo $row['applicantFirstName'] ?></a></td>
-                                    <td><?php echo $row['applicantLastName'] ?></td>
-                                    <td><?php echo $row['applicantEmail'] ?></td>
-                                    <td><?php echo $row['applicantPhoneNumber'] ?></td>
+                                    <td><a href="child-approval-details.php?id=<?php echo $row['childApprovalId'] ?>"><?php echo $admissionData['applicantFirstName'] ?></a></td>
+                                    <td><?php echo $admissionData['applicantLastName'] ?></td>
+                                    <td><?php echo $admissionData['applicantEmail'] ?></td>
+                                    <td><?php echo $admissionData['applicantPhoneNumber'] ?></td>
                                     <td><?php echo $row['status'] ?></td>
                                     <td><?php echo date("M d Y", strtotime($row['createdAt'])) ?></td>
                                 </tr> 
