@@ -52,15 +52,21 @@
                             }
                             // GET COUNSELLOR DATA
                             $counsellorId= $row['counsellorId'];
-                            $counsellorQuery= "SELECT * FROM user WHERE userId='$counsellorId'";
+                            $counsellorQuery= "SELECT * FROM counsellor WHERE counsellorId='$counsellorId'";
                             $counsellorResult= mysqli_query($con, $counsellorQuery);
                             if($counsellorResult) {
                                 $counsellorData= $counsellorResult->fetch_assoc();
+                                $staffId= $counsellorData['staffId'];
+                                $staffQuery= "SELECT * FROM user WHERE userId='$staffId'";
+                                $staffResult= mysqli_query($con, $staffQuery);
+                                if($staffResult) {
+                                    $staffData= $staffResult->fetch_assoc();
+                                }
                             }
                             ?>
                                 <tr>
-                                    <td><a href="counsellor-appointment-details.php?id=<?php  echo $row['counsellorAppointmentId']?>"><?php  echo $counsellorData['firstName']?> <?php  echo $counsellorData['lastName']?></a></td>
-                                    <td> <?php echo $orphanData['firstName'];?> <?php  echo $counsellorData['lastName']?></td>
+                                    <td><a href="counsellor-appointment-details.php?id=<?php  echo $row['counsellorAppointmentId']?>"><?php  echo $staffData['firstName']?> <?php  echo $staffData['lastName']?></a></td>
+                                    <td> <?php echo $orphanData['firstName'];?> <?php  echo $orphanData['lastName']?></td>
                                     <td><?php  echo $row['time']?></td>
                                     <td><?php  echo $row['date']?></td> 
                                     <td> <?php echo date('M D Y', strtotime($row['createdAt']))  ?></td>

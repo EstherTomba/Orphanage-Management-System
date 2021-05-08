@@ -101,6 +101,15 @@
                     </div>
                 </form>
 
+                <form action="" method="POST">
+                    <div>
+                        <input type="hidden" name="childAdmissionId" value="<?php echo $admissionData['childAdmissionId'] ?>" value="Update">
+                    </div>
+                    <div>
+                        <input type="submit" name="deleteChildAdmission" style="background-color:red;" value="Delete">
+                    </div>
+               </form>
+
             </div>
         </div>
     </div>

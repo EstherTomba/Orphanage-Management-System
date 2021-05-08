@@ -111,6 +111,14 @@
                         <input type="submit" value="Update" name="updateApproval">
                     </div>
                 </form>
+                <form action="" method="POST">
+                    <div>
+                        <input type="hidden" name="childApprovalId" value="<?php echo $approvalData['childApprovalId'] ?>" value="Update">
+                    </div>
+                    <div>
+                        <input type="submit" name="deleteChildApproval" style="background-color:red;" value="Delete">
+                    </div>
+                </form>
 
             </div>
         </div>

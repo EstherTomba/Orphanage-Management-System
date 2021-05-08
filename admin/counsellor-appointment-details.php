@@ -10,13 +10,27 @@
     if($counsellorAppointmentResult) {
         $counsellorAppointmentData= $counsellorAppointmentResult->fetch_assoc();
     }
+
+    // GET COUNSLLOR AND THEN USER DETAILS
+    $counsellorId= $counsellorAppointmentData['counsellorId'];
+    $counsellorQuery= "SELECT * FROM counsellor WHERE counsellorId='$counsellorId'";
+    $counsellorResult= mysqli_query($con, $counsellorQuery);
+    if($counsellorResult) {
+        $counsellorData= $counsellorResult->fetch_assoc();
+        $staffId= $counsellorData['staffId'];
+        $staffQuery= "SELECT * FROM user WHERE userId='$staffId'";
+        $staffResult= mysqli_query($con, $staffQuery);
+        if($staffResult) {
+            $staffData= $staffResult->fetch_assoc();
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Add Counsellor Appointment || Coms</title>
+    <title>Counsellor Appointment Details || Coms</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
 </head>
@@ -51,11 +65,17 @@
                       <select name="counsellorId" id="counsellorId">
                           <option value="">Select Counsellor</option>
                           <?php 
-                                $counsellorQuery = "SELECT * FROM user WHERE userRole='Staff'";
-                                $counsellorResult = mysqli_query($con,$counsellorQuery);
-                                while($counsellor = mysqli_fetch_assoc($counsellorResult)) {
+                                $counsellor2Query = "SELECT * FROM counsellor";
+                                $counsellor2Result = mysqli_query($con,$counsellor2Query);
+                                while($counsellor2 = mysqli_fetch_assoc($counsellor2Result)) {
+                                    $userId= $counsellor2['staffId'];
+                                    $userQuery= "SELECT * FROM user WHERE userId='$userId'";
+                                    $userResult= mysqli_query($con, $userQuery);
+                                    if($userResult) {
+                                        $userData= $userResult->fetch_assoc();
+                                    }
                                     ?>
-                                        <option value="<?php echo $counsellor['userId'] ?>" <?php if ($counsellorAppointmentData['counsellorId'] == $counsellor['userId']) echo 'selected="selected"'; ?>><?php echo $counsellor['firstName'] ?> <?php echo $counsellor['lastName'] ?></option>
+                                        <option value="<?php echo $counsellor2['counsellorId'] ?>" <?php if ($counsellor2['staffId'] == $userData['userId']) echo 'selected="selected"'; ?>><?php echo $userData['firstName'] ?> <?php echo $userData['lastName'] ?></option>
                                     <?php
                                 }
                             ?>
@@ -75,6 +95,14 @@
                   </div>
                  
               </form>
+              <form action="" method="POST">
+                    <div>
+                        <input type="hidden" name="counsellorAppointmentId" value="<?php echo $counsellorAppointmentData['counsellorAppointmentId'] ?>" value="Update">
+                    </div>
+                    <div>
+                        <input type="submit" name="deletecounsellorAppointment" style="background-color:red;" value="Delete">
+                    </div>
+                    </form>
             </div>
         </div>
     </div>

@@ -77,6 +77,14 @@
                         <input type="submit" name="updateTransferChild" value="Update">  
                     </div>
                 </form>
+                <form action="" method="POST">
+                    <div>
+                        <input type="hidden" name="orphanTransferId" value="<?php echo $orphanData['orphanTransferId'] ?>" value="Update">
+                    </div>
+                    <div>
+                        <input type="submit" name="deleteChildTransfer" style="background-color:red;" value="Delete">
+                    </div>
+                    </form>
             </div>
         </div>
     </div>

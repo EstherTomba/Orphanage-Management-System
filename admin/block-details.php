@@ -54,6 +54,15 @@
                         <input type="submit" name="updateBlock" value="Update">
                     </div>
                 </form>
+
+                <form action="" method="POST">
+                    <div>
+                        <input type="hidden" name="blockId" value="<?php echo $blockData['blockId'] ?>" value="Update">
+                    </div>
+                    <div>
+                        <input type="submit" name="deleteBlock" style="background-color:red;" value="Delete">
+                    </div>
+               </form>
             </div>
         </div>
     </div>

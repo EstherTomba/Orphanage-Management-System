@@ -45,11 +45,17 @@
                       <select name="counsellorId" id="counsellorId">
                           <option value="">Select Counsellor</option>
                           <?php 
-                                $staffQuery = "SELECT * FROM user WHERE userRole='Staff' ORDER BY createdAt DESC";
+                                $staffQuery = "SELECT * FROM counsellor ORDER BY createdAt DESC";
                                 $staffResult = mysqli_query($con, $staffQuery);
                                 while($row = mysqli_fetch_assoc($staffResult)) {
+                                    $userId = $row['staffId'];
+                                    $userQuery = "SELECT * FROM user WHERE userId='$userId'";
+                                    $userResult = mysqli_query($con, $userQuery);
+                                    if($userResult) {
+                                        $userData = $userResult->fetch_assoc();
+                                    }
                                     ?>
-                                        <option value="<?php echo $row['userId'] ?>"><?php echo $row['firstName'] ?> <?php echo $row['lastName'] ?></option>
+                                        <option value="<?php echo $row['counsellorId'] ?>"><?php echo $userData['firstName'] ?> <?php echo $userData['lastName'] ?></option>
                                     <?php
                                 }
                             ?>

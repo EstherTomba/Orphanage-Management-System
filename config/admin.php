@@ -160,7 +160,7 @@
             $_SESSION['success'] = "Appointment is created successfully";  
             header('Location: counsellor-appointment.php');
         }else {
-            array_push($errors, "Error, Could not create the donation Type.");
+            array_push($errors, "Error, Could not create.");
         }
     }
 
@@ -752,6 +752,273 @@
             array_push($errors, "Password do not match");
         }
     }
+
+
+
+        // ===============================================================================================
+                                        // DELETE
+    // ===============================================================================================
+    // DELETE EVENT
+    if(isset($_POST['deleteEvent'])) {
+        $eventId = mysqli_real_escape_string($con, $_POST['eventId']);
+
+        $eventQuery = "DELETE FROM event WHERE eventId='$eventId'";
+        $eventResult = mysqli_query($con, $eventQuery);
+        if($eventResult) {
+            $_SESSION['success'] = "Event deleted successfully";
+            header('Location: event.php');
+        } else {
+            array_push($errors, "Error, Could not create the account.");
+        }
+    }
+
+
+    // DELETE ACTIVITY DETAILS
+    if(isset($_POST['deleteActivity'])) {
+        $activityId = mysqli_real_escape_string($con, $_POST['activityId']);
+        $activityQuery = "DELETE FROM activity WHERE activityId='$activityId'";
+        $activityResult = mysqli_query($con, $activityQuery);
+        if($activityResult) {
+            $_SESSION['success'] = "Activity deleted successfully";
+            header('Location: activity.php');
+        } else {
+            array_push($errors, "Error, Could not create the account.");
+        }
+    }
+    
+    // DELETE DONATION DETAILS
+    if(isset($_POST['deleteDonation'])) {
+        $donationId = mysqli_real_escape_string($con, $_POST['donationId']);
+        $donationQuery = "DELETE FROM donation WHERE donationId='$donationId'";
+        $donationResult = mysqli_query($con, $donationQuery);
+        if($donationResult) {
+            $_SESSION['success'] = "Donation deleted successfully";
+            header('Location: donation.php');
+        } else {
+            array_push($errors, "Error, Could not create the account.");
+        }
+    }
+
+    // DELETE COUNSELLOR APPOINTMENT
+    if(isset($_POST['deletecounsellorAppointment'])) {
+        $counsellorAppointmentId = mysqli_real_escape_string($con, $_POST['counsellorAppointmentId']);
+        $appointmentQuery = "DELETE FROM counsellorappointment WHERE counsellorAppointmentId='$counsellorAppointmentId'";
+        $appointmentResult = mysqli_query($con, $appointmentQuery);
+        if($appointmentResult) {
+            $_SESSION['success'] = "Counsellor Appointment deleted successfully";
+            header('Location: counsellor-appointment.php');
+        } else {
+            array_push($errors, "Error, Could not create the account.");
+        }
+    }
+
+     // DELETE MEDICAL RECORD
+     if(isset($_POST['deleteMedicalRecord'])) {
+        $medicalRecordId = mysqli_real_escape_string($con, $_POST['medicalRecordId']);
+        $medicalRecorQuery = "DELETE FROM medicalrecord WHERE medicalRecordId='$medicalRecordId'";
+        $medicalRecordResult = mysqli_query($con, $medicalRecorQuery);
+        if($medicalRecordResult) {
+            $_SESSION['success'] = "Medical Record deleted successfully";
+            header('Location: medical-record.php');
+        } else {
+            array_push($errors, "Error, Could not create the account.");
+        }
+    }
+     // DELETE CHILD APPROVAL
+     if(isset($_POST['deleteChildApproval'])) {
+        $childApprovalId = mysqli_real_escape_string($con, $_POST['childApprovalId']);
+        $childApprovalQuery = "DELETE FROM childapproval WHERE childApprovalId='$childApprovalId'";
+        $childApprovalResult = mysqli_query($con, $childApprovalQuery);
+        if($childApprovalResult) {
+            $_SESSION['success'] = "Child Approval deleted successfully";
+            header('Location: child-approval.php');
+        } else {
+            array_push($errors, "Error, Could not create the account.");
+        }
+    }
+    // DELETE CHILD TRANSFER
+    if(isset($_POST['deleteChildTransfer'])) {
+        $orphanTransferId = mysqli_real_escape_string($con, $_POST['orphanTransferId']);
+        $orphanTransferQuery = "DELETE FROM orphantransfer WHERE orphanTransferId='$orphanTransferId'";
+        $orphanTransferResult = mysqli_query($con, $orphanTransferQuery);
+        if($orphanTransferResult) {
+            $_SESSION['success'] = "Child Transfer deleted successfully";
+            header('Location: child-transfer.php');
+        } else {
+            array_push($errors, "Error, Could not delete.");
+        }
+    }
+
+    // DELETE ACTIVITY CATEGORY
+    if(isset($_POST['deleteActivityCategory'])) {
+        $activityCategoryId = mysqli_real_escape_string($con, $_POST['activityCategoryId']);
+        $activityQuery = "DELETE FROM activity WHERE activityCategoryId='$activityCategoryId'";
+        $activityResult = mysqli_query($con, $activityQuery);
+        if($activityResult) {
+            $activityCatQuery = "DELETE FROM activitycategory WHERE activityCategoryId='$activityCategoryId'";
+            $activityCatResult = mysqli_query($con, $activityCatQuery);
+            if($activityCatResult) {
+                $_SESSION['success'] = "Activity category deleted successfully";
+                header('Location: activity-category.php');
+            } 
+        } else {
+            array_push($errors, "Error, Could not delete.");
+        }
+    }
+    
+    // DELETE DONATION TYPE
+    if(isset($_POST['deleteDonnationType'])) {
+        $donationTypeId = mysqli_real_escape_string($con, $_POST['donationTypeId']);
+        $donationTypeQuery = "DELETE FROM donation WHERE donationTypeId='$donationTypeId'";
+        $donationTypeResult = mysqli_query($con, $donationTypeQuery);
+        if($donationTypeResult) {
+            $donationTypeQuery = "DELETE FROM donationType WHERE donationTypeId='$donationTypeId'";
+            $donationTypeResult = mysqli_query($con, $donationTypeQuery);
+            if($donationTypeResult) {
+                $_SESSION['success'] = "Donation Type deleted successfully";
+                header('Location: donation-type.php');
+            } 
+        } else {
+            array_push($errors, "Error, Could not delete.");
+        }
+    }
+    // DELETE COUNSELLOR
+    if(isset($_POST['deleteCounsellor'])) {
+    $counsellorId = mysqli_real_escape_string($con, $_POST['counsellorId']);
+    $counsellorAppQuery = "DELETE FROM counsellorappointment WHERE counsellorId='$counsellorId'";
+    $counsellorAppResult = mysqli_query($con, $counsellorAppQuery);
+    if($counsellorAppResult) {
+        $counsellorQuery = "DELETE FROM counsellor WHERE counsellorId='$counsellorId'";
+        $counsellorResult = mysqli_query($con, $counsellorQuery);
+        if($counsellorResult) {
+            $_SESSION['success'] = "Counsellor deleted successfully";
+            header('Location: counsellor.php');
+        } 
+    } else {
+        array_push($errors, "Error, Could not delete.");
+    }
+}
+
+    // DELETE CHILD ADMISSION
+    if(isset($_POST['deleteChildAdmission'])) {
+        // DELETE APPROVAL IF IT EXISTS
+        $childAdmissionId = mysqli_real_escape_string($con, $_POST['childAdmissionId']);
+        $approvalQuery = "DELETE FROM childapproval WHERE childAdmissionId='$childAdmissionId'";
+        $approvalResult = mysqli_query($con, $approvalQuery);
+        // DELETE ADMISSION
+        $admissionQuery = "DELETE FROM childadmission WHERE childAdmissionId='$childAdmissionId'";
+        $admissionResult = mysqli_query($con, $admissionQuery);
+        if($admissionResult) {
+            $_SESSION['success'] = "Admission deleted successfully";
+            header('Location: child-admission.php');
+        }  else {
+            array_push($errors, "Error, Could not delete.");
+        }
+    }
+
+    // DELETE COUNSELLOR
+    if(isset($_POST['deleteBlock'])) {
+        $blockId = mysqli_real_escape_string($con, $_POST['blockId']);
+        $getBlockRoomsQuery = "SELECT * FROM blockroom WHERE blockId='$blockId'";
+        $getBlockRoomsResult = mysqli_query($con,$getBlockRoomsQuery);
+        while($blockRoom = mysqli_fetch_assoc($getBlockRoomsResult)) {
+            $blockRoomId = $blockRoom['blockRoomId'];
+            $userQuery = "SELECT * FROM user WHERE blockRoomId='$blockRoomId'";
+            $userResult = mysqli_query($con,$userQuery);
+            while($user = mysqli_fetch_assoc($userResult)) {
+                $updateBlockRoom  = "UPDATE user SET blockRoomId=NULL WHERE blockRoomId='$blockRoomId'";
+                mysqli_query($con, $updateBlockRoom); 
+            }
+        }
+        $deleteBlockRoomQuery = "DELETE FROM blockroom WHERE blockId='$blockId'";
+        $deleteBlockRoomResult = mysqli_query($con, $deleteBlockRoomQuery);
+        if($deleteBlockRoomResult) {
+            $deleteBlockQuery = "DELETE FROM block WHERE blockId='$blockId'";
+            $deleteBlockResult = mysqli_query($con, $deleteBlockQuery);
+            if($deleteBlockResult) {
+                $_SESSION['success'] = "Block deleted successfully";
+                header('Location: block.php');
+            } 
+        } else {
+            array_push($errors, "Error, Could not delete.");
+        }
+    }
+
+
+    // DELETE BLOCK ROOM
+    if(isset($_POST['deleteBlockRoom'])) {
+        $blockRoomId = mysqli_real_escape_string($con, $_POST['blockRoomId']);
+        $userQuery = "SELECT * FROM user WHERE blockRoomId='$blockRoomId'";
+        $userResult = mysqli_query($con,$userQuery);
+        while($user = mysqli_fetch_assoc($userResult)) {
+            $updateBlockRoom  = "UPDATE user SET blockRoomId=NULL WHERE blockRoomId='$blockRoomId'";
+            mysqli_query($con, $updateBlockRoom); 
+        }
+        $deleteBlockRoomQuery = "DELETE FROM blockroom WHERE blockRoomId='$blockRoomId'";
+        $deleteBlockRoomResult = mysqli_query($con, $deleteBlockRoomQuery);
+        if($deleteBlockRoomResult) {
+            $_SESSION['success'] = "Block deleted successfully";
+            header('Location: block-room.php'); 
+        } else {
+            array_push($errors, "Error, Could not delete.");
+        }
+    }
+
+
+    // DELETE USER
+    if(isset($_POST['deleteUser'])) {
+        $userId = mysqli_real_escape_string($con, $_POST['userId']);
+        // DELETE MEDICAL RECORD 
+        $deleteMedicalQuery  = "DELETE FROM medicalrecord WHERE userId='$userId'";
+        mysqli_query($con, $deleteMedicalQuery); 
+
+        // DELETE HELP   
+        $deleteHelpQuery  = "DELETE FROM help WHERE userId='$userId' OR adminId='$userId'";
+        mysqli_query($con, $deleteHelpQuery); 
+
+        // DELETE ORPHAN TRANSFER   
+        $orphanTransferQuery  = "DELETE FROM orphantransfer WHERE orphanId='$userId'";
+        mysqli_query($con, $orphanTransferQuery); 
+
+        // DELETE CONTACT RESPONSE  
+        $contactResponseQuery  = "DELETE FROM contactresponse WHERE staffId='$userId'";
+        mysqli_query($con, $contactResponseQuery); 
+
+        // DELETE CHILD APPROVAL
+        $childApprovalQuery  = "DELETE FROM childapproval WHERE staffId='$userId'";
+        mysqli_query($con, $childApprovalQuery); 
+
+        // DELETE COUNSELLOR APPOINTMENT
+        $counsellorQuery = "SELECT * FROM counsellor WHERE stffId='$userId'";
+        $counsellorResult = mysqli_query($con,$counsellorQuery);
+        if($counsellorResult) {
+            $counsellorData= $counsellorResult->fetch_assoc();
+            $counsellorId = $counsellorData['counsellorId'];
+            $updateappointment1  = "DELETE FROM counsellorappointment WHERE counsellorId='$counsellorId'";
+            mysqli_query($con, $updateappointment1); 
+        }
+        $updateappointment  = "DELETE FROM counsellorappointment WHERE orphanId='$userId'";
+        mysqli_query($con, $updateappointment); 
+        
+        // DELETE COUNSELLOR
+        $deleteCounsellorQuery  = "DELETE FROM counsellor WHERE staffId='$userId'";
+        mysqli_query($con, $deleteCounsellorQuery); 
+
+        // DELETE USER
+        $deleteUserQuery = "DELETE FROM user WHERE userId='$userId'";
+        $deleteUserResult = mysqli_query($con, $deleteUserQuery);
+        if($deleteUserResult) {
+            $_SESSION['success'] = "User deleted successfully";
+            header('Location: user.php'); 
+        } else {
+            array_push($errors, "Error, Could not delete. $deleteUserResult");
+        }
+    }
+    
+
+
+
+
 ?>  
 
 

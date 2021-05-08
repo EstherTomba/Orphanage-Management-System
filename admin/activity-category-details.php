@@ -48,6 +48,15 @@
                        <input type="submit" name="updateActivityCategory" value="Update">
                    </div>
                 </form>
+
+                <form action="" method="POST">
+                    <div>
+                        <input type="hidden" name="activityCategoryId" value="<?php echo $activityData['activityCategoryId'] ?>" value="Update">
+                    </div>
+                    <div>
+                        <input type="submit" name="deleteActivityCategory" style="background-color:red;" value="Delete">
+                    </div>
+                </form>
             </div>
 
         </div>

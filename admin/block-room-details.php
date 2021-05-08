@@ -60,6 +60,15 @@
                         <input type="submit"  name= "updateRoom" value="Update">
                     </div>
                 </form>
+
+                <form action="" method="POST">
+                    <div>
+                        <input type="hidden" name="blockRoomId" value="<?php echo $roomData['blockRoomId'] ?>" value="Update">
+                    </div>
+                    <div>
+                        <input type="submit" name="deleteBlockRoom" style="background-color:red;" value="Delete">
+                    </div>
+               </form>
             </div>
         </div>
     </div>

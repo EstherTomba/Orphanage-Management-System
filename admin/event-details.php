@@ -16,7 +16,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Side Navigation Bar</title>
+    <title>Event || Coms</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
 </head>
@@ -56,6 +56,15 @@
                         <input type="submit" name="updateEvent" value="Update">
                     </div>
                 </form>
+
+                <form action="" method="POST">
+                    <div>
+                        <input type="hidden" name="eventId" value="<?php echo $eventData['eventId'] ?>" value="Update">
+                    </div>
+                    <div>
+                        <input type="submit" name="deleteEvent" style="background-color:red;" value="Delete">
+                    </div>
+                    </form>
             </div>
         </div>
     </div>

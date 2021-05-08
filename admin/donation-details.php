@@ -80,6 +80,14 @@
                 <input type="submit" name="updateDonation" value="Update">
             </div>
            </form>
+           <form action="" method="POST">
+                    <div>
+                        <input type="hidden" name="donationId" value="<?php echo $donationData['donationId'] ?>" value="Update">
+                    </div>
+                    <div>
+                        <input type="submit" name="deleteDonation" style="background-color:red;" value="Delete">
+                    </div>
+                    </form>
             </div>
         </div>
     </div>

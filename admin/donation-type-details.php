@@ -42,6 +42,14 @@
                      <input type="submit" name="updateDonationType" value="Update">
                  </div>
              </form>
+             <form action="" method="POST">
+                    <div>
+                        <input type="hidden" name="donationTypeId" value="<?php echo $donationTypeData['donationTypeId'] ?>" value="Update">
+                    </div>
+                    <div>
+                        <input type="submit" name="deleteDonnationType" style="background-color:red;" value="Delete">
+                    </div>
+               </form>
             </div>
         </div>
     </div>

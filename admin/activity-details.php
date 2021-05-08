@@ -85,6 +85,14 @@
                         <input type="submit" name="updateActivity" value="Update">
                     </div>
                 </form>
+                <form action="" method="POST">
+                    <div>
+                        <input type="hidden" name="activityId" value="<?php echo $activityData['activityId'] ?>" value="Update">
+                    </div>
+                    <div>
+                        <input type="submit" name="deleteActivity" style="background-color:red;" value="Delete">
+                    </div>
+                    </form>
             </div>
         </div>
     </div>

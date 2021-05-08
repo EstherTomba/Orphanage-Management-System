@@ -61,6 +61,14 @@
                        <input type="submit" name="medicalRecord" value="Update">
                    </div>
                </form>
+               <form action="" method="POST">
+                    <div>
+                        <input type="hidden" name="medicalRecordId" value="<?php echo $medicalData['medicalRecordId'] ?>" value="Update">
+                    </div>
+                    <div>
+                        <input type="submit" name="deleteMedicalRecord" style="background-color:red;" value="Delete">
+                    </div>
+                    </form>
 
             </div>
         </div>

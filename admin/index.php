@@ -20,7 +20,7 @@
     <div class="wrapper">
        <?php include("header.php")?>
         <div class="main_content">
-            <div class="header" style="color: red; font-size: 20px;">Welcome to the Orphanage Center</div>
+            <div class="header" style="color: red; font-size: 30px;">Welcome to the Orphanage Center</div>
             <div class="info">
                 <!-- FIRST ROW -->
                 <div>

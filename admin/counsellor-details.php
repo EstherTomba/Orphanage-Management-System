@@ -66,7 +66,14 @@
                        <input type="submit" name="updateCounsellor" value="Update">
                    </div>
                </form>
-
+               <form action="" method="POST">
+                    <div>
+                        <input type="hidden" name="counsellorId" value="<?php echo $counsellorData['counsellorId'] ?>" value="Update">
+                    </div>
+                    <div>
+                        <input type="submit" name="deleteCounsellor" style="background-color:red;" value="Delete">
+                    </div>
+               </form>
             </div>
         </div>
     </div>

@@ -104,6 +104,15 @@
                     <a href="change-password.php" style="color: white;">Change Password</a>  
                   </button> 
              </form>
+
+             <form action="" method="POST">
+                    <div>
+                        <input type="hidden" name="userId" value="<?php echo $userData['userId'] ?>" value="Update">
+                    </div>
+                    <div>
+                        <input type="submit" name="deleteUser" style="background-color:red;" value="Delete">
+                    </div>
+               </form>
             </div>
         </div>
     </div>
