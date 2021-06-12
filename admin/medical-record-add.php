@@ -1,3 +1,13 @@
+
+<?php 
+ require_once('../config/db.php'); 
+ require_once('../config/admin.php');    
+ if (!isset($_SESSION['isAdmin'])) {
+     header('location: ../login.php');
+ }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,15 +22,26 @@
     <div class="wrapper">
     <?php include("header.php")?>
         <div class="main_content">
-            <div class="header" style="color: red; font-size: 20px;">Add Medical Record
+        <div class="header" style="color: red; font-size: 20px;">
+                <a href="medical-record.php">Medical Record /</a>Add
             </div>
             <div class="info">
                 <form  name="medicalRecordAddForm" method="POST" onsubmit="return medicalRecordAddValidation()">
+                <?php 
+                    include('../error.php');
+                    ?>
                    <div>
                        <select name="userId" id="userId">
                            <option value="">Select User</option>
-                           <option value="1">Newton</option>
-                           <option value="2">Karanja</option>
+                           <?php 
+                                $userQuery = "SELECT * FROM user";
+                                $userResult = mysqli_query($con,$userQuery);
+                                while($user = mysqli_fetch_assoc($userResult)) {
+                                    ?>
+                                        <option value="<?php echo $user['userId'] ?>"><?php echo $user['firstName'] ?> <?php echo $user['lastName'] ?></option>
+                                    <?php
+                                }
+                           ?>
                        </select>
                    </div>
                    
@@ -32,10 +53,10 @@
                   </div>
      
                    <div>
-                       <input type="submit" value="Save">
+                       <input type="submit" value="Save" name="addMedicalRecord">
                    </div>
                </form>
-
+               <?php include('footer.php'); ?>
             </div>
         </div>
     </div>

@@ -36,9 +36,8 @@
             <input type="submit" value="Login" name="userLogin">
         </form>
     </div>
-
-
-    <script src="js/validation.js"></script>
+   
 </body>
+<script src="js/validation.js"></script>
 
 </html>

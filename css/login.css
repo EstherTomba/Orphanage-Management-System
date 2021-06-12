@@ -1,7 +1,6 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: montserrat;
     background:  #4b4276;
     height: 100vh;
     overflow: hidden;
@@ -11,7 +10,6 @@ body{
     border: 1px solid #a94442; 
     color: #a94442; 
     background: #f2dede; 
-    /* margin-left: 10px; */
     font-size: 14px;
 }
 .success {
@@ -66,7 +64,6 @@ form .txt_field{
     transform: translateY(-50%);
     font-size: 16px;
     pointer-events: none;
-    transition: .5s;
 }
 .txt_field span::before{
     content:'';
@@ -76,7 +73,6 @@ form .txt_field{
     width: 0%;
     height: 2px;
     background: #2691d9;
-    transition: .5s;
 }
 .txt_field input:focus ~ label,
 .txt_field input:valid ~ label{
@@ -112,5 +108,4 @@ input[type="submit"]{
 }
 input[type="submit"]:hover{
     border-color:#2691d9;
-    transition: .5s;
 }

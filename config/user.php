@@ -72,4 +72,38 @@
     }
 
 
+
+    // COMMENT AN ACTIVITY
+    if(isset($_POST['addActivityComment'])) {
+        $userId    = $_SESSION['userId'];
+        $activityId   = mysqli_real_escape_string($con, $_POST['activityId']);
+        $description   = mysqli_real_escape_string($con, $_POST['description']);
+        $commentQuery = "INSERT INTO activitycomment(activityId ,userId,description) 
+        VALUES('$activityId','$userId','$description')";
+        $commentResult = mysqli_query($con, $commentQuery);
+        if($commentResult) {
+            $_SESSION['success'] = "You have successfully commented this post";
+        } else {
+            array_push($errors, "Error, Your comment has not been saved.");
+        }
+    }
+
+
+
+    // COMMENT AN ACTIVITY
+    if(isset($_POST['addEventComment'])) {
+        $userId    = $_SESSION['userId'];
+        $eventId   = mysqli_real_escape_string($con, $_POST['eventId']);
+        $description   = mysqli_real_escape_string($con, $_POST['description']);
+        $commentQuery = "INSERT INTO eventcomment(eventId ,userId,description) 
+        VALUES('$eventId','$userId','$description')";
+        $commentResult = mysqli_query($con, $commentQuery);
+        if($commentResult) {
+            $_SESSION['success'] = "You have successfully commented this post";
+        } else {
+            array_push($errors, "Error, Your comment has not been saved.");
+        }
+    }
+
+
 ?>

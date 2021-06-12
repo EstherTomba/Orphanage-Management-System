@@ -1,7 +1,7 @@
 
 <?php 
     require_once('../config/db.php'); 
-    // require_once('../config/user.php');    
+    require_once('../config/user.php');    
     // if (!isset($_SESSION['isStaff'])) {
     //     header('location: ../login.php');
     // }
@@ -23,6 +23,10 @@
             <a href="activity.php">Activity /</a>Details
             </div>
             <div class="info">
+                <?php 
+                    include('../error.php');
+                    include('../success.php');
+                ?>
             <?php
                 // GET ACTIVITY DATA
                 $activityId = $_GET['id'];
@@ -57,10 +61,47 @@
                             <?php echo $activityData['description'] ?>
                         </p>
                      </div>
-                </div>
+                </div><br>
+                
+                <?php
+                    // GET ACTIVITY COMMENTS DATA
+                    $activityCommentQuery = "SELECT * FROM activitycomment WHERE activityId='$activityId'";
+                    $activityCommentResult = mysqli_query($con, $activityCommentQuery);
+                    while ($comments = mysqli_fetch_assoc($activityCommentResult)) {
+                        // GET USER DETAILS
+                        $getUserId = $comments['userId'];
+                        $getUserQuery = "SELECT * FROM user WHERE userId='$getUserId'";
+                        $getUserResult = mysqli_query($con, $getUserQuery);
+                        if($getUserResult){
+                            $userData = $getUserResult->fetch_assoc();
+                        }
+                        ?>
+                            <div style="border: 1px solid #4b4276; padding:10px; border-radius: 15px; background-color: white; margin-bottom: 10px">
+                                <div style="font-size: 20px; color: #4b4276"> <?php echo $userData['firstName']; ?> <?php echo $userData['lastName']; ?></div>
+                                <div>
+                                    <?php echo $comments['description']; ?>
+                                </div>
+                            </div>
+                        <?php
+                    }
+                ?>
+                
+                <br><br>
+                <form name="contactAdminForm" method="POST" onsubmit="return contactAdminValidation()">
+                    <div>
+                        <textarea name="description" id="description" cols="30" rows="10" placeholder="Message"></textarea>
+                    </div>
+                    <div>
+                        <input type="hidden" id="activityId" name="activityId" value="<?php echo $activityId ?>">
+                    </div>
+                    
+                     <div>
+                         <input type="submit" name="addActivityComment" value="Comment">
+                     </div> 
+                 </form>
             </div>
         </div>
     </div>
 </body>
-
+<script src="js/validation.js"></script>
 </html>

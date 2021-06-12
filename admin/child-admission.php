@@ -37,6 +37,8 @@
                         <th>Applicant Last Name</th>
                         <th>Applicant Email</th>
                         <th>Applicant Phone Number</th>
+                        <th> Child First Name</th>
+                        <th> Child Last Name</th>
                         <th>Date</th>
                     </tr>
 
@@ -50,13 +52,15 @@
                                     <td><?php echo $row['applicantLastName'] ?></td>
                                     <td><?php echo $row['applicantEmail'] ?></td>
                                     <td><?php echo $row['applicantPhoneNumber'] ?></td>
+                                    <td><?php echo $row['childFirstName'] ?></td>
+                                    <td><?php echo $row['childLastName'] ?></td>
                                     <td><?php echo date('M d Y',strtotime($row['createdAt'])) ?></td>
                                 </tr> 
                             <?php
                         }
                     ?>
                 </table>
-
+                <?php include('footer.php'); ?>
             </div>
         </div>
     </div>

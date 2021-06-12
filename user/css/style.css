@@ -54,10 +54,10 @@ body{
 .wrapper .sidebar ul li a .fas{
     width: 25px;
 }
-.wrapper .sidebar ul li:hower{
+.wrapper .sidebar ul li:hover{
  background: #594f8d;
 }
-.wrapper .sidebar ul li:hower a{
+.wrapper .sidebar ul li:hover a{
     color: #fff;
 }
 
@@ -78,7 +78,6 @@ body{
 }
 
 table {
-    font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
   }

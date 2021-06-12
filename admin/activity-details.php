@@ -43,7 +43,7 @@
                     <img src="../uploads/<?php echo $activityCategoryData['image'] ?>" width="100%" height="400px" alt="">
                 </div>
                 <div style="font-size: 13px;">Date: <?php echo date('M d Y',strtotime($activityData['createdAt'])) ?></div>
-                <form name="donationAddForm" method="POST">
+                <form name="donationAddForm" method="POST" enctype="multipart/form-data">
                     <?php 
                         include('../error.php');
                     ?>
@@ -69,7 +69,7 @@
                         <a href="../uploads/<?php echo $activityData['file'] ?>">
                             <div style="background-color:#dcdcdc; padding: 15px; color:#4b4276; text-align: center; font-size: 22px;">Open File</div>
                         </a>
-                        <input type="file" name="image" id="image" value="<?php echo $activityData['file'] ?>">
+                        <input type="file" name="image" id="image">
                     </div>
                     <div>
                         <textarea name="description" id="description" cols="30" rows="10">
@@ -80,20 +80,38 @@
                         <input type="hidden" name="activityId" value="<?php echo $activityData['activityId'] ?>">
                     </div>
 
-                    </div>
                     <div>
-                        <input type="submit" name="updateActivity" value="Update">
+                        <input type="submit" name="updateActivity" value="Update" style="width: 49.8%;">
+                        <input type="submit" name="deleteActivity" style="background-color:red; width: 49.8%;" value="Delete">
                     </div>
-                </form>
-                <form action="" method="POST">
-                    <div>
-                        <input type="hidden" name="activityId" value="<?php echo $activityData['activityId'] ?>" value="Update">
-                    </div>
-                    <div>
-                        <input type="submit" name="deleteActivity" style="background-color:red;" value="Delete">
-                    </div>
-                    </form>
+                </form><br>
+
+                <div style="font-size: 20px">COMMENTS</div>
+                <?php
+                    // GET ACTIVITY COMMENTS DATA
+                    $activityCommentQuery = "SELECT * FROM activitycomment WHERE activityId='$activityId'";
+                    $activityCommentResult = mysqli_query($con, $activityCommentQuery);
+                    while ($comments = mysqli_fetch_assoc($activityCommentResult)) {
+                        // GET USER DETAILS
+                        $getUserId = $comments['userId'];
+                        $getUserQuery = "SELECT * FROM user WHERE userId='$getUserId'";
+                        $getUserResult = mysqli_query($con, $getUserQuery);
+                        if($getUserResult){
+                            $userData = $getUserResult->fetch_assoc();
+                        }
+                        ?>
+                            <div style="border: 1px solid #4b4276; padding:10px; border-radius: 15px; background-color: white; margin-bottom: 10px">
+                                <div style="font-size: 20px; color: #4b4276"> <?php echo $userData['firstName']; ?> <?php echo $userData['lastName']; ?></div>
+                                <div>
+                                    <?php echo $comments['description']; ?>
+                                </div>
+                            </div>
+                        <?php
+                    }
+                ?>
+                <?php include('footer.php'); ?>
             </div>
+          
         </div>
     </div>
 </body>

@@ -30,8 +30,11 @@
             </div>
             <div class="info">
              <form name="profileForm" method="POST" onsubmit="return profileValidation()">
-                <img src="../images/images.jpg" style="width:100px; height: 100px; border-radius: 50px; margin-left: 45%;" alt="">
-               
+                <!-- <img src="../images/images.jpg" style="width:100px; height: 100px; border-radius: 50px; margin-left: 45%;" alt=""> -->
+                <?php 
+                    include('../error.php');
+                    include('../success.php');
+                ?>
                  <div>
                      <input type="text" name="firstName" id="firstName" placeholder=" First Name" value= "<?php echo $userData['firstName']?>">
                  </div>
@@ -99,6 +102,7 @@
                     <a href="change-password.php" style="color: white;">Change Password</a>  
                   </button> 
              </form>
+                <?php include('footer.php'); ?>
             </div>
         </div>
     </div>

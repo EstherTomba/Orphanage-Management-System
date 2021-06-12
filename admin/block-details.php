@@ -38,7 +38,7 @@
                     </div>
                     <div>
                         <img src="../uploads/<?php echo $blockData['image'] ?>" width="100%" height="300px" alt="">
-                        <input type="file" name="image" id="image" value="<?php echo $blockData['image'] ?>">
+                        <input type="file" name="image" id="image">
                     </div>
                     
                     <div>
@@ -64,11 +64,14 @@
                     </div>
                </form>
             </div>
+         <?php include('footer.php'); ?>
+
         </div>
     </div>
 </body>
 
 <script src="js/validation.js"></script>
+
 
 
 

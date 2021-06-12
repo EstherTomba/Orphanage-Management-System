@@ -13,7 +13,6 @@ body{
     border: 1px solid #a94442; 
     color: #a94442; 
     background: #f2dede; 
-    /* margin-left: 10px; */
     font-size: 14px;
 }
 .success {
@@ -24,6 +23,20 @@ body{
     font-size: 14px;
     text-align: center;
 }
+.footer {
+    width: 100%;
+    padding: 15px;
+    background-color: #4b4276;
+    color: white;
+    text-align: center;
+    margin-top: 75px;
+  }
+  .footer div {
+      padding: 5px;
+  }
+  .footer a {
+      color: white;
+  }
 .wrapper{
     display: flex;
     position: relative;
@@ -54,10 +67,10 @@ body{
 .wrapper .sidebar ul li a .fas{
     width: 25px;
 }
-.wrapper .sidebar ul li:hower{
+.wrapper .sidebar ul li:hover{
  background: #594f8d;
 }
-.wrapper .sidebar ul li:hower a{
+.wrapper .sidebar ul li:hover a{
     color: #fff;
 }
 
@@ -80,7 +93,6 @@ body{
 
 
 table {
-  font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }

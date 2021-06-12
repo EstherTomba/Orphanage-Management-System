@@ -46,6 +46,12 @@
                <div>
                 <input type="number" name="amount" id="amount" placeholder="Amount">  
                </div>
+               <div>
+                <input type="hidden" name="acc_ref" id="acc_ref" value="Test Account">  
+               </div>
+               <div>
+                <input type="hidden" name="transaction_description" id="transaction_description" value="Payment Test">  
+               </div>
               
                <div>
                    <select name="donationTypeId" id="donationTypeId">
@@ -62,12 +68,13 @@
                     </select>   
                </div>
                <div>
-                <textarea name="" id="" cols="30" rows="10" name="description" id="description"  placeholder="Description"></textarea>
+                <textarea name="" id="" cols="30" rows="10" name="description" id="description" placeholder="Description"></textarea>
             </div>
                <div>
-                <input type="submit" name="donation" value="Save">
+                <input type="submit" name="addDonation" value="Save">
             </div>
            </form>
+           <?php include('footer.php'); ?>
             </div>
         </div>
     </div>

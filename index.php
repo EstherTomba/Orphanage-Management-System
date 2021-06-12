@@ -25,13 +25,11 @@
                 <div>
                     <h2 class="tittle">About Us</h2>
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et cum dolores libero distinctio
-                        aperiam minima, adipisci veritatis. Soluta, culpa! Accusamus nisi soluta magnam numquam ad
-                        asperiores, officia provident totam. Recusandae.
-
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto laborum vitae, dolor nam odit
-                        nobis vel sint qui facilis unde dolores dolorem. Numquam eius veritatis tenetur asperiores ullam
-                        laborum eaque!
+                    Cottolengo Centre started in 1994, with the aim of taking care of vulnerable abandoned and orphaned children, who are either infected or affected by HIV+ from all Kenya and  preferably from Nairobi. 
+                The Centre is managed by the Cottolengo Sisters here in Kenya. Cottolengo Centre is a Catholic Faith-Based nonprofit making institution.
+                Cottolengo Centre admits mainly infant children under one year of age who are HIV positive. 
+                There are exceptions for admission and the staff considers the needs of each child.
+            
                     </p>
                     <a href="about.php"><button>Read More</button></a>
                 </div>

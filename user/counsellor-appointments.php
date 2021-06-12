@@ -33,24 +33,35 @@
                         
                     </tr>
                     <?php
-                        $counsellorId = $_SESSION['userId'];
-                        $appointmentQuery = "SELECT * FROM counsellorappointment WHERE counsellorId='$counsellorId' ORDER BY createdAt DESC";
-                        $appointmentResult = mysqli_query($con,$appointmentQuery);
-                        while($row = mysqli_fetch_assoc($appointmentResult)) {
-                            $orphanId = $row['orphanId'];
-                            $orphanQuery= "SELECT * FROM user WHERE userId ='$orphanId'";
-                            $orphanResult= mysqli_query($con, $orphanQuery);
-                            if($orphanResult) {
-                                $orphanData= $orphanResult->fetch_assoc();
+                        $userId = $_SESSION['userId'];
+                        $counsellorQuery= "SELECT * FROM counsellor WHERE staffId ='$userId'";
+                        $counsellorResult= mysqli_query($con, $counsellorQuery);
+                        if(mysqli_num_rows($counsellorResult) > 0) {
+                            $counsellorData= $counsellorResult->fetch_assoc();
+                        
+                            $counsellorId = $counsellorData['counsellorId'];
+                            $appointmentQuery = "SELECT * FROM counsellorappointment WHERE counsellorId='$counsellorId' ORDER BY createdAt DESC";
+                            $appointmentResult = mysqli_query($con,$appointmentQuery);
+                            while($row = mysqli_fetch_assoc($appointmentResult)) {
+                                $orphanId = $row['orphanId'];
+                                $orphanQuery= "SELECT * FROM user WHERE userId ='$orphanId'";
+                                $orphanResult= mysqli_query($con, $orphanQuery);
+                                if($orphanResult) {
+                                    $orphanData= $orphanResult->fetch_assoc();
+                                }
+                                ?>
+                                    <tr>
+                                    <td><?php echo $orphanData['firstName'] ?></td>
+                                        <td><?php echo $orphanData['lastName'] ?></td>
+                                        <td><?php echo $row['time'] ?></td>
+                                        <td><?php echo $row['date'] ?></td>
+                                        <td><?php echo date('M d Y',strtotime($row['createdAt'])) ?></td>
+                                    </tr>
+                                <?php
                             }
+                        } else {
                             ?>
-                                <tr>
-                                <td><?php echo $orphanData['firstName'] ?></td>
-                                    <td><?php echo $orphanData['lastName'] ?></td>
-                                    <td><?php echo $row['time'] ?></td>
-                                    <td><?php echo $row['date'] ?></td>
-                                    <td><?php echo date('M d Y',strtotime($row['createdAt'])) ?></td>
-                                </tr>
+                                <h3>You are not been added as a counsellor</h3>
                             <?php
                         }
                     ?>

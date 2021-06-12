@@ -38,16 +38,23 @@
                         $appointmentQuery = "SELECT * FROM counsellorappointment WHERE orphanId='$orphanId' ORDER BY createdAt DESC";
                         $appointmentResult = mysqli_query($con,$appointmentQuery);
                         while($row = mysqli_fetch_assoc($appointmentResult)) {
-                            $counsellorId = $row['counsellorId'];
-                            $counsellorQuery= "SELECT * FROM user WHERE userId ='$counsellorId'";
+                            // GET COUNSELLOR DATA
+                            $counsellorId= $row['counsellorId'];
+                            $counsellorQuery= "SELECT * FROM counsellor WHERE counsellorId='$counsellorId'";
                             $counsellorResult= mysqli_query($con, $counsellorQuery);
                             if($counsellorResult) {
                                 $counsellorData= $counsellorResult->fetch_assoc();
+                                $staffId= $counsellorData['staffId'];
+                                $staffQuery= "SELECT * FROM user WHERE userId='$staffId'";
+                                $staffResult= mysqli_query($con, $staffQuery);
+                                if($staffResult) {
+                                    $staffData= $staffResult->fetch_assoc();
+                                }
                             }
                             ?>
                                 <tr>
-                                    <td><?php echo $counsellorData['firstName'] ?></td>
-                                    <td><?php echo $counsellorData['lastName'] ?></td>
+                                    <td><?php echo $staffData['firstName'] ?></td>
+                                    <td><?php echo $staffData['lastName'] ?></td>
                                     <td><?php echo $row['time'] ?></td>
                                     <td><?php echo $row['date'] ?></td>
                                     <td><?php echo date('M d Y',strtotime($row['createdAt'])) ?></td>

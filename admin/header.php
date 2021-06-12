@@ -4,8 +4,10 @@
         <li onclick="showChildList()"><a href="#">Childs</a></li>
         <div id="childList">
             <li class="left-space"><a href="child-admission.php">Child Admission</a></li>
+            <li class="left-space"><a href="child-approved.php">Child Approved</a></li>
+            <li class="left-space"><a href="child-rejected.php">Child Rejected</a></li>
+            <li class="left-space"><a href="child-pended.php">Child Pending</a></li>
             <li class="left-space"><a href="child-transfer.php">Child Transfer</a></li>
-            <li class="left-space"><a href="child-approval.php">Child Approvals</a></li>
         </div>
         <li onclick="showBlock()"><a href="#">Block</a></li>
         <div id="blockList">

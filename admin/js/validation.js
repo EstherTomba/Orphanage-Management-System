@@ -1,12 +1,7 @@
 // CHILD APPROVAL VALIDATION
 function childApprovalValidation() {
-    var status = document.forms["childApprovalForm"]["status"].value;
     var description = document.forms["childApprovalForm"]["description"].value;
-    if (status == '') {
-        alert("Status is required");
-        document.childApprovalForm.status.focus();
-        return false;
-    } else if (description == '') {
+    if (description == '') {
         alert("Description is required");
         document.childApprovalForm.description.focus();
         return false;
@@ -279,7 +274,6 @@ function activityCategoryAddValidation() {
 function activityAddValidation() {
     var name = document.forms["activityAddForm"]["name"].value;
     var activityCategoryId = document.forms["activityAddForm"]["activityCategoryId"].value;
-    var image = document.forms["activityAddForm"]["image"].value;
     var description = document.forms["activityAddForm"]["description"].value;
 
     if(activityCategoryId == '') {
@@ -290,11 +284,7 @@ function activityAddValidation() {
         alert("Name is required");
         document.activityAddForm.name.focus();
         return false;
-    }else if(image == ''){
-        alert("Image is required");
-        document.activityAddForm.image.focus();
-        return false; 
-    }else if(description == '') {
+    } else if(description == '') {
         alert("Description is required");
         document.activityAddForm.description.focus();
         return false; 

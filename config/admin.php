@@ -1,6 +1,10 @@
 <?php
      require_once('db.php');
-         // ===============================================================================================
+    
+    
+    
+    
+    // ===============================================================================================
                                         // INSERT
     // ===============================================================================================
     //CREATE A NEW USER
@@ -38,8 +42,17 @@
             ('$firstName', '$lastName',NULLIF('$userName',''), NULLIF('$userEmail',''), NULLIF('$phoneNumber',''), NULLIF('$userAddress',''), '$hashedPassword', '$gender', '$dob', NULLIF('$blockRoomId',''), NULLIF('$bloodGroup',''), '$userRole')";
             $creatUserResult = mysqli_query($con, $creatUserQuery);
             if($creatUserResult) {
-                $_SESSION['success'] = "Account created successfully";
-                header('Location: user.php');
+                // SEND EMAIL
+                // $to = $userEmail;
+                // $sub = 'New Account at Coms';
+                // $msg = 'Your username is: '.$userEmail.' and your Password is: '.$userPassword.'. Try to login and change your password.;
+                // $sendEmail = mail($to, $sub, $msg);
+                // if($sendEmail) {
+                    $_SESSION['success'] = "Account created successfully";
+                    header('Location: user.php');
+                // } else {
+                //     array_push($errors, "Error, Could not send email.");
+                // }
             } else {
                 array_push($errors, "Error, Could not create the account.");
             }
@@ -189,7 +202,7 @@
     }
 
     // DONATION
-    if(isset($_POST['donation'])) {
+    if(isset($_POST['addDonation'])) {
         $donationTypeId= mysqli_real_escape_string($con, $_POST['donationTypeId']);
         $firstName= mysqli_real_escape_string($con, $_POST['firstName']);
         $lastName= mysqli_real_escape_string($con, $_POST['lastName']);
@@ -199,7 +212,7 @@
         $amount= mysqli_real_escape_string($con, $_POST['amount']);
         $description= mysqli_real_escape_string($con, $_POST['description']);
         $addDonationQuery = "INSERT INTO donation (firstName,lastName,phoneNumber,email,address,donationTypeId,amount,description)
-         VALUES('$firstName','$lastName','$phoneNumber','$email','$address','$donationTypeId','$amount','$description')";
+         VALUES('$firstName','$lastName','$phoneNumber','$email','$address','$donationTypeId',NULLIF('$amount',''), NULLIF('$description',''))";
         $addDonationResult = mysqli_query($con, $addDonationQuery);
         if($addDonationResult) {
             $_SESSION['success'] = "Donation  is created successfully";
@@ -292,6 +305,34 @@
                 header('Location: activity-category.php');
             } else {
                 array_push($errors, "Error, Could not create the account.");
+            }
+        }
+
+    }
+    // ADD MEDICAL RECORD
+    if(isset($_POST['addMedicalRecord'])) {
+        $userId = mysqli_real_escape_string($con, $_POST['userId']);
+        $medicalCondition= mysqli_real_escape_string($con, $_POST['medicalCondition']);
+        $description= mysqli_real_escape_string($con, $_POST['description']);
+        // CHECK IF THE USER ALREADY EXISTS
+        $checkNameQuery  = "SELECT * FROM medicalrecord WHERE userId='$userId' LIMIT 1";
+        $checkNameResult = mysqli_query($con, $checkNameQuery);
+        $block = mysqli_fetch_assoc($checkNameResult);
+        if($block) {
+            if($block['userId'] == $userId ){
+                array_push($errors, "User already exists.");
+            }
+        }
+        
+        if(count($errors) == 0 ){
+            $creatMedicalQuery = "INSERT INTO medicalrecord (userId,medicalCondition,description) VALUES
+            ('$userId', NULLIF('$medicalCondition',''), NULLIF('$description',''))";
+            $creatMedicalResult = mysqli_query($con, $creatMedicalQuery);
+            if($creatMedicalResult) {
+                $_SESSION['success'] = "Medical Condition created successfully";
+                header('Location: medical-record.php');
+            } else {
+                array_push($errors, "Error, Could not create.");
             }
         }
 
@@ -425,7 +466,7 @@
 
 
     // UPDATE COUNSELLOR APPOINTMENT
-    if(isset($_POST['aupdateCounsellorAppointment'])) {
+    if(isset($_POST['updateCounsellorAppointment'])) {
         $orphanId = mysqli_real_escape_string($con, $_POST['orphanId']);
         $counsellorId = mysqli_real_escape_string($con, $_POST['counsellorId']);
         $date = mysqli_real_escape_string($con, $_POST['date']);
@@ -533,13 +574,17 @@
     // UPDATE BLOCK
     if(isset($_POST['updateBlock'])) {
         $image = $_FILES["image"]["name"];
-        $tempname = $_FILES["image"]["tmp_name"];  
+        $tempname = $_FILES["image"]["tmp_name"]; 
         $blockName = mysqli_real_escape_string($con, $_POST['name']);
         $blockId   = mysqli_real_escape_string($con, $_POST['blockId']);
         $totalRoomNumber = mysqli_real_escape_string($con, $_POST['totalRoomNumber']);
         $ageBetween = mysqli_real_escape_string($con, $_POST['ageBetween']);
-        move_uploaded_file($tempname, "../uploads/".$image);
-        $blockQuery = "UPDATE block SET blockName='$blockName',image='$image',totalRoomNumber='$totalRoomNumber', ageBetween='$ageBetween' WHERE blockId='$blockId'";
+        if($image) {
+            move_uploaded_file($tempname, "../uploads/".$image);
+            $blockQuery = "UPDATE block SET blockName='$blockName',image='$image',totalRoomNumber='$totalRoomNumber', ageBetween='$ageBetween' WHERE blockId='$blockId'";
+        } else {
+            $blockQuery = "UPDATE block SET blockName='$blockName',totalRoomNumber='$totalRoomNumber', ageBetween='$ageBetween' WHERE blockId='$blockId'";
+        }
         $blockResult = mysqli_query($con, $blockQuery);
         if($blockResult) {
             $_SESSION['success'] = "Block updated successfully";
@@ -555,8 +600,12 @@
         $tempname = $_FILES["image"]["tmp_name"];  
         $name = mysqli_real_escape_string($con, $_POST['name']);
         $activityCategoryId   = mysqli_real_escape_string($con, $_POST['activityCategoryId']);
-        move_uploaded_file($tempname, "../uploads/".$image);
+        if($image) {
+            move_uploaded_file($tempname, "../uploads/".$image);
         $activityQuery = "UPDATE activitycategory SET name='$name',image='$image' WHERE activityCategoryId='$activityCategoryId'";
+        } else {
+            $activityQuery = "UPDATE activitycategory SET name='$name' WHERE activityCategoryId='$activityCategoryId'";
+        }
         $activityResult = mysqli_query($con, $activityQuery);
         if($activityResult) {
             $_SESSION['success'] = "Activity Category updated successfully";
@@ -575,8 +624,12 @@
         $activityCategoryId   = mysqli_real_escape_string($con, $_POST['activityCategoryId']);
         $description   = mysqli_real_escape_string($con, $_POST['description']);
         $activityId   = mysqli_real_escape_string($con, $_POST['activityId']);
-        move_uploaded_file($tempname, "../uploads/".$file);
-        $activityQuery = "UPDATE activity SET activityCategoryId='$activityCategoryId', name='$name',file='$file',description='$description' WHERE activityId='$activityId'";
+        if($file) {
+            move_uploaded_file($tempname, "../uploads/".$file);
+            $activityQuery = "UPDATE activity SET activityCategoryId='$activityCategoryId', name='$name',file='$file',description='$description' WHERE activityId='$activityId'";
+        } else {
+            $activityQuery = "UPDATE activity SET activityCategoryId='$activityCategoryId', name='$name',description='$description' WHERE activityId='$activityId'";
+        }
         $activityResult = mysqli_query($con, $activityQuery);
         if($activityResult) {
             $_SESSION['success'] = "Activity updated successfully";
@@ -594,8 +647,12 @@
         $address   = mysqli_real_escape_string($con, $_POST['address']);
         $description   = mysqli_real_escape_string($con, $_POST['description']);
         $eventId   = mysqli_real_escape_string($con, $_POST['eventId']);
-        move_uploaded_file($tempname, "../uploads/".$image);
-        $eventQuery = "UPDATE event SET name='$name', image='$image',description='$description',address='$address' WHERE eventId='$eventId'";
+        if($image) {
+            move_uploaded_file($tempname, "../uploads/".$image);
+            $eventQuery = "UPDATE event SET name='$name', image='$image',description='$description',address='$address' WHERE eventId='$eventId'";
+        } else {
+            $eventQuery = "UPDATE event SET name='$name', description='$description',address='$address' WHERE eventId='$eventId'";
+        }
         $eventResult = mysqli_query($con, $eventQuery);
         if($eventResult) {
             $_SESSION['success'] = "Event updated successfully";
@@ -631,27 +688,84 @@
         }
     }
 
-    // UPDATE APPROVAL
-    if(isset($_POST['updateApproval'])) {
+    // UPDATE CHILD APPROVED
+    if(isset($_POST['updateChildApproved'])) {
         $userId = $_SESSION['userId'];
         $childAdmissionId= mysqli_real_escape_string($con, $_POST['childAdmissionId']);
-        $status= mysqli_real_escape_string($con, $_POST['status']);
         $applicantEmail= mysqli_real_escape_string($con, $_POST['applicantEmail']);
         $description= mysqli_real_escape_string($con, $_POST['description']);
         $childApprovalId= mysqli_real_escape_string($con, $_POST['childApprovalId']);
 
-        $updateApprovalQuery = "UPDATE childapproval SET childAdmissionId='$childAdmissionId',status='$status',staffid='$userId',description='$description'
+        $updateApprovalQuery = "UPDATE childapproval SET childAdmissionId='$childAdmissionId',status='Approved',staffid='$userId',description='$description'
         WHERE childApprovalId='$childApprovalId'";
         $updateApprovalResult = mysqli_query($con, $updateApprovalQuery);
         if($updateApprovalResult) {
             // SEND EMAIL
-            // $to = $email;
-            // $sub = 'Contact Coms';
-            // $msg = $message;
+            // $to = $applicantEmail;
+            // $sub = 'Review the request';
+            // $msg = $description;
             // $sendEmail = mail($to, $sub, $msg);
             // if($sendEmail) {
-                $_SESSION['success'] = "Approval updated successfully";
-                header('Location: child-approval.php');
+                $_SESSION['success'] = "Request has been approved successfully";
+                header('Location: child-approved.php');
+            // } else {
+            //     array_push($errors, "Error, Could not send email.");
+            // }
+        } else {
+            array_push($errors, "Error, Could not update profile.");
+        }
+    }
+
+
+    // UPDATE CHILD REJECTED
+    if(isset($_POST['updateChildRejected'])) {
+        $userId = $_SESSION['userId'];
+        $childAdmissionId= mysqli_real_escape_string($con, $_POST['childAdmissionId']);
+        $applicantEmail= mysqli_real_escape_string($con, $_POST['applicantEmail']);
+        $description= mysqli_real_escape_string($con, $_POST['description']);
+        $childApprovalId= mysqli_real_escape_string($con, $_POST['childApprovalId']);
+
+        $updateApprovalQuery = "UPDATE childapproval SET childAdmissionId='$childAdmissionId',status='Rejected',staffid='$userId',description='$description'
+        WHERE childApprovalId='$childApprovalId'";
+        $updateApprovalResult = mysqli_query($con, $updateApprovalQuery);
+        if($updateApprovalResult) {
+            // SEND EMAIL
+            // $to = $applicantEmail;
+            // $sub = 'Review the request';
+            // $msg = $description;
+            // $sendEmail = mail($to, $sub, $msg);
+            // if($sendEmail) {
+                $_SESSION['success'] = "Request has been rejected";
+                header('Location: child-rejected.php');
+            // } else {
+            //     array_push($errors, "Error, Could not send email.");
+            // }
+        } else {
+            array_push($errors, "Error, Could not update profile.");
+        }
+    }
+
+
+    // UPDATE CHILD PENDED
+    if(isset($_POST['updateChildPended'])) {
+        $userId = $_SESSION['userId'];
+        $childAdmissionId= mysqli_real_escape_string($con, $_POST['childAdmissionId']);
+        $applicantEmail= mysqli_real_escape_string($con, $_POST['applicantEmail']);
+        $description= mysqli_real_escape_string($con, $_POST['description']);
+        $childApprovalId= mysqli_real_escape_string($con, $_POST['childApprovalId']);
+
+        $updateApprovalQuery = "UPDATE childapproval SET childAdmissionId='$childAdmissionId',status='Pending',staffid='$userId',description='$description'
+        WHERE childApprovalId='$childApprovalId'";
+        $updateApprovalResult = mysqli_query($con, $updateApprovalQuery);
+        if($updateApprovalResult) {
+            // SEND EMAIL
+            // $to = $applicantEmail;
+            // $sub = 'Review the request';
+            // $msg = $description;
+            // $sendEmail = mail($to, $sub, $msg);
+            // if($sendEmail) {
+                $_SESSION['success'] = "Request has been pended";
+                header('Location: child-pended.php');
             // } else {
             //     array_push($errors, "Error, Could not send email.");
             // }
@@ -665,7 +779,6 @@
     if(isset($_POST['addApproval'])) {
         $userId = $_SESSION['userId'];
         $childAdmissionId= mysqli_real_escape_string($con, $_POST['childAdmissionId']);
-        $status= mysqli_real_escape_string($con, $_POST['status']);
         $applicantEmail= mysqli_real_escape_string($con, $_POST['applicantEmail']);
         $description= mysqli_real_escape_string($con, $_POST['description']);
          // CHECK IF THE CHILD ADMISSION ID ALREADY EXISTS
@@ -680,17 +793,17 @@
          
          if(count($errors) == 0 ){
              $approvalQuery = "INSERT INTO childapproval (childAdmissionId,status,staffid,description) VALUES
-             ('$childAdmissionId', '$status', '$userId', '$description')";
+             ('$childAdmissionId', 'Approved', '$userId', '$description')";
              $approvalResult = mysqli_query($con, $approvalQuery);
              if($approvalResult) {
-                 // SEND EMAIL
-                // $to = $email;
-                // $sub = 'Contact Coms';
-                // $msg = $message;
+                // SEND EMAIL
+                // $to = $applicantEmail;
+                // $sub = 'Response from Coms';
+                // $msg = $description;
                 // $sendEmail = mail($to, $sub, $msg);
                 // if($sendEmail) {
-                    $_SESSION['success'] = "Request approved successfully";
-                    header('Location: child-approval.php');
+                    $_SESSION['success'] = "Request has been approved successfully";
+                    header('Location: child-approved.php');
                 // } else {
                 //     array_push($errors, "Error, Could not send email.");
                 // }
@@ -700,6 +813,83 @@
         }
     }
 
+
+    // ADD REJECTION
+    if(isset($_POST['addRejection'])) {
+        $userId = $_SESSION['userId'];
+        $childAdmissionId= mysqli_real_escape_string($con, $_POST['childAdmissionId']);
+        $applicantEmail= mysqli_real_escape_string($con, $_POST['applicantEmail']);
+        $description= mysqli_real_escape_string($con, $_POST['description']);
+         // CHECK IF THE CHILD ADMISSION ID ALREADY EXISTS
+         $checkAdmissionIDQuery  = "SELECT * FROM childapproval WHERE childAdmissionId='$childAdmissionId' LIMIT 1";
+         $checkAdmissionIDResult = mysqli_query($con, $checkAdmissionIDQuery);
+         $admission = mysqli_fetch_assoc($checkAdmissionIDResult);
+         if($admission) {
+            if($admission['childAdmissionId'] == $childAdmissionId ){
+                array_push($errors, "Admission already checked.");
+            }
+         }
+         
+         if(count($errors) == 0 ){
+             $approvalQuery = "INSERT INTO childapproval (childAdmissionId,status,staffid,description) VALUES
+             ('$childAdmissionId', 'Rejected', '$userId', '$description')";
+             $approvalResult = mysqli_query($con, $approvalQuery);
+             if($approvalResult) {
+                // SEND EMAIL
+                // $to = $applicantEmail;
+                // $sub = 'Response from Coms';
+                // $msg = $description;
+                // $sendEmail = mail($to, $sub, $msg);
+                // if($sendEmail) {
+                    $_SESSION['success'] = "Request has been rejected";
+                    header('Location: child-rejected.php');
+                // } else {
+                //     array_push($errors, "Error, Could not send email.");
+                // }
+             } else {
+                 array_push($errors, "Error, Could not create the account.");
+             }
+        }
+    }
+
+
+    // ADD PENDING
+    if(isset($_POST['addPending'])) {
+        $userId = $_SESSION['userId'];
+        $childAdmissionId= mysqli_real_escape_string($con, $_POST['childAdmissionId']);
+        $applicantEmail= mysqli_real_escape_string($con, $_POST['applicantEmail']);
+        $description= mysqli_real_escape_string($con, $_POST['description']);
+         // CHECK IF THE CHILD ADMISSION ID ALREADY EXISTS
+         $checkAdmissionIDQuery  = "SELECT * FROM childapproval WHERE childAdmissionId='$childAdmissionId' LIMIT 1";
+         $checkAdmissionIDResult = mysqli_query($con, $checkAdmissionIDQuery);
+         $admission = mysqli_fetch_assoc($checkAdmissionIDResult);
+         if($admission) {
+            if($admission['childAdmissionId'] == $childAdmissionId ){
+                array_push($errors, "Admission already checked.");
+            }
+         }
+         
+         if(count($errors) == 0 ){
+             $approvalQuery = "INSERT INTO childapproval (childAdmissionId,status,staffid,description) VALUES
+             ('$childAdmissionId', 'Pending', '$userId', '$description')";
+             $approvalResult = mysqli_query($con, $approvalQuery);
+             if($approvalResult) {
+                // SEND EMAIL
+                // $to = $applicantEmail;
+                // $sub = 'Response from Coms';
+                // $msg = $description;
+                // $sendEmail = mail($to, $sub, $msg);
+                // if($sendEmail) {
+                    $_SESSION['success'] = "Request has been pended";
+                    header('Location: child-pended.php');
+                // } else {
+                //     array_push($errors, "Error, Could not send email.");
+                // }
+             } else {
+                 array_push($errors, "Error, Could not create the account.");
+             }
+        }
+    }
     // UPDATE ADMIN PROFILE
     if(isset($_POST['updateAdminProfile'])) {
         $userId = $_SESSION['userId'];

@@ -69,6 +69,7 @@
                         <input type="submit" name="deleteBlockRoom" style="background-color:red;" value="Delete">
                     </div>
                </form>
+               <?php include('footer.php'); ?>
             </div>
         </div>
     </div>
@@ -77,5 +78,13 @@
 <script src="js/validation.js"></script>
 
 
+<style>
+    .footer {
+        position: fixed;
+        bottom: 0px;
+        padding: 15px;
+        margin-bottom: 0px;
+    }
+</style>
 
 </html>  

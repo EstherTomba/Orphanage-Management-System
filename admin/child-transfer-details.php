@@ -74,17 +74,11 @@
                     </div>
                     
                     <div>
-                        <input type="submit" name="updateTransferChild" value="Update">  
+                        <input type="submit" name="updateTransferChild" value="Update" style="width: 49.8%;">  
+                        <input type="submit" name="deleteChildTransfer" style="background-color:red; width: 49.8%;" value="Delete">
                     </div>
                 </form>
-                <form action="" method="POST">
-                    <div>
-                        <input type="hidden" name="orphanTransferId" value="<?php echo $orphanData['orphanTransferId'] ?>" value="Update">
-                    </div>
-                    <div>
-                        <input type="submit" name="deleteChildTransfer" style="background-color:red;" value="Delete">
-                    </div>
-                    </form>
+                    <?php include('footer.php'); ?>
             </div>
         </div>
     </div>

@@ -70,6 +70,7 @@
                         <input type="submit" name="transferChild" value="Save">  
                     </div>
                 </form>
+                <?php include('footer.php'); ?>
             </div>
         </div>
     </div>

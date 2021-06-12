@@ -25,7 +25,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Child Approval || Coms</title>
+    <title>Child Pended || Coms</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
 </head>
@@ -35,7 +35,7 @@
     <?php include("header.php")?>
         <div class="main_content">
         <div class="header" style="color: red; font-size: 20px;">
-                <a href="child-approval.php">Child Approval </a>/Details
+                <a href="child-rejected.php">Child Pended </a>/Details
             </div>
             <div class="info">
                 <form  name="childApprovalForm" method="POST" onsubmit="return childApprovalValidation()">
@@ -80,15 +80,6 @@
                         <?php echo $admissionData['description'] ?>
                     </textarea>
 
-                    <div>
-                        <select name="status" id="status">
-                            <option value="">Select Status</option>
-                            <option value="Approved" <?php if ($approvalData['status'] == 'Approved') echo 'selected="selected"'; ?>>Approved</option>
-                            <option value="Rejected" <?php if ($approvalData['status'] == 'Rejected') echo 'selected="selected"'; ?>>Rejected </option>
-                            <option value="Pending" <?php if ($approvalData['status'] == 'Pending') echo 'selected="selected"'; ?>>Pending</option>
-                          </select>
-                    </div>
-
                     <div>ADMIN PART</div>
                     <div>
                         <input type="hidden" name="childAdmissionId" id="childAdmissionId" value="<?php echo $admissionData['childAdmissionId'] ?>">
@@ -108,7 +99,9 @@
                     </div>
 
                     <div>
-                        <input type="submit" value="Update" name="updateApproval">
+                        <input type="submit" value="Approved" name="updateChildApproved" style="width: 33.1%">
+                        <input type="submit" value="Rejected" name="updateChildRejected" style="width: 33.1%; background-color:red">
+                        <input type="submit" value="Pending" name="updateChildPended"  style="width: 33.1%; background-color:orange">
                     </div>
                 </form>
                 <form action="" method="POST">
@@ -119,7 +112,7 @@
                         <input type="submit" name="deleteChildApproval" style="background-color:red;" value="Delete">
                     </div>
                 </form>
-
+                <?php include('footer.php'); ?>
             </div>
         </div>
     </div>

@@ -26,7 +26,7 @@
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">Profile</div>
             <div class="info">
-                <img src="images/im1.jpg " style="width:100px; height: 100px; border-radius: 50px; margin-left: 45%;" alt="">
+                <!-- <img src="images/im1.jpg " style="width:100px; height: 100px; border-radius: 50px; margin-left: 45%;" alt=""> -->
                 <form name="profileForm" method="POST" onsubmit="return profileValidation()">
                     <?php 
                         include('../error.php');

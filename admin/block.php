@@ -51,6 +51,7 @@
                         <?php
                     }
                 ?>
+                 <?php include('footer.php'); ?>
             </div>
         </div>
     </div>

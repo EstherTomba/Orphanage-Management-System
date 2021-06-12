@@ -88,6 +88,7 @@
                         <input type="submit" name="deleteDonation" style="background-color:red;" value="Delete">
                     </div>
                     </form>
+                    <?php include('footer.php'); ?>
             </div>
         </div>
     </div>

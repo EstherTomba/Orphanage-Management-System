@@ -56,7 +56,7 @@
                     </select>
                 </div>
                 <div>
-                    <input type="text" name="amount" id="amount" placeholder="Amount">
+                    <input type="number" name="amount" id="amount" placeholder="Amount">
                 </div>
                 <div>
                     <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
@@ -69,7 +69,7 @@
                     <input type="hidden" value="Payment Test" name="transaction_description"  id="transaction_description" >
                 </div>
                 <div>
-                    <input type="submit" name="donation" value="Donate">
+                    <input type="submit" name="addDonation" value="Donate">
                 </div>
                 </form>
                 <div class="space"></div>

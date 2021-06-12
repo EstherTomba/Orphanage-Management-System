@@ -2,8 +2,8 @@
 
 class Mpesa
 {
-    protected $mpesa_secret    = "o3p9P9AumgAibjJz";
-    protected $mpesa_key       = "NJUQHP4YKMoJc1lODvI8K5mNJ7qST4GA";
+    protected $mpesa_secret    = "kPvLAC7DtGYgIkDn";
+    protected $mpesa_key       = "5clp5SMY4RF5j8NCzGqbRZX4ssu0VP5c";
     protected $mpesa_passkey   = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
     protected $mpesa_shortcode = "174379";
 

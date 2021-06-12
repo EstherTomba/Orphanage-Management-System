@@ -263,7 +263,31 @@
                         <div><?php echo $helpData['total']; ?></div>
                     </div>
                 </div>
+                <div>
+                    <div class="column" style="background-color: orange; color:white;text-align: center;font-size:20px;">
+                    <?php 
+                         $eventQuery = "SELECT COUNT(*)  AS total FROM event";
+                         $eventResult = mysqli_query($con,$eventQuery);
+                         $eventData = mysqli_fetch_assoc($eventResult);
+
+                       ?>
+                        <div>Events</div>
+                        <div><?php echo $eventData['total']; ?></div>
+                    </div>
+                    <div class="column" style="background-color: green; color:white;text-align: center;font-size:20px;">
+                    <?php 
+                         $contactQuery = "SELECT COUNT(*)  AS total FROM contact GROUP BY email";
+                         $contactResult = mysqli_query($con,$contactQuery);
+                         $contactData = mysqli_fetch_assoc($contactResult);
+
+                       ?>
+                        <div>Contacts</div>
+                        <div><?php echo $contactData['total']; ?></div>
+                    </div>
+                </div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             </div>
+            
         </div>
     </div>
 </body>
@@ -276,4 +300,5 @@
         padding: 15px;
     }
 </style>
+
 </html>

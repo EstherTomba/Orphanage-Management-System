@@ -35,12 +35,14 @@
                 and stabilize their health.
                 </p>
                 <h2  class="tittle">Values</h2>
-                <li>Integrity</li>
-                <li>Collaboration </li>
-                <li>Knowledge</li>
-                <li>Diversity</li>
-                <li>Commitment</li>
-                <li>Quality</li>
+                <div style="text-align: center;">
+                    <div>Integrity</div>
+                    <div>Collaboration </div>
+                    <div>Knowledge</div>
+                    <div>Diversity</div>
+                    <div>Commitment</div>
+                    <div>Quality</div>
+                </div>
             
             </div>
             <?php include('footer.php') ?>

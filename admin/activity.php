@@ -25,7 +25,7 @@
                   </button> 
             </div>
             <div class="info">
-            <?php 
+                <?php 
                     include('../error.php');
                     include('../success.php');
                 ?>
@@ -72,8 +72,10 @@
 
 
             </div>
+            <?php include('footer.php'); ?>
         </div>
     </div>
 </body>
+
 
 </html>

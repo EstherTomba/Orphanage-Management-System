@@ -75,14 +75,14 @@
 
                     <div>ADMIN PART</div>
 
-                    <div>
+                    <!-- <div>
                         <select name="status" id="status">
                             <option value="">Select Status</option>
                             <option value="Approved">Approved</option>
                             <option value="Rejected">Rejected </option>
                             <option value="Pending">Pending</option>
                           </select>
-                    </div>
+                    </div> -->
 
                     <div>
                         <input type="hidden" name="childAdmissionId" id="childAdmissionId" value="<?php echo $admissionData['childAdmissionId'] ?>">
@@ -97,7 +97,9 @@
                     </div>
 
                     <div>
-                        <input type="submit" value="Approved" name="addApproval">
+                        <input type="submit" value="Approved" name="addApproval" style="width: 33.1%">
+                        <input type="submit" value="Rejected" name="addRejection" style="width: 33.1%; background-color:red">
+                        <input type="submit" value="Pending" name="addPending"  style="width: 33.1%; background-color:orange">
                     </div>
                 </form>
 
@@ -109,7 +111,7 @@
                         <input type="submit" name="deleteChildAdmission" style="background-color:red;" value="Delete">
                     </div>
                </form>
-
+               <?php include('footer.php'); ?>
             </div>
         </div>
     </div>

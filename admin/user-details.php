@@ -33,8 +33,6 @@
                 <?php 
                     include('../error.php');
                 ?>
-                <img src="../images/images.jpg" style="width:100px; height: 100px; border-radius: 50px; margin-left: 45%;" alt="">
-               
                  <div>
                      <input type="text" name="firstName" id="firstName" placeholder="First Name" value= "<?php echo $userData['firstName']?>">
                  </div>
@@ -98,21 +96,14 @@
                     <input name="userId" id="userId" type="hidden" value="<?php echo $userData['userId']?>" placeholder="blood Group">
                 </div>
                  <div>
-                     <input type="submit" name="updateProfile" value="Update Profile">
+                     <input type="submit" name="updateProfile" value="Update Profile"  style="width: 49.8%;">
+                     <input type="submit" name="deleteUser" style="background-color:red; width: 49.8%;" value="Delete">
                  </div>
                  <button style="background-color:red; padding: 10px;float: right;margin-top: 10px;" >
                     <a href="change-password.php" style="color: white;">Change Password</a>  
                   </button> 
              </form>
-
-             <form action="" method="POST">
-                    <div>
-                        <input type="hidden" name="userId" value="<?php echo $userData['userId'] ?>" value="Update">
-                    </div>
-                    <div>
-                        <input type="submit" name="deleteUser" style="background-color:red;" value="Delete">
-                    </div>
-               </form>
+               <?php include('footer.php'); ?>
             </div>
         </div>
     </div>

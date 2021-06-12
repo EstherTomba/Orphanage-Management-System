@@ -26,10 +26,14 @@
     <div class="wrapper">
     <?php include("header.php")?>
         <div class="main_content">
-            <div class="header" style="color: red; font-size: 20px;">Medical Record Details
+            <div class="header" style="color: red; font-size: 20px;">
+                <a href="medical-record.php">Medical Record /</a>Details
             </div>
             <div class="info">
                 <form  name="medicalRecordAddForm" method="POST" onsubmit="return medicalRecordAddValidation()">
+                <?php 
+                    include('../error.php');
+                    ?>
                     <div>
                        <select name="userId" id="userId">
                            <option value="">Select User</option>
@@ -69,7 +73,7 @@
                         <input type="submit" name="deleteMedicalRecord" style="background-color:red;" value="Delete">
                     </div>
                     </form>
-
+                    <?php include('footer.php'); ?>
             </div>
         </div>
     </div>

@@ -35,7 +35,7 @@
                     ?>
                     <div>
                     <img src="../uploads/<?php echo $eventData['image'] ?>" width="100%" height="300px" alt="">
-                        <input type="file" name="image" id="image" value="<?php echo $eventData['image'] ?>">
+                        <input type="file" name="image" id="image">
                     </div>
                     <div style="font-size: 13px;">Date:31/12/2020</div>
                     <div>
@@ -53,18 +53,36 @@
                         <input type="hidden" name="eventId" id="eventId" value="<?php echo $eventData['eventId'] ?>">
                     </div>
                     <div>
-                        <input type="submit" name="updateEvent" value="Update">
+                        <input type="submit" name="updateEvent" value="Update" style="width: 49.8%;">
+                        <input type="submit" name="deleteEvent" style="background-color:red; width: 49.8%;" value="Delete">
                     </div>
-                </form>
+                </form><br>
 
-                <form action="" method="POST">
-                    <div>
-                        <input type="hidden" name="eventId" value="<?php echo $eventData['eventId'] ?>" value="Update">
-                    </div>
-                    <div>
-                        <input type="submit" name="deleteEvent" style="background-color:red;" value="Delete">
-                    </div>
-                    </form>
+                <div style="font-size: 20px">COMMENTS</div>
+
+                <?php
+                    // GET ACTIVITY COMMENTS DATA
+                    $eventCommentQuery = "SELECT * FROM eventcomment WHERE eventId='$eventId'";
+                    $eventCommentResult = mysqli_query($con, $eventCommentQuery);
+                    while ($comments = mysqli_fetch_assoc($eventCommentResult)) {
+                        // GET USER DETAILS
+                        $getUserId = $comments['userId'];
+                        $getUserQuery = "SELECT * FROM user WHERE userId='$getUserId'";
+                        $getUserResult = mysqli_query($con, $getUserQuery);
+                        if($getUserResult){
+                            $userData = $getUserResult->fetch_assoc();
+                        }
+                        ?>
+                            <div style="border: 1px solid #4b4276; padding:10px; border-radius: 15px; background-color: white; margin-bottom: 10px">
+                                <div style="font-size: 20px; color: #4b4276"> <?php echo $userData['firstName']; ?> <?php echo $userData['lastName']; ?></div>
+                                <div>
+                                    <?php echo $comments['description']; ?>
+                                </div>
+                            </div>
+                        <?php
+                    }
+                ?>
+                    <?php include('footer.php'); ?>
             </div>
         </div>
     </div>

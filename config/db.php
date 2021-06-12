@@ -59,16 +59,24 @@
             ('$firstName', '$lastName','$email','$phoneNumber','$subject','$message')";
             $contactResult= mysqli_query($con, $contactQuery);
             if($contactResult) {
+                // SEND EMAIL
+                // $to = $email;
+                // $sub = 'Contact Coms';
+                // $msg = $message;
+                // $sendEmail = mail($to, $sub, $msg);
+                // if($sendEmail) {
                 $_SESSION['success']= "Message has been sent successfully, we will get back to you soon as possible.";
-
-            }else {
+                // } else {
+                //     array_push($errors, "Error, Could not send email.");
+                // }
+            } else {
                 array_push($erreors,"We could not send your message");
             }
     }
 
 
     // DONATION
-    if(isset($_POST['donation'])) {
+    if(isset($_POST['addDonation'])) {
         $firstName= mysqli_real_escape_string($con, $_POST['firstName']);
         $lastName= mysqli_real_escape_string($con, $_POST['lastName']);
         $email= mysqli_real_escape_string($con, $_POST['email']);
@@ -82,9 +90,9 @@
 
         $mpesa = new Mpesa();
         $mpesa_payment = $mpesa->_STKPush(1,$phoneNumber,$acc_ref,$transaction_description);
-        sleep(10);
+        // sleep(10);
         $donationQuery = "INSERT INTO donation (firstName,lastName,phoneNumber,email,address,donationTypeId,amount,description) VALUES
-        ('$firstName', '$lastName','$phoneNumber','$email','$address','$donationTypeId','$amount','$description')";
+        ('$firstName', '$lastName','$phoneNumber','$email','$address','$donationTypeId',NULLIF('$amount',''), NULLIF('$description',''))";
         $donationResult= mysqli_query($con, $donationQuery);
         if($donationResult) {
             $_SESSION['success']= "Your transaction has been done successfully. \nThank you for your help.";
@@ -113,9 +121,9 @@
             '$applicantAddress','$applicantID','$childFirstName','$childLastName','$childDOB','$childGender','$childBloodGroup','$description')";
         $admissionResult= mysqli_query($con, $admissionQuery);
         if($admissionResult) {
-            $_SESSION['success']= "Message has been sent successfully, please you will get a feedback  soon as possible.";
+            $_SESSION['success']= "Your request has been sent successfully, we will get  back to you as soon as possible.";
         }else {
-            array_push($errors,"Sorry, your message has not been sent. Please try again.");
+            array_push($errors,"Sorry, your request  has not been sent. Please try again.");
         }
     } 
     

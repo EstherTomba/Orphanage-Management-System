@@ -39,13 +39,19 @@
                    </div>
                 </form>
             </div>
-
+            <?php include('footer.php'); ?>
         </div>
     </div>
 </body>
 
 <script src="js/validation.js"></script>
 
-
-
+<style>
+    .footer {
+        position: fixed;
+        bottom: 0px;
+        padding: 15px;
+        margin-bottom: 0px;
+    }
+</style>
 </html>
