@@ -19,8 +19,44 @@
     <div class="wrapper">
     <?php include("header.php")?>
         <div class="main_content">
-            <div class="header" style="color: red; font-size: 20px;">Child Pended</div>
+            <div class="header" style="color: red; font-size: 20px;">Child Pended
+            <?php 
+            include("profileLogout.php")
+            ?>
+            </div>
             <div class="info">
+            <form action="" class="search"> 
+                    <input type="text" placeholder="Search">
+                    <input type="submit">
+                </form>
+                <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
+                    <li onclick="showFilterByDay()"><a href="#" style="color: white;">Filter by Day</a></li>
+                    <div id="filterByDayList">
+                        <form action=""> 
+                            <input type="date">
+                            <input type="submit" value="Filter">
+                        </form>
+                    </div>
+                </button>
+                <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
+                    <li onclick="showFilterByMonth()"><a href="#" style="color: white;">Filter by Month</a></li>
+                    <div id="filterByMonthtList">
+                        <form action=""> 
+                            <input type="month">
+                            <input type="submit" value="Filter">
+                        </form>
+                    </div>
+                </button>
+                <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
+                    <li onclick="showFilterByYear()"><a href="#" style="color: white;">Filter by Year</a></li>
+                    <div id="filterByYeartList">
+                        <form action=""> 
+                        <input type="number" placeholder="Enter Year" max="2021" min="2019">
+                            <input type="submit" value="Filter">
+                        </form>
+                    </div>
+                </button>
+                <br><br>
                 <?php
                     include('../error.php');
                     include('../success.php');
@@ -67,6 +103,5 @@
         </div>
     </div>
 </body>
-
-
+<script src="js/header.js"></script>
 </html>

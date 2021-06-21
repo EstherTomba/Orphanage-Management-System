@@ -29,16 +29,22 @@
                 $_SESSION['isAdmin']   = $userData['userRole'];
                 $_SESSION['userId']    = $userData['userId'];
                 $_SESSION['userEmail'] = $userData['userEmail'];
+                $_SESSION['firstName'] = $userData['firstName'];
+                $_SESSION['lastName'] = $userData['lastName'];
                 header('Location: admin/index.php');
             } else if($userData['userRole']    == 'Staff') {
                 $_SESSION['isStaff']   = $userData['userRole'];
                 $_SESSION['userId']     = $userData['userId'];
                 $_SESSION['userEmail']  = $userData['userEmail'];
+                $_SESSION['firstName'] = $userData['firstName'];
+                $_SESSION['lastName'] = $userData['lastName'];
                 header('Location: user/index.php');
             }  else if($userData['userRole']    == 'Orphan') {
                 $_SESSION['isOrphan']   = $userData['Orphan'];
                 $_SESSION['userId']     = $userData['userId'];
                 $_SESSION['userEmail']  = $userData['userEmail'];
+                $_SESSION['firstName'] = $userData['firstName'];
+                $_SESSION['lastName'] = $userData['lastName'];
                 header('Location: user/index.php');
             } else {
                 array_push($errors,"Wrong email/password combination.");

@@ -22,11 +22,19 @@
     <?php include("header.php")?>
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">Counsellor
-                <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
-                    <a href="counsellor-add.php" style="color: white;">Add Counsellor</a>  
-                  </button> 
+            <?php 
+            include("profileLogout.php")
+            ?>
+               
             </div>
             <div class="info">
+                <form action="" class="search"> 
+                    <input type="text" placeholder="Search">
+                    <input type="submit">
+                </form>
+                <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
+                    <a href="counsellor-add.php" style="color: white;">Add Counsellor</a>  
+                </button> <br><br>
                 <?php 
                     include('../error.php');
                     include('../success.php');

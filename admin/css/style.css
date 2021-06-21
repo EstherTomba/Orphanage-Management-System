@@ -109,7 +109,7 @@ tr:nth-child(even) {
 
 
 
-input[type=text], input[type=email], input[type=password], [type=file],  [type=date],  [type=time],  [type=number], select, textarea {
+input[type=text], input[type=email], input[type=password], [type=file],  [type=date],  [type=time],  [type=number], [type=month], select, textarea {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -134,6 +134,35 @@ input[type=text], input[type=email], input[type=password], [type=file],  [type=d
     background-color: #45a049;
   }
   
+
+
+  /* SEARCH CSS */
+.search {
+    position: absolute;
+    margin-top: -20px;
+}
+.search input[type='text']
+{
+    width:300px;
+}
+.search input[type='submit']
+{
+    width:100px;
+}
+
+
+
+/* FILTER BY  */
+#filterByYeartList {
+    display: none
+}
+#filterByMonthtList {
+   display: none
+}
+#filterByDayList {
+    display: none;
+}
+
 
 
 

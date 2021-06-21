@@ -42,6 +42,7 @@
                 <div>
                     <img src="../uploads/<?php echo $activityCategoryData['image'] ?>" width="100%" height="400px" alt="">
                 </div>
+                <div style="font-size: 15px; background-color: green; color:white; margin-top: 10px;">Activity Date: <?php echo date('M d Y H:i',strtotime($activityData['activityDate'])) ?></div>
                 <div style="font-size: 13px;">Date: <?php echo date('M d Y',strtotime($activityData['createdAt'])) ?></div>
                 <form name="donationAddForm" method="POST" enctype="multipart/form-data">
                     <?php 

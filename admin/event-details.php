@@ -37,7 +37,8 @@
                     <img src="../uploads/<?php echo $eventData['image'] ?>" width="100%" height="300px" alt="">
                         <input type="file" name="image" id="image">
                     </div>
-                    <div style="font-size: 13px;">Date:31/12/2020</div>
+                    <div style="font-size: 15px; background-color: green; color:white; margin-top: 10px;">Event Date: <?php echo date('M d Y H:i',strtotime($eventData['eventDate'])) ?></div>
+                    <div style="font-size: 13px;">Published: 31/12/2020</div>
                     <div>
                         <input type="text" name="name" id="name" placeholder="Name" value="<?php echo $eventData['name'] ?>">
                     </div>

@@ -21,8 +21,16 @@
     <div class="wrapper">
     <?php include("header.php")?>
         <div class="main_content">
-            <div class="header" style="color: red; font-size: 20px;">Contact</div>
+            <div class="header" style="color: red; font-size: 20px;">Contact
+            <?php 
+            include("profileLogout.php")
+            ?>
+            </div>
             <div class="info">
+                <form action="" class="search"> 
+                    <input type="text" placeholder="Search">
+                    <input type="submit">
+                </form><br><br>
                 <?php 
                     include('../error.php');
                     include('../success.php');

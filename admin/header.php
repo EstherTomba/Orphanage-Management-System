@@ -37,9 +37,22 @@
         <li><a href="event.php">Events</a></li>
         <li><a href="contact.php">Contacts</a></li>
         <li><a href="help.php">Help</a></li>
-        <li><a href="profile.php"></i>Profile</a></li>
-        <li><a href="../logout.php" style="color: red;">Logout</a></li>
+       
     </ul>
 </div>
+<style>
+    #ProfileLogoutList {
+        display: none;
 
+    }
+    #activityList{
+        display:none;
+    }
+    #counsellorList{
+        display:none;
+    }
+    #donationList{
+        display:none;
+    }
+</style>
 <script src="js/header.js"></script>

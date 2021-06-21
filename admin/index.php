@@ -20,7 +20,11 @@
     <div class="wrapper">
        <?php include("header.php")?>
         <div class="main_content">
-            <div class="header" style="color: red; font-size: 30px;">Welcome to the Orphanage Center</div>
+            <div class="header" style="color: red; font-size: 20px;">Welcome to Cottolengo Orphanage Centre
+            <?php 
+            include("profileLogout.php")
+            ?>
+            </div>
             <div class="info">
                 <!-- FIRST ROW -->
                 <div>
@@ -291,7 +295,6 @@
         </div>
     </div>
 </body>
-
 <style>
     .column {
         float: left;
@@ -299,6 +302,7 @@
         margin: 0.2%;
         padding: 15px;
     }
+   
 </style>
 
 </html>
