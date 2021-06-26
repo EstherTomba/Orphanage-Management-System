@@ -96,7 +96,7 @@
                     <input name="userId" id="userId" type="hidden" value="<?php echo $userData['userId']?>" placeholder="blood Group">
                 </div>
                  <div>
-                     <input type="submit" name="updateProfile" value="Update Profile"  style="width: 49.8%;">
+                     <input type="submit" name="updateProfile" value="Update"  style="width: 49.8%;">
                      <input type="submit" name="deleteUser" style="background-color:red; width: 49.8%;" value="Delete">
                  </div>
                  <button style="background-color:red; padding: 10px;float: right;margin-top: 10px;" >

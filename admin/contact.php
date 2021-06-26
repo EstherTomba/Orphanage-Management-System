@@ -5,6 +5,14 @@
     if (!isset($_SESSION['isAdmin'])) {
         header('location: ../login.php');
     }
+    $transferIsTrue = true;
+    $searchIsTrue   = false;
+    $search   = '';
+    if(isset($_GET['q'])) {
+        $transferIsTrue = false;
+        $searchIsTrue   = true;
+        $search = mysqli_real_escape_string($con, $_GET['q']);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +35,8 @@
             ?>
             </div>
             <div class="info">
-                <form action="" class="search"> 
-                    <input type="text" placeholder="Search">
+                <form method="GET" class="search"> 
+                    <input type="text" placeholder="Search" name="q" value="<?php echo $search ?>">
                     <input type="submit">
                 </form><br><br>
                 <?php 
@@ -44,7 +52,13 @@
                          <th>Date</th>
                     </tr>
                     <?php 
-                        $contactQuery= "SELECT * FROM contact ORDER BY  createdAt DESC";
+                        if($transferIsTrue) {
+                            $transferIsTrue = true;
+                            $searchIsTrue   = false;
+                            $contactQuery= "SELECT * FROM contact ORDER BY  createdAt DESC";
+                        } elseif($searchIsTrue) {
+                            $contactQuery= "SELECT * FROM contact WHERE firstName LIKE '%$search%' OR lastName LIKE '%$search%' OR email LIKE '%$search%' OR phoneNumber LIKE '%$search%' ORDER BY  createdAt DESC"; 
+                        }
                         $contactResult= mysqli_query($con, $contactQuery);
                         while($row = mysqli_fetch_assoc($contactResult)) {
                             ?>

@@ -4,6 +4,14 @@
     if (!isset($_SESSION['isAdmin'])) {
         header('location: ../login.php');
     }
+    $transferIsTrue = true;
+    $searchIsTrue   = false;
+    $search   = '';
+    if(isset($_GET['q'])) {
+        $transferIsTrue = false;
+        $searchIsTrue   = true;
+        $search = mysqli_real_escape_string($con, $_GET['q']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,8 +33,8 @@
             ?>
             </div>
             <div class="info">
-                <form action="" class="search"> 
-                    <input type="text" placeholder="Search">
+                <form method="GET" class="search"> 
+                    <input type="text" placeholder="Search" name="q" value="<?php echo $search ?>">
                     <input type="submit">
                 </form>
                 <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
@@ -48,7 +56,13 @@
 
 
                     <?php  
-                        $childTransferQuery ="SELECT * FROM orphantransfer ORDER BY createdAt DESC";
+                        if($transferIsTrue) {
+                            $transferIsTrue = true;
+                            $searchIsTrue   = false;
+                            $childTransferQuery ="SELECT * FROM orphantransfer ORDER BY createdAt DESC";
+                        } elseif($searchIsTrue) {
+                            // $childTransferQuery= "SELECT * FROM orphantransfer WHERE applicantFirstName LIKE '%$search%' OR applicantLastName LIKE '%$search%' OR applicantEmail LIKE '%$search%' OR applicantID LIKE '%$search%' OR applicantPhoneNumber LIKE '%$search%' ORDER BY  createdAt DESC"; 
+                        }
                         $childTransferResult = mysqli_query($con, $childTransferQuery);
                         while($row = mysqli_fetch_assoc($childTransferResult)) {
                             $orphanId = $row['orphanId'];

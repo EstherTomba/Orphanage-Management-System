@@ -4,6 +4,14 @@
     if (!isset($_SESSION['isAdmin'])) {
         header('location: ../login.php');
     }
+    $transferIsTrue = true;
+    $searchIsTrue   = false;
+    $search   = '';
+    if(isset($_GET['q'])) {
+        $transferIsTrue = false;
+        $searchIsTrue   = true;
+        $search = mysqli_real_escape_string($con, $_GET['q']);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +34,8 @@
             ?>   
             </div>
             <div class="info">
-                <form action="" class="search"> 
-                    <input type="text" placeholder="Search">
+                <form method="GET" class="search"> 
+                    <input type="text" placeholder="Search" name="q" value="<?php echo $search ?>">
                     <input type="submit">
                 </form>
                 <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
@@ -45,8 +53,14 @@
                          <th>Date</th> 
                         
                     </tr>
-                    <?php  
-                        $userQuery= "SELECT * FROM user ORDER BY  createdAt DESC";
+                    <?php
+                        if($transferIsTrue) {
+                            $transferIsTrue = true;
+                            $searchIsTrue   = false;
+                            $userQuery= "SELECT * FROM user ORDER BY  createdAt DESC";
+                        } elseif($searchIsTrue) {
+                            $userQuery= "SELECT * FROM user WHERE firstName LIKE '%$search%' OR lastName LIKE '%$search%' OR userName LIKE '%$search%' OR userEmail LIKE '%$search%' OR phoneNumber LIKE '%$search%' OR userRole LIKE '%$search%' ORDER BY  createdAt DESC"; 
+                        }  
                         $userResult = mysqli_query($con, $userQuery);
                         while($row = mysqli_fetch_assoc($userResult)) {
                             ?>

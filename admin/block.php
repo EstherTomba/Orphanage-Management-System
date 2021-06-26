@@ -4,6 +4,14 @@
     if (!isset($_SESSION['isAdmin'])) {
         header('location: ../login.php');
     }
+    $transferIsTrue = true;
+    $searchIsTrue   = false;
+    $search   = '';
+    if(isset($_GET['q'])) {
+        $transferIsTrue = false;
+        $searchIsTrue   = true;
+        $search = mysqli_real_escape_string($con, $_GET['q']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,8 +35,8 @@
 
             </div>
             <div class="info">
-                <form action="" class="search"> 
-                    <input type="text" placeholder="Search">
+                <form method="GET" class="search"> 
+                    <input type="text" placeholder="Search" name="q" value="<?php echo $search ?>">
                     <input type="submit">
                 </form>
                 <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
@@ -39,7 +47,13 @@
                     include('../success.php');
                 ?>
                 <?php
-                    $query="SELECT * FROM block ORDER BY createdAt DESC";
+                    if($transferIsTrue) {
+                        $transferIsTrue = true;
+                        $searchIsTrue   = false;
+                        $query="SELECT * FROM block ORDER BY createdAt DESC";
+                    } elseif($searchIsTrue) {
+                        $query= "SELECT * FROM block WHERE blockName LIKE '%$search%' OR ageBetween LIKE '%$search%' ORDER BY createdAt DESC"; 
+                    }
                     $blockResult = mysqli_query($con, $query);
                     while($row = mysqli_fetch_assoc($blockResult)) {
                         ?>

@@ -5,6 +5,14 @@
     if (!isset($_SESSION['isAdmin'])) {
         header('location: ../login.php');
     }
+    $transferIsTrue = true;
+    $searchIsTrue   = false;
+    $search   = '';
+    if(isset($_GET['q'])) {
+        $transferIsTrue = false;
+        $searchIsTrue   = true;
+        $search = mysqli_real_escape_string($con, $_GET['q']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,8 +34,8 @@
             ?>
             </div>
             <div class="info">
-                <form action="" class="search"> 
-                    <input type="text" placeholder="Search">
+                <form method="GET" class="search"> 
+                    <input type="text" placeholder="Search" name="q" value="<?php echo $search ?>">
                     <input type="submit">
                 </form>
                 <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
@@ -38,7 +46,14 @@
                     include('../success.php');
                 ?>
                 <?php 
-                 $eventQuery= "SELECT * FROM event ORDER BY  createdAt DESC";
+                    if($transferIsTrue) {
+                        $transferIsTrue = true;
+                        $searchIsTrue   = false;
+                        $eventQuery= "SELECT * FROM event ORDER BY  createdAt DESC";
+                    } elseif($searchIsTrue) {
+                        $eventQuery= "SELECT * FROM event WHERE name LIKE '%$search%' OR date LIKE '%$search%' OR time LIKE '%$search%' ORDER BY  createdAt DESC"; 
+                    }
+                 
                  $eventResult= mysqli_query($con, $eventQuery);
                  while($row = mysqli_fetch_assoc($eventResult)) {
                    ?>
@@ -56,7 +71,7 @@
                                 <div style="font-size: 12px;">Published: <?php echo date('M d Y',strtotime($row['createdAt'])) ?></div> 
                                 <div>Address: <?php echo $row['address']?></div> 
                                 <p style="margin-top: 20px;">
-                                <?php echo substr($row['description'], 0, 300) ?>
+                                <?php echo substr($row['description'], 0, 250) ?>
                             </div>
                         </div>
                         <hr style="margin-bottom: 10px;">
