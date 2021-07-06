@@ -4,6 +4,14 @@
     if (!isset($_SESSION['isAdmin'])) {
         header('location: ../login.php');
     }
+    $blockIsTrue = true;
+    $searchIsTrue   = false;
+    $search   = '';
+    if(isset($_GET['q'])) {
+        $blockIsTrue = false;
+        $searchIsTrue   = true;
+        $search = mysqli_real_escape_string($con, $_GET['q']);
+    }
 ?>
 
 
@@ -29,8 +37,8 @@
             </div>
             <div class="info">
                 <div>
-                    <form action="" class="search"> 
-                        <input type="text" placeholder="Search">
+                    <form method="GET" class="search"> 
+                        <input type="text" placeholder="Search" name="q" value="<?php echo $search ?>">
                         <input type="submit">
                     </form>
                     <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
@@ -49,18 +57,23 @@
                         <th>Date</th>
                     </tr>
                     <?php 
-                        $query = "SELECT * FROM blockroom ORDER BY createdAt DESC";
+                        if($blockIsTrue) {
+                            $blockIsTrue = true;
+                            $searchIsTrue   = false;
+                            $query= "SELECT a.blockRoomId, a.blockId, a.roomNumber,
+                            b.blockName, b.ageBetween, a.createdAt
+                            FROM blockroom AS a INNER JOIN block AS b ON a.blockId  = b.blockId ORDER BY createdAt DESC";
+                        } elseif($searchIsTrue) {
+                            $query= "SELECT a.blockRoomId, a.blockId, a.roomNumber,
+                            b.blockName, b.ageBetween, a.createdAt
+                            FROM blockroom AS a INNER JOIN block AS b ON a.blockId  = b.blockId 
+                            WHERE blockName LIKE '%$search%' OR ageBetween LIKE '%$search%' GROUP BY b.blockName"; 
+                        }
                         $roomResult = mysqli_query($con, $query);
                         while($row = mysqli_fetch_assoc($roomResult)) {
-                            $blockId = $row['blockId'];
-                            $blockQuery = "SELECT * FROM block WHERE blockId ='$blockId'";
-                            $blockResult = mysqli_query($con, $blockQuery);
-                            if($blockResult) {
-                                $blockData = $blockResult->fetch_assoc();
-                            }
                             ?>
                                 <tr>
-                                    <td><a href="block-room-details.php?id=<?php echo $row['blockRoomId']; ?>"><?php echo $blockData['blockName']; ?></a></td>
+                                    <td><a href="block-room-details.php?id=<?php echo $row['blockRoomId']; ?>"><?php echo $row['blockName']; ?></a></td>
                                     <td><?php echo $row['roomNumber']; ?></td>
                                     <td><?php echo date('M d Y',strtotime($row['createdAt'])) ?></td>
                                 </tr>

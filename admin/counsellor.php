@@ -1,10 +1,18 @@
 
 <?php 
- require_once('../config/db.php'); 
- require_once('../config/admin.php');    
- if (!isset($_SESSION['isAdmin'])) {
-     header('location: ../login.php');
- }
+    require_once('../config/db.php'); 
+    require_once('../config/admin.php');    
+    if (!isset($_SESSION['isAdmin'])) {
+        header('location: ../login.php');
+    }
+    $counsellorIsTrue = true;
+    $searchIsTrue   = false;
+    $search   = '';
+    if(isset($_GET['q'])) {
+        $counsellorIsTrue = false;
+        $searchIsTrue   = true;
+        $search = mysqli_real_escape_string($con, $_GET['q']);
+    }
 
 ?>
 <!DOCTYPE html>
@@ -28,8 +36,8 @@
                
             </div>
             <div class="info">
-                <form action="" class="search"> 
-                    <input type="text" placeholder="Search">
+                <form method="GET" class="search"> 
+                    <input type="text" placeholder="Search" name="q" value="<?php echo $search ?>">
                     <input type="submit">
                 </form>
                 <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
@@ -49,19 +57,24 @@
                         
                     </tr>
                     <?php 
-                        $counsellorQuery = "SELECT * FROM counsellor ORDER BY createdAt DESC";
+                        if($counsellorIsTrue) {
+                            $counsellorIsTrue = true;
+                            $searchIsTrue   = false;
+                            $counsellorQuery= "SELECT a.counsellorId, a.staffId, a.workingTime, a.workingDate,
+                            b.firstName, b.lastName, b.userEmail, b.phoneNumber, b.gender, a.createdAt
+                            FROM counsellor AS a INNER JOIN user AS b ON a.staffId  = b.userId ORDER BY createdAt DESC";
+                        } elseif($searchIsTrue) {
+                            $counsellorQuery= "SELECT a.counsellorId, a.staffId, a.workingTime, a.workingDate,
+                            b.firstName, b.lastName, b.userEmail, b.phoneNumber, b.gender, a.createdAt
+                            FROM counsellor AS a INNER JOIN user AS b ON a.staffId  = b.userId  
+                            WHERE firstName LIKE '%$search%' OR lastName LIKE '%$search%' OR userEmail LIKE '%$search%' OR phoneNumber LIKE '%$search%' OR gender LIKE '%$search%'"; 
+                        }
                         $counsellorResult= mysqli_query($con, $counsellorQuery);
                         while($row= mysqli_fetch_assoc($counsellorResult)) {
-                            $userId = $row['staffId'];
-                            $userQuery = "SELECT * FROM user WHERE userId ='$userId'";
-                            $userResult = mysqli_query($con, $userQuery);
-                            if($userResult) {
-                                $userData = $userResult->fetch_assoc();
-                            }
                             ?>
                                 <tr>
-                                    <td> <a href="counsellor-details.php?id=<?php echo $row['counsellorId'] ?>"><?php echo $userData['firstName'] ?></a></td>
-                                    <td> <?php echo $userData['lastName'] ?></td>
+                                    <td> <a href="counsellor-details.php?id=<?php echo $row['counsellorId'] ?>"><?php echo $row['firstName'] ?></a></td>
+                                    <td> <?php echo $row['lastName'] ?></td>
                                     <td> <?php echo $row['workingTime'] ?></td>
                                     <td> <?php echo $row['workingDate'] ?></td>
                                     <td> <?php echo date('M D Y', strtotime($row['createdAt']))  ?></td>

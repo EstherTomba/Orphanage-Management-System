@@ -5,6 +5,14 @@
     if (!isset($_SESSION['isAdmin'])) {
         header('location: ../login.php');
     }
+    $helpIsTrue = true;
+    $searchIsTrue   = false;
+    $search   = '';
+    if(isset($_GET['q'])) {
+        $helpIsTrue = false;
+        $searchIsTrue   = true;
+        $search = mysqli_real_escape_string($con, $_GET['q']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,8 +35,8 @@
                  
             </div>
             <div class="info">
-                <form action="" class="search"> 
-                    <input type="text" placeholder="Search">
+                <form method="GET" class="search"> 
+                    <input type="text" placeholder="Search" name="q" value="<?php echo $search ?>">
                     <input type="submit">
                 </form><br><br>
                 <?php 
@@ -42,21 +50,26 @@
                         <th>Date</th>
                     </tr>
                     <?php 
-                        $helpQuery= "SELECT * FROM help GROUP BY userId ORDER BY  createdAt DESC";
+                        if($helpIsTrue) {
+                            $helpIsTrue = true;
+                            $searchIsTrue   = false;
+                            $helpQuery= "SELECT a.userId, a.userId,
+                            b.firstName, b.lastName, b.userEmail, b.phoneNumber, a.createdAt
+                            FROM help AS a INNER JOIN user AS b ON a.userId = b.userId GROUP BY userId ORDER BY  createdAt DESC"; 
+                        } elseif($searchIsTrue) {
+                            $helpQuery= "SELECT a.userId, a.userId,
+                            b.firstName, b.lastName, b.userEmail, b.phoneNumber, a.createdAt
+                            FROM help AS a INNER JOIN user AS b ON a.userId = b.userId 
+                            WHERE firstName LIKE '%$search%' OR lastName LIKE '%$search%' OR userEmail LIKE '%$search%' OR phoneNumber LIKE '%$search%'  GROUP BY userId ORDER BY  createdAt DESC"; 
+                        }
                         $helpResult= mysqli_query($con, $helpQuery);
                         while($row = mysqli_fetch_assoc($helpResult)) {
-                            $userId= $row['userId'];
-                            $userQuery="SELECT * FROM user WHERE userId= '$userId'";
-                            $userResult= mysqli_query($con,$userQuery );
-                            if($userResult) {
-                                $userData= $userResult->fetch_assoc();
-                            }
                             ?>
                              <tr>
-                                <td><a href="help-response.php?id=<?php echo $row['userId'] ?>"><?php echo $userData['firstName'] ?></a></td>
+                                <td><a href="help-response.php?id=<?php echo $row['userId'] ?>"><?php echo $row['firstName'] ?></a></td>
                                     
-                                <td><?php echo $userData['lastName'] ?></td>
-                                <td><?php echo $userData['userEmail'] ?></td>
+                                <td><?php echo $row['lastName'] ?></td>
+                                <td><?php echo $row['userEmail'] ?></td>
                                 <td><?php echo date('M d Y',strtotime($row['createdAt'])) ?></td> 
                            </tr>
                             <?php

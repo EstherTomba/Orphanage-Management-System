@@ -132,30 +132,36 @@
                     </tr>
                     <?php 
                         if($yearIsTrue) {
-                            $childApprovalQuery= "SELECT * FROM childapproval WHERE status='Rejected' AND YEAR(createdAt) = '$theYear' ORDER BY  createdAt DESC";
+                            $childApprovalQuery= "SELECT a.status, a.childAdmissionId, a.childApprovalId, b.applicantFirstName, 
+                            b.applicantLastName, b.applicantEmail, b.applicantPhoneNumber, b.childFirstName, b.childLastName, b.createdAt
+                            FROM childapproval AS a INNER JOIN childadmission AS b ON a.childAdmissionId = b.childAdmissionId
+                            WHERE status='Rejected' AND YEAR(b.createdAt) = '$theYear' ORDER BY  b.createdAt DESC";
                         } elseif($monthIsTrue) {
-                            $childApprovalQuery= "SELECT * FROM childapproval WHERE status='Rejected' AND YEAR(createdAt) = '$theYear' AND MONTH(createdAt) = '$theMonth' ORDER BY  createdAt DESC";
+                            $childApprovalQuery= "SELECT a.status, a.childAdmissionId, a.childApprovalId, b.applicantFirstName, 
+                            b.applicantLastName, b.applicantEmail, b.applicantPhoneNumber, b.childFirstName, b.childLastName, b.createdAt
+                            FROM childapproval AS a INNER JOIN childadmission AS b ON a.childAdmissionId = b.childAdmissionId 
+                            WHERE status='Rejected' AND YEAR(b.createdAt) = '$theYear' AND MONTH(b.createdAt) = '$theMonth' ORDER BY  b.createdAt DESC";
                         } elseif($dayIsTrue) {
-                            $childApprovalQuery= "SELECT * FROM childapproval WHERE status='Rejected' AND YEAR(createdAt) = '$theYear' AND MONTH(createdAt) = '$theMonth' AND DAY(createdAt) = '$theDay' ORDER BY  createdAt DESC"; 
+                            $childApprovalQuery= "SELECT a.status, a.childAdmissionId, a.childApprovalId, b.applicantFirstName, 
+                            b.applicantLastName, b.applicantEmail, b.applicantPhoneNumber, b.childFirstName, b.childLastName, b.createdAt
+                            FROM childapproval AS a INNER JOIN childadmission AS b ON a.childAdmissionId = b.childAdmissionId 
+                            WHERE status='Rejected' AND YEAR(b.createdAt) = '$theYear' AND MONTH(b.createdAt) = '$theMonth' AND DAY(b.createdAt) = '$theDay' ORDER BY  createdAt DESC"; 
                         } elseif($searchIsTrue) {
-                            // $childApprovalQuery= "SELECT * FROM childapproval WHERE applicantFirstName LIKE '%$search%' OR applicantLastName LIKE '%$search%' OR applicantEmail LIKE '%$search%' OR applicantID LIKE '%$search%' OR applicantPhoneNumber LIKE '%$search%' ORDER BY  createdAt DESC"; 
+                            $childApprovalQuery= "SELECT a.status, a.childAdmissionId, a.childApprovalId, b.applicantFirstName, 
+                            b.applicantLastName, b.applicantEmail, b.applicantPhoneNumber, b.childFirstName, b.childLastName, b.createdAt
+                            FROM childapproval AS a INNER JOIN childadmission AS b ON a.childAdmissionId = b.childAdmissionId
+                            WHERE applicantFirstName LIKE '%$search%' OR applicantLastName LIKE '%$search%' OR applicantEmail LIKE '%$search%' OR applicantPhoneNumber LIKE '%$search%'"; 
                         }
                         $childApprovalResult = mysqli_query($con, $childApprovalQuery);
                         while($row = mysqli_fetch_assoc($childApprovalResult)) {
-                            $childAdmissionId = $row['childAdmissionId'];
-                            $admissionQuery= "SELECT * FROM childadmission WHERE childAdmissionId='$childAdmissionId'";
-                            $admissionResult = mysqli_query($con, $admissionQuery);
-                            if($admissionResult) {
-                                $admissionData = $admissionResult->fetch_assoc();
-                            }
                             ?>
                                 <tr>
-                                    <td><a href="child-rejected-details.php?id=<?php echo $row['childApprovalId'] ?>"><?php echo $admissionData['applicantFirstName'] ?></a></td>
-                                    <td><?php echo $admissionData['applicantLastName'] ?></td>
-                                    <td><?php echo $admissionData['applicantEmail'] ?></td>
-                                    <td><?php echo $admissionData['applicantPhoneNumber'] ?></td>
-                                    <td><?php echo $admissionData['childFirstName'] ?></td>
-                                    <td><?php echo $admissionData['childLastName'] ?></td>
+                                    <td><a href="child-rejected-details.php?id=<?php echo $row['childApprovalId'] ?>"><?php echo $row['applicantFirstName'] ?></a></td>
+                                    <td><?php echo $row['applicantLastName'] ?></td>
+                                    <td><?php echo $row['applicantEmail'] ?></td>
+                                    <td><?php echo $row['applicantPhoneNumber'] ?></td>
+                                    <td><?php echo $row['childFirstName'] ?></td>
+                                    <td><?php echo $row['childLastName'] ?></td>
                                     <td style="background-color:red; color: white"><?php echo $row['status'] ?></td>
                                     <td><?php echo date("M d Y", strtotime($row['createdAt'])) ?></td>
                                 </tr> 

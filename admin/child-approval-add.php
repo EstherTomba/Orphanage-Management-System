@@ -28,7 +28,7 @@
     <?php include("header.php")?>
         <div class="main_content">
         <div class="header" style="color: red; font-size: 20px;">
-                <a href="child-approval.php">Child Approval </a>/Details
+                <a href="child-admission.php">Child Approval </a>/Details
             </div>
             <div class="info">
                 <form  name="childApprovalForm" method="POST" onsubmit="return childApprovalValidation()">

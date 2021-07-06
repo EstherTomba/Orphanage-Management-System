@@ -5,6 +5,14 @@
     if (!isset($_SESSION['isAdmin'])) {
         header('location: ../login.php');
     }
+    $appointmentIsTrue = true;
+    $searchIsTrue   = false;
+    $search   = '';
+    if(isset($_GET['q'])) {
+        $appointmentIsTrue = false;
+        $searchIsTrue   = true;
+        $search = mysqli_real_escape_string($con, $_GET['q']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,8 +34,8 @@
             ?>
             </div>
             <div class="info">
-                <form action="" class="search"> 
-                    <input type="text" placeholder="Search">
+                <form method="GET" class="search"> 
+                    <input type="text" placeholder="Search" name="q" value="<?php echo $search ?>">
                     <input type="submit">
                 </form>
                 <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
@@ -47,7 +55,13 @@
                         
                     </tr>
                     <?php 
-                        $appointmentQuery= "SELECT * FROM counsellorappointment ORDER BY createdAt Desc";
+                         if($appointmentIsTrue) {
+                            $appointmentIsTrue = true;
+                            $searchIsTrue   = false;
+                            $appointmentQuery= "SELECT * FROM counsellorappointment ORDER BY createdAt Desc";
+                        } elseif($searchIsTrue) {
+                            $appointmentQuery= "SELECT * FROM counsellorappointment ORDER BY createdAt Desc";
+                        }
                         $appointmentResult= mysqli_query($con, $appointmentQuery);
                          while($row= mysqli_fetch_assoc($appointmentResult)) {
                             // GET ORPHAN DATA

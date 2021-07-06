@@ -1,9 +1,17 @@
 <?php 
- require_once('../config/db.php'); 
- require_once('../config/admin.php');    
- if (!isset($_SESSION['isAdmin'])) {
-     header('location: ../login.php');
-}
+    require_once('../config/db.php'); 
+    require_once('../config/admin.php');    
+    if (!isset($_SESSION['isAdmin'])) {
+        header('location: ../login.php');
+    }
+    $donationIsTrue = true;
+    $searchIsTrue   = false;
+    $search   = '';
+    if(isset($_GET['q'])) {
+        $donationIsTrue = false;
+        $searchIsTrue   = true;
+        $search = mysqli_real_escape_string($con, $_GET['q']);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +34,8 @@
             ?> 
             </div>
             <div class="info">
-                <form action="" class="search"> 
-                    <input type="text" placeholder="Search">
+                <form method="GET" class="search"> 
+                    <input type="text" placeholder="Search" name="q" value="<?php echo $search ?>">
                     <input type="submit">
                 </form>
                 <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
@@ -49,18 +57,23 @@
                         
                     </tr>
                     <?php 
-                        $donationQuery="SELECT * FROM donation ORDER BY createdAt DESC";
+                        sif($donationIsTrue) {
+                            $donationIsTrue = true;
+                            $searchIsTrue   = false;
+                            $donationQuery= "SELECT a.donationId, a.donationTypeId, a.firstName, a.lastName, a.email,
+                            a.phoneNumber, b.name, a.createdAt
+                            FROM donation AS a INNER JOIN donationtype AS b ON a.donationTypeId = b.donationTypeId ORDER BY createdAt DESC";
+                        } elseif($searchIsTrue) {
+                            $donationQuery= "SELECT a.donationId, a.donationTypeId, a.firstName, a.lastName, a.email,
+                            a.phoneNumber, b.name, a.createdAt
+                            FROM donation AS a INNER JOIN donationtype AS b ON a.donationTypeId = b.donationTypeId  
+                            WHERE firstName LIKE '%$search%' OR lastName LIKE '%$search%' OR email LIKE '%$search%' OR phoneNumber LIKE '%$search%' OR name LIKE '%$search%'"; 
+                        }
                         $donationResult= mysqli_query($con, $donationQuery);
                         while($row= mysqli_fetch_assoc($donationResult)) {
-                            $donationTypeId = $row['donationTypeId'];
-                            $donationTypeQuery = "SELECT * FROM donationtype WHERE donationTypeId ='$donationTypeId'";
-                            $donationTypeResult = mysqli_query($con, $donationTypeQuery);
-                            if($donationTypeResult) {
-                                $donationTypeData = $donationTypeResult->fetch_assoc();
-                            }
                             ?>
                                 <tr>
-                                    <td><a href="donation-details.php?id=<?php echo $row['donationId'] ?>"><?php  echo $donationTypeData['name']?></a></td>
+                                    <td><a href="donation-details.php?id=<?php echo $row['donationId'] ?>"><?php  echo $row['name']?></a></td>
                                     <td><?php  echo $row['firstName']?></td>
                                     <td><?php  echo $row['lastName']?></td>
                                     <td><?php  echo $row['email']?></td>

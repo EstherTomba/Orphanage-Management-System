@@ -4,6 +4,14 @@
     if (!isset($_SESSION['isAdmin'])) {
         header('location: ../login.php');
     }
+    $activityIsTrue = true;
+    $searchIsTrue   = false;
+    $search   = '';
+    if(isset($_GET['q'])) {
+        $activityIsTrue = false;
+        $searchIsTrue   = true;
+        $search = mysqli_real_escape_string($con, $_GET['q']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,8 +33,8 @@
             ?>
             </div>
             <div class="info">
-                <form action="" class="search"> 
-                    <input type="text" placeholder="Search">
+                <form method="GET" class="search"> 
+                    <input type="text" placeholder="Search" name="q" value="<?php echo $search ?>">
                     <input type="submit">
                 </form>
                 <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
@@ -37,8 +45,14 @@
                     include('../success.php');
                 ?>
                 
-            <?php 
-              $activityQuery= "SELECT * FROM activity ORDER BY  createdAt DESC";
+            <?php
+                if($activityIsTrue) {
+                    $activityIsTrue = true;
+                    $searchIsTrue   = false;
+                    $activityQuery= "SELECT * FROM activity ORDER BY  createdAt DESC";
+                } elseif($searchIsTrue) {
+                    $activityQuery= "SELECT * FROM activity WHERE name LIKE '%$search%' OR activityDate LIKE '%$search%'"; 
+                }
               $acitivityResult= mysqli_query($con, $activityQuery);
               while($row = mysqli_fetch_assoc($acitivityResult)) {
                   $activityCategoryId = $row['activityCategoryId'];

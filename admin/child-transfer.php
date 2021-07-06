@@ -59,22 +59,21 @@
                         if($transferIsTrue) {
                             $transferIsTrue = true;
                             $searchIsTrue   = false;
-                            $childTransferQuery ="SELECT * FROM orphantransfer ORDER BY createdAt DESC";
+                            $childTransferQuery= "SELECT a.orphanId, a.orphanTransferId, a.orphanageName, a.orphanageEmail, a.orphanageWebsite,
+                            a.orphanagePhoneNumber1, b.firstName, b.lastName, b.userEmail, b.phoneNumber, b.gender, a.createdAt
+                            FROM orphantransfer AS a INNER JOIN user AS b ON a.orphanId = b.userId";
                         } elseif($searchIsTrue) {
-                            // $childTransferQuery= "SELECT * FROM orphantransfer WHERE applicantFirstName LIKE '%$search%' OR applicantLastName LIKE '%$search%' OR applicantEmail LIKE '%$search%' OR applicantID LIKE '%$search%' OR applicantPhoneNumber LIKE '%$search%' ORDER BY  createdAt DESC"; 
+                            $childTransferQuery= "SELECT a.orphanId, a.orphanTransferId, a.orphanageName, a.orphanageEmail, a.orphanageWebsite,
+                            a.orphanagePhoneNumber1, b.firstName, b.lastName, b.userEmail, b.phoneNumber, b.gender, a.createdAt
+                            FROM orphantransfer AS a INNER JOIN user AS b ON a.orphanId = b.userId 
+                            WHERE orphanageName LIKE '%$search%' OR orphanageEmail LIKE '%$search%' OR orphanageWebsite LIKE '%$search%' OR firstName LIKE '%$search%' OR userEmail LIKE '%$search%' OR phoneNumber LIKE '%$search%'"; 
                         }
                         $childTransferResult = mysqli_query($con, $childTransferQuery);
                         while($row = mysqli_fetch_assoc($childTransferResult)) {
-                            $orphanId = $row['orphanId'];
-                            $userQuery ="SELECT * FROM user WHERE userId='$orphanId' ORDER BY createdAt DESC";
-                            $userResult = mysqli_query($con, $userQuery);
-                            if($userResult) {
-                                $userData = $userResult->fetch_assoc();
-                            }
                             ?>
                                 <tr>
-                                    <td><a href="child-transfer-details.php?id=<?php echo $row['orphanTransferId'] ?>"><?php echo $userData['firstName'] ?></a></td>
-                                    <td><a href="child-transfer-details.php?id=<?php echo $row['orphanTransferId'] ?>"><?php echo $userData['lastName'] ?></a></td>
+                                    <td><a href="child-transfer-details.php?id=<?php echo $row['orphanTransferId'] ?>"><?php echo $row['firstName'] ?></a></td>
+                                    <td><a href="child-transfer-details.php?id=<?php echo $row['orphanTransferId'] ?>"><?php echo $row['lastName'] ?></a></td>
                                     <td><?php echo $row['orphanageName'] ?></td>
                                     <td><?php echo $row['orphanageEmail'] ?></td>
                                     <td><?php echo $row['orphanagePhoneNumber1'] ?></td>

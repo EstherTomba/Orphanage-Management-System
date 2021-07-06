@@ -4,11 +4,11 @@
     if (!isset($_SESSION['isAdmin'])) {
         header('location: ../login.php');
     }
-    $transferIsTrue = true;
+    $blockIsTrue = true;
     $searchIsTrue   = false;
     $search   = '';
     if(isset($_GET['q'])) {
-        $transferIsTrue = false;
+        $blockIsTrue = false;
         $searchIsTrue   = true;
         $search = mysqli_real_escape_string($con, $_GET['q']);
     }
@@ -47,8 +47,8 @@
                     include('../success.php');
                 ?>
                 <?php
-                    if($transferIsTrue) {
-                        $transferIsTrue = true;
+                    if($blockIsTrue) {
+                        $blockIsTrue = true;
                         $searchIsTrue   = false;
                         $query="SELECT * FROM block ORDER BY createdAt DESC";
                     } elseif($searchIsTrue) {

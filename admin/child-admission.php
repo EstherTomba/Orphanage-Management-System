@@ -144,7 +144,7 @@
                         } elseif($dayIsTrue) {
                             $admissionQuery= "SELECT * FROM childadmission WHERE YEAR(createdAt) = '$theYear' AND MONTH(createdAt) = '$theMonth' AND DAY(createdAt) = '$theDay' ORDER BY  createdAt DESC"; 
                         } elseif($searchIsTrue) {
-                             $admissionQuery= "SELECT * FROM childadmission WHERE applicantFirstName LIKE '%$search%' OR applicantLastName LIKE '%$search%' OR applicantEmail LIKE '%$search%' OR applicantID LIKE '%$search%' OR applicantPhoneNumber LIKE '%$search%' ORDER BY  createdAt DESC"; 
+                            $admissionQuery= "SELECT * FROM childadmission WHERE applicantFirstName LIKE '%$search%' OR applicantLastName LIKE '%$search%' OR applicantEmail LIKE '%$search%' OR applicantID LIKE '%$search%' OR applicantPhoneNumber LIKE '%$search%' ORDER BY  createdAt DESC"; 
                         }
                         $admissionResult = mysqli_query($con, $admissionQuery);
                         while($row = mysqli_fetch_assoc($admissionResult)) {
