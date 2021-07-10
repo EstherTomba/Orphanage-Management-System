@@ -21,8 +21,11 @@
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">
             <a href="activity-category.php">Activity Category /</a>Add
+            <?php 
+                include("profileLogout.php")
+            ?>
             </div>
-            <div class="info">
+            <div class="info" style="width: 60%; margin-left:20%; margin-right:20%;">
                 <form name="activityCategoryAddForm" method="POST" onsubmit="return activityCategoryAddValidation()"  enctype="multipart/form-data">
                 <?php 
                     include('../error.php');

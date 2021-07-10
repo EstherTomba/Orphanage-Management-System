@@ -11,7 +11,7 @@
 <body>
     <div class="box-area">
     <?php include('header.php'); ?>
-        <div class="banner">
+        <div class="banner"  style="margin-bottom: 10px;">
             <h2>First Event</h2>
         </div>
         <div class="content-area">

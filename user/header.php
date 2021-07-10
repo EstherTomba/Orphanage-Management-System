@@ -19,7 +19,6 @@
             }
         ?>
         <li><a href="help.php">Help</a></li>
-        <li><a href="profile.php"></i>Profile</a></li>
-        <li><a href="../logout.php" style="color: red;">Logout</a></li>
     </ul>
 </div>
+

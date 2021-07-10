@@ -20,7 +20,9 @@
     <?php include("header.php")?>
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">Help
-               
+                <?php 
+                    include("profileLogout.php")
+                ?>
             </div>
             <div class="info" style="overflow: auto;">
                 <?php 

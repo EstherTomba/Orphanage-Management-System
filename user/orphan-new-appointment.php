@@ -1,9 +1,5 @@
 <?php 
     require_once('../config/user.php'); 
-    // require_once('../config/user.php');    
-    // if (!isset($_SESSION['isStaff'])) {
-    //     header('location: ../login.php');
-    // }
 ?>
 
 
@@ -21,7 +17,9 @@
     <?php include("header.php")?>
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">New  Appointment
-               
+                <?php 
+                    include("profileLogout.php")
+                ?>
             </div>
             <div class="info">
                 <form name="newAppointmentForm" method="POST" onsubmit="return newAppointmentValidation()">

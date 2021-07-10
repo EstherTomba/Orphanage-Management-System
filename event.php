@@ -14,7 +14,7 @@
 <body>
     <div class="box-area">
     <?php include('header.php'); ?>
-        <div class="banner">
+        <div class="banner"  style="margin-bottom: 10px;">
             <h2> Events</h2>
         </div>
         <div class="content-area">
@@ -31,12 +31,17 @@
                                 </a>
                             </div>
                             <div style="position: absolute;margin-top:-190px;margin-left:410px; margin-right: 175px">
-                                <a href="event-details.php?id=<?php echo $row['eventId'] ?>">
+                                <a style=" text-decoration: none;" href="event-details.php?id=<?php echo $row['eventId'] ?>">
                                     <h1 style="color:#4b4276; text-align: left;"><?php echo $row['name']?></h1>
                                 </a> 
-                                <div style="font-size: 12px; text-align: left;"><?php echo date('M d Y',strtotime($row['createdAt'])) ?></div> 
+                                <div style="float:left;">Event Date: 
+                                    <span style="font-size: 15px; background-color: green; color:white; margin-top: 10px; padding:2px;">
+                                        <?php echo date('M d Y H:i',strtotime($row['eventDate'])) ?>
+                                    </span>
+                                </div><br>
+                                <div style="font-size: 12px; float:left;">Published: <?php echo date('M d Y',strtotime($row['createdAt'])) ?></div><br> 
                                 <div style="text-align: left;">Address: <?php echo $row['address']?></div> 
-                                <p style="margin-top: 20px;text-align: left;">
+                                <p style="margin-top: -7px;text-align: left;">
                                 <?php echo substr($row['description'], 0, 300) ?>
                             </div>
                         </div>

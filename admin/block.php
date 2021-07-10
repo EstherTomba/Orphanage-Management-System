@@ -28,7 +28,6 @@
     <?php include("header.php")?>
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">Block
-            
             <?php 
             include("profileLogout.php")
             ?>

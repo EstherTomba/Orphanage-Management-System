@@ -2,9 +2,6 @@
 <?php 
     require_once('../config/db.php'); 
     require_once('../config/user.php');    
-    // if (!isset($_SESSION['isStaff'])) {
-    //     header('location: ../login.php');
-    // }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +18,11 @@
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">
             <a href="activity.php">Activity /</a>Details
+                <?php 
+                    include("profileLogout.php")
+                ?>
             </div>
-            <div class="info">
+            <div class="info" style="width: 60%; margin-left:20%; margin-right:20%;">
                 <?php 
                     include('../error.php');
                     include('../success.php');

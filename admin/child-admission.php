@@ -80,11 +80,9 @@
     <?php include("header.php")?>
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">
-           
             Child Admission
-            
             <?php 
-            include("profileLogout.php")
+                include("profileLogout.php")
             ?>
             </div>
             <div class="info">

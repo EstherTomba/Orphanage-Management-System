@@ -24,9 +24,12 @@
     <div class="wrapper">
     <?php include("header.php")?>
         <div class="main_content">
-            <div class="header" style="color: red; font-size: 20px;">Profile</div>
-            <div class="info">
-                <!-- <img src="images/im1.jpg " style="width:100px; height: 100px; border-radius: 50px; margin-left: 45%;" alt=""> -->
+            <div class="header" style="color: red; font-size: 20px;">Profile
+                <?php 
+                    include("profileLogout.php")
+                ?>
+            </div>
+            <div class="info" style="width: 60%; margin-left:20%; margin-right:20%;">
                 <form name="profileForm" method="POST" onsubmit="return profileValidation()">
                     <?php 
                         include('../error.php');

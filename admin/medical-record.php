@@ -30,7 +30,7 @@
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">Medical Record 
                 <?php 
-                include("profileLogout.php")
+                    include("profileLogout.php")
                 ?>
             </div>
             <div class="info">

@@ -27,11 +27,11 @@
     <div class="wrapper">
     <?php include("header.php")?>
         <div class="main_content">
-            <div class="header" style="color: red; font-size: 20px;">Activity Category
-            <?php 
-            include("profileLogout.php")
-            ?>
-                
+            <div class="header" style="color: red; font-size: 20px;">
+                Activity Category
+                <?php 
+                    include("profileLogout.php")
+                ?> 
             </div>
             
             <div class="info">

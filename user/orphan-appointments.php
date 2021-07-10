@@ -1,9 +1,13 @@
 <?php 
     require_once('../config/db.php'); 
-    // require_once('../config/user.php');    
-    // if (!isset($_SESSION['isStaff'])) {
-    //     header('location: ../login.php');
-    // }
+    $appointIsTrue = true;
+    $searchIsTrue   = false;
+    $search   = '';
+    if(isset($_GET['q'])) {
+        $appointIsTrue = false;
+        $searchIsTrue   = true;
+        $search = mysqli_real_escape_string($con, $_GET['q']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,11 +23,18 @@
     <?php include("header.php")?>
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">Counsellor Appointment
+                <?php 
+                    include("profileLogout.php")
+                ?>
                 <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
                     <a href="orphan-new-appointment.php" style="color: white;">New Appointment</a>  
                   </button> 
             </div>
             <div class="info">
+                <form method="GET" class="search"> 
+                    <input type="text" placeholder="Search" name="q" value="">
+                    <input type="submit">
+                </form><br><br>
                 <table>
                     <tr>
                         <th>Counsellor First Name</th> 
@@ -35,7 +46,13 @@
                     </tr>
                     <?php
                         $orphanId = $_SESSION['userId'];
-                        $appointmentQuery = "SELECT * FROM counsellorappointment WHERE orphanId='$orphanId' ORDER BY createdAt DESC";
+                        if($appointIsTrue) {
+                            $appointIsTrue = true;
+                            $searchIsTrue   = false;
+                            $appointmentQuery = "SELECT * FROM counsellorappointment WHERE orphanId='$orphanId' ORDER BY createdAt DESC";
+                        } elseif($searchIsTrue) {
+                            $appointmentQuery = "SELECT * FROM counsellorappointment WHERE orphanId='$orphanId' ORDER BY createdAt DESC";
+                        }
                         $appointmentResult = mysqli_query($con,$appointmentQuery);
                         while($row = mysqli_fetch_assoc($appointmentResult)) {
                             // GET COUNSELLOR DATA

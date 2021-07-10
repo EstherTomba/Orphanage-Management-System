@@ -117,6 +117,20 @@ table {
     background-color: #45a049;
   }
   
+
+    /* SEARCH CSS */
+.search {
+    position: absolute;
+    margin-top: -20px;
+}
+.search input[type='text']
+{
+    width:300px;
+}
+.search input[type='submit']
+{
+    width:100px;
+}
   
   
   

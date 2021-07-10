@@ -34,11 +34,14 @@
     <?php include("header.php")?>
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">
-                <a href="activity.php">Activity /</a>Details
-            
+                <a href="activity.php">
+                    Activity /</a>Details
+                    <?php 
+                        include("profileLogout.php")
+                    ?>     
             </div>
             
-            <div class="info">
+            <div class="info" style="width: 60%; margin-left:20%; margin-right:20%;">
                 <div>
                     <img src="../uploads/<?php echo $activityCategoryData['image'] ?>" width="100%" height="400px" alt="">
                 </div>

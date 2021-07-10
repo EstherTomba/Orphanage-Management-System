@@ -39,6 +39,9 @@
                 </form>
                 <button style="background-color:green; padding: 10px;float: right;margin-top: -10px;" >
                     <a href="donation-type-add.php" style="color: white;">Add Donation Type</a>  
+                    <?php 
+                        include("profileLogout.php")
+                    ?>
                 </button> <br><br>
             <?php 
                     include('../error.php');

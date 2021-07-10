@@ -22,8 +22,11 @@
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">
             <a href="counsellor.php">Counsellors </a>/Add
+            <?php 
+                include("profileLogout.php")
+            ?>
             </div>
-            <div class="info">
+            <div class="info" style="width: 60%; margin-left:20%; margin-right:20%;">
 
                 <form name="counsellorAddForm" method="POST" onsubmit="return counsellorAddValidation()">
                 <?php 

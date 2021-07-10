@@ -5,11 +5,11 @@
         <li style="margin-top:10px"><a href="../logout.php" style="color: red">Logout</a></li>
     </div>
 </button>
-<script src="js/header.js"></script>
-
 
 <style>
     #ProfileLogoutList {
         display: none;
     }
 </style>
+
+<script src="js/header.js"></script>

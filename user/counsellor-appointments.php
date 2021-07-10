@@ -1,9 +1,13 @@
 <?php 
     require_once('../config/db.php'); 
-    // require_once('../config/user.php');    
-    // if (!isset($_SESSION['isStaff'])) {
-    //     header('location: ../login.php');
-    // }
+    $appointIsTrue = true;
+    $searchIsTrue   = false;
+    $search   = '';
+    if(isset($_GET['q'])) {
+        $appointIsTrue = false;
+        $searchIsTrue   = true;
+        $search = mysqli_real_escape_string($con, $_GET['q']);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -20,9 +24,15 @@
     <?php include("header.php")?>
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">Counsellor Appointment
-                
+                <?php 
+                    include("profileLogout.php")
+                ?>
             </div>
             <div class="info">
+                <form method="GET" class="search"> 
+                    <input type="text" placeholder="Search" name="q" value="">
+                    <input type="submit">
+                </form><br><br>
                 <table>
                     <tr>
                         <th>Orphan First Name</th> 
@@ -34,7 +44,13 @@
                     </tr>
                     <?php
                         $userId = $_SESSION['userId'];
-                        $counsellorQuery= "SELECT * FROM counsellor WHERE staffId ='$userId'";
+                        if($appointIsTrue) {
+                            $appointIsTrue = true;
+                            $searchIsTrue   = false;
+                            $counsellorQuery= "SELECT * FROM counsellor WHERE staffId ='$userId'";
+                        } elseif($searchIsTrue) {
+                            $counsellorQuery= "SELECT * FROM counsellor WHERE staffId ='$userId'";
+                        }
                         $counsellorResult= mysqli_query($con, $counsellorQuery);
                         if(mysqli_num_rows($counsellorResult) > 0) {
                             $counsellorData= $counsellorResult->fetch_assoc();

@@ -27,8 +27,11 @@
     <?php include("header.php")?>
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px; background-color: darkblue;">Profile
+                <?php 
+                    include("profileLogout.php")
+                ?>
             </div>
-            <div class="info">
+            <div class="info" style="width: 60%; margin-left:20%; margin-right:20%;">
              <form name="profileForm" method="POST" onsubmit="return profileValidation()">
                 <?php 
                     include('../error.php');

@@ -28,8 +28,11 @@
     <?php include("header.php")?>
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">Change Password
+            <?php 
+                include("profileLogout.php")
+            ?>
             </div>
-            <div class="info">
+            <div class="info" style="width: 60%; margin-left:20%; margin-right:20%;">
             <form name="changePasswordForm" method="POST" onsubmit="return changePasswordValidation()">
                 <?php 
                         include('../error.php');

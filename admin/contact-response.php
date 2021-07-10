@@ -28,7 +28,10 @@
     <?php include("header.php")?>
         <div class="main_content">
         <div class="header" style="color: red; font-size: 20px;">
-                <a href="contact.php">Contact </a>/Response
+            <a href="contact.php">Contact </a>/Response
+            <?php 
+                include("profileLogout.php")
+            ?>
             </div>
             <div class="info">
                 <?php 

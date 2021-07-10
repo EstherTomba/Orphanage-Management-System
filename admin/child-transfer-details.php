@@ -29,8 +29,11 @@
         <div class="main_content">
             <div class="header" style="color: red; font-size: 20px;">
                 <a href="child-transfer.php">Orphan Transfer </a>/Details
+                <?php 
+                    include("profileLogout.php")
+                ?>
             </div>
-            <div class="info">
+            <div class="info" style="width: 60%; margin-left:20%; margin-right:20%;">
              
                 <form  name="childTransferForm" method="POST" onsubmit="return childTransferValidation()">
                     <?php 

@@ -22,6 +22,9 @@
         <div class="main_content">
         <div class="header" style="color: red; font-size: 20px;">
             <a href="help.php">Help /</a>Response
+            <?php 
+                include("profileLogout.php")
+            ?>
         </div>
             <div class="info" style="overflow: auto;>
                 <?php 

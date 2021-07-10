@@ -1,7 +1,9 @@
 <header>
     <div class="wrapper"></div>
     <div class="logo">
-        <a href="index.php">COMS</a>
+        <a href="index.php">
+            <img src="images/logo1.jpeg" width="80px" style="margin-top: -10px" alt="">
+        </a>
 
     </div>
     <nav>
