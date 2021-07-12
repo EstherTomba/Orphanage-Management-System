@@ -24,8 +24,8 @@
                     <h1>Fisrt Event</h1>
                     <div style="font-size: 13px;">Date:31/12/2020</div>
                     <div>Address: Saint Mary Center</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, nulla corrupti perferendis aliquam aperiam, error recusandae consequatur, assumenda placeat voluptates consectetur quisquam dolor modi nobis quasi possimus earum alias eveniet.</p>
-                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis velit aperiam quo natus a recusandae animi ab ea eveniet cupiditate vero qui nobis, corrupti eos incidunt ullam ducimus officiis impedit.</p>
+                    <p>There are many ways to raise money and have fun doing it! Why not team up with friends, family, or colleagues to help raise money for Love Orphanage? Even a small scale effort can lead to big results!</p>
+                     <p>There are many ways to raise money and have fun doing it! Why not team up with friends, family, or colleagues to help raise money for Love Orphanage? Even a small scale effort can lead to big results!</p>
                  </div>
                 
             </div>

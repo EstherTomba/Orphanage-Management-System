@@ -59,6 +59,9 @@
                             $appointmentIsTrue = true;
                             $searchIsTrue   = false;
                             $appointmentQuery= "SELECT * FROM counsellorappointment ORDER BY createdAt Desc";
+                            // $appointmentQuery = "SELECT a.orphanId, a.counsellorId, a.date, a.time, a.counsellorAppointmentId,
+                            // b.firstName, b.lastName, c.firstName, c.lastName, a.createdAt
+                            // FROM counsellorappointment AS a INNER JOIN user AS b ON a.orphanId = b.userId INNER JOIN user AS c ON a.counsellorId = c.userId";
                         } elseif($searchIsTrue) {
                             $appointmentQuery= "SELECT * FROM counsellorappointment ORDER BY createdAt Desc";
                         }
