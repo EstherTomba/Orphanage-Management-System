@@ -35,6 +35,7 @@
                         include('../error.php');
                     ?>
                     <div>
+                    <label for="applicantEmail" style="float: left;">Orphan</label>
                         <select name="orphanId" id="orphanid">
                             <option value="">Select an Orphan</option>
                             <?php
@@ -51,22 +52,28 @@
                     </div>
 
                     <div>
-                        <input type="text" name="orphanageName" id="orphanageName" placeholder="Orphanage Name">
+                    <label for="orphanageName" style="float: left;">Orphanage Name</label>
+                        <input type="text" name="orphanageName" id="orphanageName">
                     </div>
                     <div>
-                        <input type="email" name="orphanageEmail" id="orphanageEmail" placeholder="Orphanage Email">
+                    <label for="email" style="float: left;">Orphanage Email</label>
+                        <input type="email" name="orphanageEmail" id="orphanageEmail">
                     </div>
                     <div>
-                        <input type="text" name="orphanagePhoneNumber1" id="orphanagePhoneNumber1" placeholder="Orphanage Phone Number 1">
+                    <label for="orphanagePhoneNumber1" style="float: left;">Orphanage Phone Number 1</label>
+                        <input type="text" name="orphanagePhoneNumber1" id="orphanagePhoneNumber1">
                     </div>
                     <div>
-                        <input type="text" name="orphanagePhoneNumber2" id="orphanagePhoneNumber2"   placeholder="Orphanage Phone Number 2">
+                    <label for="orphanagePhoneNumber2" style="float: left;">Orphanage Phone Number 2</label>
+                        <input type="text" name="orphanagePhoneNumber2" id="orphanagePhoneNumber2">
                     </div>
                     <div>
-                        <input type="text" name="orphanageWebsite" id="orphanageWebsite"  placeholder="Orphanage Website">
+                    <label for="orphanageWebsite" style="float: left;">Orphanage Website</label>
+                        <input type="text" name="orphanageWebsite" id="orphanageWebsite">
                     </div>
                     <div>
-                        <input type="text" name="orphanageAddress" id="orphanageAddress"  placeholder="Orphanage Address">
+                    <label for="orphanageAddress" style="float: left;">Orphanage Address</label>
+                        <input type="text" name="orphanageAddress" id="orphanageAddress">
                     </div>
                     
                     <div>

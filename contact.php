@@ -27,22 +27,28 @@
                 include('error.php');
                 ?>
                 <div>
-                    <input type="text" name="firstName" id="firstName"  placeholder="First Name">
+                    <label for="firstName" style="float: left; margin-top: 20px;">First Name</label>
+                    <input type="text" name="firstName" id="firstName">
                 </div>
                 <div>
-                    <input type="text" name="lastName" id="lastName" placeholder="Last Name">
+                    <label for="lastName" style="float: left;">Last Name</label>
+                    <input type="text" name="lastName" id="lastName">
                 </div>
                 <div>
-                    <input type="email" name="email" id="email" placeholder="Email ">
+                    <label for="email" style="float: left;">Email</label>
+                    <input type="email" name="email" id="email">
                 </div>
                 <div>
-                    <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">
+                    <label for="phoneNumber" style="float: left;">Phone Number</label>
+                    <input type="text" name="phoneNumber" id="phoneNumber">
                 </div>
                 <div>
-                    <input type="text" name="subject" id="subject" placeholder="Subject">
+                    <label for="subject" style="float: left;">Subject</label>
+                    <input type="text" name="subject" id="subject">
                 </div>
                 <div>
-                    <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                    <label for="message" style="float: left;">Message</label>
+                    <textarea name="message" id="message" cols="30" rows="10"></textarea>
                 </div>
                 <div>
                     <input type="submit" name="contact" value="Send">

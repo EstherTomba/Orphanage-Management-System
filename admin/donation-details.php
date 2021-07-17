@@ -38,29 +38,36 @@
                     include('../error.php');
                 ?>
                <div>
-                <input type="text" name="firstName" id="firstName" placeholder="First Name" value="<?php echo $donationData['firstName'] ?>">
+               <label for="firstName" style="float: left;">First Name</label>
+                <input type="text" name="firstName" id="firstName" value="<?php echo $donationData['firstName'] ?>">
                </div>
                <div>
-                <input type="text" name="lastName" id="lastName"  placeholder="Last Name" value="<?php echo $donationData['lastName'] ?>" >  
+               <label for="lastName" style="float: left;">Last Name</label>
+                <input type="text" name="lastName" id="lastName" value="<?php echo $donationData['lastName'] ?>" >  
                </div>
                <div>
-                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" value="<?php echo $donationData['phoneNumber'] ?>">  
+               <label for="phoneNumber" style="float: left;">Phone Number</label>
+                <input type="text" name="phoneNumber" id="phoneNumber" value="<?php echo $donationData['phoneNumber'] ?>">  
                </div>
                <div>
-                <input type="text" name="email" id="email" placeholder="Email" value="<?php echo $donationData['email'] ?>">  
+               <label for="email" style="float: left;">Email</label>
+                <input type="text" name="email" id="email" value="<?php echo $donationData['email'] ?>">  
                </div>
                <div>
-                <input type="text" name="address" id="address"  placeholder="Address" value="<?php echo $donationData['address'] ?>">  
+               <label for="address" style="float: left;">Address</label>
+                <input type="text" name="address" id="address" value="<?php echo $donationData['address'] ?>">  
                </div>
                <div>
-                <input type="number" name="amount" id="amount" placeholder="Amount" value="<?php echo $donationData['amount'] ?>">  
+               <label for="amount" style="float: left;">Amount</label>
+                <input type="number" name="amount" id="amount" value="<?php echo $donationData['amount'] ?>">  
                </div>
 
                <div>
-                <input type="hidden" name="donationId" id="donationId" placeholder="donationId" value="<?php echo $donationData['donationId'] ?>">  
+                <input type="hidden" name="donationId" id="donationId" value="<?php echo $donationData['donationId'] ?>">  
                </div>
               
                <div>
+               <label for="donationTypeId" style="float: left;"> Donation Type</label>
                    <select name="donationTypeId" id="donationTypeId">
                        <option value="">Select Donation Type</option>
                         <?php 
@@ -75,7 +82,8 @@
                     </select>   
                </div>
                <div>
-                <textarea cols="30" rows="10" name="description" id="description"  placeholder="Description">
+               <label for="description" style="float: left;">Description</label>
+                <textarea cols="30" rows="10" name="description" id="description">
                 <?php echo $donationData['description'] ?>
                 </textarea>
             </div>
@@ -85,6 +93,7 @@
            </form>
            <form action="" method="POST">
                     <div>
+                    <label for="workTime" style="float: left;">Working Time</label>
                         <input type="hidden" name="donationId" value="<?php echo $donationData['donationId'] ?>" value="Update">
                     </div>
                     <div>

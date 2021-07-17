@@ -40,6 +40,7 @@
                         include('../error.php');
                     ?>
                     <div>
+                    <label for="orphanId" style="float: left;">Orphan</label>
                         <select name="orphanId" id="orphanid">
                             <option value="">Select an Orphan</option>
                             <?php
@@ -55,22 +56,28 @@
                     </div>
 
                     <div>
-                        <input type="text" name="orphanageName" id="orphanageName" placeholder="Orphanage Name" value="<?php echo $orphanData['orphanageName'] ?>">
+                    <label for="orphanageName" style="float: left;">Orphanage Name</label>
+                        <input type="text" name="orphanageName" id="orphanageName" value="<?php echo $orphanData['orphanageName'] ?>">
                     </div>
                     <div>
-                        <input type="email" name="orphanageEmail" id="orphanageEmail" placeholder="Orphanage Email" value="<?php echo $orphanData['orphanageEmail'] ?>">
+                    <label for="orphanageEmail" style="float: left;">Orphanage Email</label>
+                        <input type="email" name="orphanageEmail" id="orphanageEmail" value="<?php echo $orphanData['orphanageEmail'] ?>">
                     </div>
                     <div>
-                        <input type="text" name="orphanagePhoneNumber1" id="orphanagePhoneNumber1" placeholder="Orphanage Phone Number 1" value="<?php echo $orphanData['orphanagePhoneNumber1'] ?>">
+                    <label for="orphanagePhoneNumber1" style="float: left;">Orphanage Phone Number 1</label>
+                        <input type="text" name="orphanagePhoneNumber1" id="orphanagePhoneNumber1" value="<?php echo $orphanData['orphanagePhoneNumber1'] ?>">
                     </div>
                     <div>
-                        <input type="text" name="orphanagePhoneNumber2" id="orphanagePhoneNumber2"   placeholder="Orphanage Phone Number 2" value="<?php echo $orphanData['orphanagePhoneNumber2'] ?>">
+                    <label for="orphanagePhoneNumber2" style="float: left;">orphanagePhoneNumber 2</label>
+                        <input type="text" name="orphanagePhoneNumber2" id="orphanagePhoneNumber2"value="<?php echo $orphanData['orphanagePhoneNumber2'] ?>">
                     </div>
                     <div>
-                        <input type="text" name="orphanageWebsite" id="orphanageWebsite"  placeholder="Orphanage Website" value="<?php echo $orphanData['orphanageWebsite'] ?>">
+                    <label for="orphanageWebsite" style="float: left;">Orphanage Website</label>
+                        <input type="text" name="orphanageWebsite" id="orphanageWebsite" value="<?php echo $orphanData['orphanageWebsite'] ?>">
                     </div>
                     <div>
-                        <input type="text" name="orphanageAddress" id="orphanageAddress"  placeholder="Orphanage Address" value="<?php echo $orphanData['orphanageAddress'] ?>">
+                    <label for="orphanageAddress" style="float: left;">Orphanage Address</label>
+                        <input type="text" name="orphanageAddress" id="orphanageAddress"  value="<?php echo $orphanData['orphanageAddress'] ?>">
                     </div>
                     <div>
                         <input type="hidden" name="orphanTransferId" id="orphanTransferId" value="<?php echo $orphanData['orphanTransferId'] ?>">

@@ -31,16 +31,20 @@
                     include('../error.php');
                     ?>
                     <div>
-                        <input type="text" name="name" id="name" placeholder="Name">
+                        <label for="name" style="float: left;">Name</label>
+                        <input type="text" name="name" id="name">
                     </div>
                     <div>
+                        <label for="image" style="float: left;">Image</label>
                         <input type="file" name="image" id="image">
                     </div>
                     <div>
-                        <input type="text" name="totalRoomNumber" placeholder="Total Room Number"> 
+                    <label for="totalRoomNumber" style="float: left;">Total Room Number</label>
+                        <input type="text" name="totalRoomNumber"> 
                     </div>
                     <div>
-                        <input type="text" name="ageBetween" id="ageBetween" placeholder="Age Between"> 
+                    <label for="ageBetween" style="float: left;">Age Between</label>
+                        <input type="text" name="ageBetween" id="ageBetween"> 
                     </div>
                     <div>
                         <input type="submit" name="blockAdd" value="Save">

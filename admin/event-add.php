@@ -32,22 +32,28 @@
                         include('../error.php');
                     ?>
                     <div>
-                        <input type="text" name="name" id="name" placeholder="Name">
+                    <label for="name" style="float: left;">Name</label>
+                        <input type="text" name="name" id="name">
                     </div>
                     <div>
+                    <label for="image" style="float: left;">Image</label>
                         <input type="file" name="image" id="image">
                     </div>
                     <div>
-                        <input type="text" name="address" name="address" placeholder="Addres">
+                    <label for="address" style="float: left;">Address</label>
+                        <input type="text" name="address" name="address">
                     </div>
                     <div>
+                    <label for="date" style="float: left;">Date</label>
                         <input type="date" name="date" id="date">
                     </div>
                     <div>
+                    <label for="time" style="float: left;">Time</label>
                         <input type="time" name="time" id="time">
                     </div>
                     <div>
-                        <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+                    <label for="description" style="float: left;">Description</label>
+                        <textarea name="description" id="description" cols="30" rows="10"></textarea>
                     </div>
                     <div>
                         <input type="submit" name="addEvent" value="Save">

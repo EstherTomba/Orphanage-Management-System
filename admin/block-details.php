@@ -37,7 +37,8 @@
                         include('../error.php');
                     ?>
                     <div>
-                        <input type="text" name="name" id="name" placeholder="Name" value="<?php echo $blockData['blockName'] ?>">
+                    <label for="name" style="float: left;">Name</label>
+                        <input type="text" name="name" id="name" value="<?php echo $blockData['blockName'] ?>">
                     </div>
                     <div>
                         <img src="../uploads/<?php echo $blockData['image'] ?>" width="100%" height="300px" alt="">
@@ -45,10 +46,12 @@
                     </div>
                     
                     <div>
-                        <input type="text" name="totalRoomNumber" placeholder="Total Room Number" value="<?php echo $blockData['totalRoomNumber'] ?>"> 
+                    <label for="totalRoomNumber" style="float: left;">Total Room Number</label>
+                        <input type="text" name="totalRoomNumber" value="<?php echo $blockData['totalRoomNumber'] ?>"> 
                     </div>
                     <div>
-                        <input type="text" name="ageBetween" id="ageBetween" placeholder="Age Between" value="<?php echo $blockData['ageBetween'] ?>"> 
+                    <label for="ageBetween" style="float: left;">Age Betwee</label>
+                        <input type="text" name="ageBetween" id="ageBetween" value="<?php echo $blockData['ageBetween'] ?>"> 
                     </div>
                     <div>
                         <input type="hidden" name="blockId" id="blockId" value="<?php echo $blockData['blockId'] ?>"> 

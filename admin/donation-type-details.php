@@ -38,7 +38,8 @@
                     include('../error.php');
                 ?>
                  <div>
-                     <input type="text" name="name"  placeholder="Name" value="<?php echo $donationTypeData['name'] ?>">
+                 <label for="name" style="float: left;">Name</label>
+                     <input type="text" name="name" value="<?php echo $donationTypeData['name'] ?>">
                  </div>
                  <input type="hidden" name="donationTypeId" value="<?php echo $donationTypeData['donationTypeId'] ?>">
                  <div>

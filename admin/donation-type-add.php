@@ -27,17 +27,18 @@
             </div>
             <div class="info" style="width: 60%; margin-left:20%; margin-right:20%;">
                 <form name="donationTypeAddForm" method="POST" onsubmit="return donationTypeAddValidation()">
-                <?php 
-                    include('../error.php');
-                ?>
-                 <div>
-                     <input type="text" name="name" placeholder="Name">
-                 </div>
-                 <div>
-                     <input type="submit" name="donationtype" value="Save">
-                 </div>
-             </form>
-             <?php include('footer.php'); ?>
+                    <?php 
+                        include('../error.php');
+                    ?>
+                    <div>
+                    <label for="name" style="float: left;">Name</label>
+                        <input type="text" name="name">
+                    </div>
+                    <div>
+                        <input type="submit" name="donationtype" value="Save">
+                    </div>
+                </form>
+                <?php include('footer.php'); ?>
             </div>
         </div>
     </div>

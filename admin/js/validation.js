@@ -96,10 +96,11 @@ function userAddValidation() {
     var firstName = document.forms["userAddForm"]["firstName"].value;
     var lastName  = document.forms["userAddForm"]["lastName"].value;
     var gender    = document.forms["userAddForm"]["gender"].value;
-    var dob       = document.forms["userAddForm"]["dob"].value;
+    var dob       =  Date.parse(document.forms["userAddForm"]["dob"].value);
     var role      = document.forms["userAddForm"]["role"].value;
     var password  = document.forms["userAddForm"]["password"].value;
     var conformPassword = document.forms["userAddForm"]["conformPassword"].value;
+    var today = new Date();
 
     if (firstName == '') {
         alert("First Name is required");
@@ -113,10 +114,14 @@ function userAddValidation() {
         alert("Gender is required");
         document.userAddForm.gender.focus();
         return false;
-    } else if (dob == '') {
-        alert("Date of birth is required");
-        document.userAddForm.dob.focus();
-        return false; 
+    } else if(!dob) {
+        alert("Date of Birth  is required");
+        document.admissionForm.dob.focus();
+        return false;
+    } else if(dob > today) {
+        alert("Date of Birth should not be greater than the current date");
+        document.admissionForm.dob.focus();
+        return false;
     }  else if (role == '') {
         alert("Role is required");
         document.userAddForm.role.focus();
@@ -359,10 +364,11 @@ function profileValidation() {
     var address = document.forms["profileForm"]["address"].value;
     var email = document.forms["profileForm"]["email"].value;
     var phoneNumber = document.forms["profileForm"]["phoneNumber"].value;
-    var dob = document.forms["profileForm"]["dob"].value;
+    var dob = Date.parse(document.forms["profileForm"]["dob"].value);
     var gender = document.forms["profileForm"]["gender"].value;
     var roomId = document.forms["profileForm"]["roomId"].value;
     var isAdmin = document.forms["profileForm"]["isAdmin"].value;
+    var today = new Date();
 
     if(firstName == '') {
         alert("First Name is required");
@@ -384,10 +390,14 @@ function profileValidation() {
         alert("Phone Number is required");
         document.profileForm.phoneNumber.focus();
         return false; 
-    }  else if(dob == '') {
-        alert("Date of Birth is required");
-        document.profileForm.dob.focus();
-        return false; 
+    } else if(!dob) {
+        alert("Date of Birth  is required");
+        document.admissionForm.dob.focus();
+        return false;
+    } else if(dob > today) {
+        alert("Date of Birth should not be greater than the current date");
+        document.admissionForm.dob.focus();
+        return false;
     }  else if(gender == '') {
         alert("Gender is required");
         document.profileForm.gender.focus();

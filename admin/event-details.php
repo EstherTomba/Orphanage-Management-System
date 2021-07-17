@@ -43,12 +43,15 @@
                     <div style="font-size: 15px; background-color: green; color:white; margin-top: 10px;">Event Date: <?php echo date('M d Y H:i',strtotime($eventData['eventDate'])) ?></div>
                     <div style="font-size: 13px;">Published: 31/12/2020</div>
                     <div>
-                        <input type="text" name="name" id="name" placeholder="Name" value="<?php echo $eventData['name'] ?>">
+                    <label for="name" style="float: left;">Name</label>
+                        <input type="text" name="name" id="name" value="<?php echo $eventData['name'] ?>">
                     </div>
                     <div>
-                        <input type="text" name="address" id="address" placeholder="Address" value="<?php echo $eventData['address'] ?>">
+                    <label for="address" style="float: left;">Address</label>
+                        <input type="text" name="address" id="address" value="<?php echo $eventData['address'] ?>">
                     </div>
                     <div>
+                    <label for="description" style="float: left;">Description</label>
                         <textarea name="description" id="description" cols="30" rows="10">
                             <?php echo $eventData['description'] ?>
                         </textarea>

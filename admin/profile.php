@@ -33,33 +33,40 @@
             </div>
             <div class="info" style="width: 60%; margin-left:20%; margin-right:20%;">
              <form name="profileForm" method="POST" onsubmit="return profileValidation()">
-                <!-- <img src="../images/images.jpg" style="width:100px; height: 100px; border-radius: 50px; margin-left: 45%;" alt=""> -->
                 <?php 
                     include('../error.php');
                     include('../success.php');
                 ?>
                  <div>
-                     <input type="text" name="firstName" id="firstName" placeholder=" First Name" value= "<?php echo $userData['firstName']?>">
+                 <label for="firstName" style="float: left;">First Name</label>
+                     <input type="text" name="firstName" id="firstName" value= "<?php echo $userData['firstName']?>">
                  </div>
                  <div>
-                    <input type="text" name="lastName" id="lastName" placeholder="Last Name" value="<?php echo $userData['lastName']?>">
+                 <label for="lastName" style="float: left;">Last Name</label>
+                    <input type="text" name="lastName" id="lastName" value="<?php echo $userData['lastName']?>">
                 </div>
                 <div>
-                    <input type="text" name="userName" id="userName" placeholder="UserName" value="<?php echo $userData['userName']?>">
+                <label for="userName" style="float: left;">UserName</label>
+                    <input type="text" name="userName" id="userName" value="<?php echo $userData['userName']?>">
                 </div>
                  <div>
-                    <input type="text" name="address" id="address" placeholder="Addres" value="<?php echo $userData['userAddress']?>">
+                 <label for="address" style="float: left;">Address</label>
+                    <input type="text" name="address" id="address" value="<?php echo $userData['userAddress']?>">
                 </div>
                 <div>
-                    <input type="text" name="email" id="email" placeholder="Email" value="<?php echo $userData['userEmail']?>">
+                <label for="email" style="float: left;">Email</label>
+                    <input type="text" name="email" id="email" value="<?php echo $userData['userEmail']?>">
                 </div>
                 <div>
-                    <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" value="<?php echo $userData['phoneNumber']?>">
+                <label for="phoneNumber" style="float: left;">Phone Number</label>
+                    <input type="text" name="phoneNumber" id="phoneNumber" value="<?php echo $userData['phoneNumber']?>">
                 </div>
                 <div>
-                    <input name="dob" id="dob" type="text" placeholder="01/02/1990" value="<?php echo $userData['dob']?>">
+                <label for="dob" style="float: left;">Date Of Birth</label>
+                    <input name="dob" id="dob" type="text" value="<?php echo $userData['dob']?>">
                 </div>
                 <div>
+                <label for="gender" style="float: left;">Gender</label>
                     <select name="gender" id="gender">
                         <option value="">Select Gender</option>
                         <option value="Male" <?php if ($userData['gender'] == 'Male') echo 'selected="selected"'; ?>>Male</option>
@@ -67,10 +74,12 @@
                     </select>
                 </div>
                 <div>
-                    <input name="bloodGroup" id="bloodGroup" type="text" placeholder="bloodGroup" value="<?php echo $userData['bloodGroup']?>">
+                <label for="bloodGroup" style="float: left;">Blood Group</label>
+                    <input name="bloodGroup" id="bloodGroup" type="text" value="<?php echo $userData['bloodGroup']?>">
                 </div>
                 
                 <div>
+                <label for="roomId" style="float: left;">Block Room</label>
                     <select name="roomId" id="roomId">
                         <option value="">Select Block Room</option>
                         <?php 
@@ -91,6 +100,7 @@
                     </select>
                 </div>
                 <div>
+                <label for="isAdmin" style="float: left;">User Role</label>
                     <select name="isAdmin" id="isAdmin">
                         <option value="">Select User Role</option>
                         <option value="Admin" <?php if ($userData['userRole'] == 'Admin') echo 'selected="selected"'; ?>>Admin</option>

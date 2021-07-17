@@ -34,6 +34,7 @@
                     include('../error.php');
                 ?>
                     <div>
+                        <label for="blockId" style="float: left;">Block</label>
                         <select name="blockId" id="blockId">
                             <option value="">Select a block</option>
                             <?php
@@ -48,7 +49,8 @@
                         </select>
                     </div>
                     <div>
-                        <input type="text" name="roomNumber" id="roomNumber"   placeholder="Room Number">
+                    <label for="roomNumber" style="float: left;">Room Number</label>
+                        <input type="text" name="roomNumber" id="roomNumber">
                     </div>
                     <div>
                         <input type="submit"  name= "addBlockRoom" value="Save">

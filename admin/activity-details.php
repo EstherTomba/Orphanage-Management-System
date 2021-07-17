@@ -52,9 +52,11 @@
                         include('../error.php');
                     ?>
                     <div>
-                    <input type="text" name="name" id="name" value="<?php echo $activityData['name'] ?>">
+                        <label for="name" style="float: left;">Name</label>
+                        <input type="text" name="name" id="name" value="<?php echo $activityData['name'] ?>">
                     </div>
                     <div>
+                    <label for="activityCategoryId" style="float: left;">Category</label>
                         <select name="activityCategoryId" id="activityCategoryId">
                             <option value="">Select Activity Category</option>
                             <?php 
@@ -76,6 +78,7 @@
                         <input type="file" name="image" id="image">
                     </div>
                     <div>
+                        <label for="" style="float: left;">Description</label>
                         <textarea name="description" id="description" cols="30" rows="10">
                             <?php echo $activityData['description'] ?>
                         </textarea>

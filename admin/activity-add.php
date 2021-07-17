@@ -31,33 +31,32 @@
                         include('../error.php');
                     ?>
                     <div>
+                        <label for="activityCategoryId" style="float: left;">Category</label>
                         <select name="activityCategoryId" id="activityCategoryId">
                             <option value="">Select Activity Category</option>
                             <?php  
-                            $activityCategoryQuery = "SELECT * FROM activityCategory ORDER BY createdAt DESC";
-                            $activityCategoryResult = mysqli_query($con,$activityCategoryQuery);
-                            while($row = mysqli_fetch_assoc($activityCategoryResult))  {
-                                ?>
-                                 <option value="<?php echo $row['activityCategoryId']?>"><?php  echo $row['name']?></option>
-                                <?php 
-
-                            }
-
-                            
+                                $activityCategoryQuery = "SELECT * FROM activityCategory ORDER BY createdAt DESC";
+                                $activityCategoryResult = mysqli_query($con,$activityCategoryQuery);
+                                while($row = mysqli_fetch_assoc($activityCategoryResult))  {
+                                    ?>
+                                    <option value="<?php echo $row['activityCategoryId']?>"><?php  echo $row['name']?></option>
+                                    <?php 
+                                }
                             ?>
-                           
-                        
                         </select>
                     </div>
                     <div>
-                        <input type="text" name="name" id="name"  placeholder="Name">
+                        <label for="name" style="float: left;">Name</label>
+                        <input type="text" name="name" id="name">
                     </div>
                     
                    <div>
-                      <input type="file" name="image" id="image"  value="">
+                        <label for="image" style="float: left;">Image</label>
+                      <input type="file" name="image" id="image">
                    </div>
                    <div>
-                       <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+                        <label for="description" style="float: left;">Description</label>
+                       <textarea name="description" id="description" cols="30" rows="10"></textarea>
                    </div>
                    <div>
                        <input type="submit" name="addActivity" value="Save">

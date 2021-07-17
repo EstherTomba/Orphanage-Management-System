@@ -31,11 +31,13 @@
                     include('../error.php');
                     ?>
                     <div>
-                        <input type="text" name="name" id="name"    placeholder="Name">
+                        <label for="description" style="float: left;">Name</label>
+                        <input type="text" name="name" id="name">
                     </div>
                     
                    <div>
-                      <input type="file" name="image" id="image" value="">
+                        <label for="description" style="float: left;">Image</label>
+                      <input type="file" image="image" id="image">
                    </div>
                    <div>
                        <input type="submit" name="addActivityCategory" value="Save">

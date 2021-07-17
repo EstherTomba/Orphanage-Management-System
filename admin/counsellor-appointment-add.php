@@ -31,6 +31,7 @@
                     include('../error.php');
                 ?>
                   <div>
+                  <label for="orphanId" style="float: left;">Orphan</label>
                     <select name="orphanId" id="orphanId">
                         <option value="">Select Orphan</option>
                         <?php 
@@ -45,6 +46,7 @@
                     </select>
                   </div>
                   <div>
+                  <label for="counsellorId" style="float: left;">Counsellor</label>
                       <select name="counsellorId" id="counsellorId">
                           <option value="">Select Counsellor</option>
                           <?php 
@@ -65,9 +67,11 @@
                       </select>
                   </div>
                   <div>
+                  <label for="date" style="float: left;">Date</label>
                     <input name="date" id="date" type="date">
                   </div>
                   <div>
+                  <label for="time" style="float: left;">Time</label>
                     <input name="time" id="time" type="time">
                   </div>
                   <div>

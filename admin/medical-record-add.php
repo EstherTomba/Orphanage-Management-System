@@ -34,6 +34,7 @@
                     include('../error.php');
                     ?>
                    <div>
+                   <label for="userId" style="float: left;">User</label>
                        <select name="userId" id="userId">
                            <option value="">Select User</option>
                            <?php 
@@ -49,10 +50,12 @@
                    </div>
                    
                   <div>
-                    <textarea name="medicalCondition" id="medicalCondition" cols="30" rows="10" placeholder="Medical Condition"></textarea>
+                  <label for="medicalCondition" style="float: left;">Medical Condition</label>
+                    <textarea name="medicalCondition" id="medicalCondition" cols="30" rows="10"></textarea>
                   </div>
                   <div>
-                    <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+                  <label for="description" style="float: left;">Description</label>
+                    <textarea name="description" id="description" cols="30" rows="10"></textarea>
                   </div>
      
                    <div>

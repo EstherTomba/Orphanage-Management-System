@@ -34,24 +34,31 @@
                     ?>
                 </div>
                     <div>
-                        <input type="text" name="firstName" id="firstName" placeholder="First Name">
+                    <label for="firstName" style="float: left;">First Name</label>
+                        <input type="text" name="firstName" id="firstName">
                     </div>
                     <div>
-                        <input type="text" name="lastName" id="lastName" placeholder="Last Name">
+                    <label for="lastName" style="float: left;">"Last Name</label>
+                        <input type="text" name="lastName" id="lastName">
                     </div>
                     <div>
-                        <input type="text" name="userName" id="userName" placeholder="User Name">
+                    <label for="userName" style="float: left;">User Name</label>
+                        <input type="text" name="userName" id="userName">
                     </div>
                     <div>
-                        <input type="text" name="email" id="email" placeholder="Email">
+                    <label for="email" style="float: left;">Email</label>
+                        <input type="text" name="email" id="email">
                     </div>
                     <div>
-                        <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">
+                    <label for="phoneNumber" style="float: left;">Phone Number</label>
+                        <input type="text" name="phoneNumber" id="phoneNumber">
                     </div>
                     <div>
-                        <input type="text" name="address" id="address" placeholder="Address">
+                    <label for="address" style="float: left;">Address</label>
+                        <input type="text" name="address" id="address">
                     </div>
                     <div>
+                    <label for="userGender" style="float: left;">Gender</label>
                         <select name="gender" id="userGender">
                             <option value="">Select a Gender</option>
                             <option value="Male">Male</option>
@@ -59,9 +66,11 @@
                         </select>
                     </div>
                     <div>
+                    <label for="dob" style="float: left;">Date Of Birth</label>
                         <input type="date" name="dob" id="dob">
                     </div>
                     <div>
+                    <label for="roomId" style="float: left;">Room</label>
                     <select name="roomId" id="roomId">
                         <option value="">Select A Room</option>
                         <?php 
@@ -75,9 +84,11 @@
                         ?>
                     </div>
                     <div>
-                        <input type="text" name="bloodGroup" id="bloodGroup" placeholder="Blood Group">
+                    <label for="bloodGroup" style="float: left;">Blood Group</label>
+                        <input type="text" name="bloodGroup" id="bloodGroup">
                     </div>
                     <div>
+                    <label for="role" style="float: left;">Role</label>
                         <select name="role" id="role">
                             <option value="">Role</option>
                             <option value="Admin">Admin</option>
@@ -87,11 +98,12 @@
                     </div>
                    
                     <div>
+                    <label for="password" style="float: left;">Password</label>
                         <input type="password" name="password" id="password" placeholder="Password">
                     </div>
                     <div>
-                        <input type="password" name="conformPassword" id="conformPassword"
-                            placeholder="Conform Password">
+                    <label for="conformPassword" style="float: left;">Conform Password</label>
+                        <input type="password" name="conformPassword" id="conformPassword" >
                     </div>
                     <div>
                         <input type="submit" name="createNewUser" value="Save">

@@ -32,22 +32,28 @@
                     include('../error.php');
                 ?>
                <div>
-                <input type="text" name="firstName" id="firstName" placeholder="First Name">
+               <label for="firstName" style="float: left;">First Name</label>
+                <input type="text" name="firstName" id="firstName">
                </div>
                <div>
-                <input type="text" name="lastName" id="lastName"  placeholder="Last Name">  
+               <label for="lastName" style="float: left;">Last Name</label>
+                <input type="text" name="lastName" id="lastName">  
                </div>
                <div>
-                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">  
+               <label for="orphanId" style="float: left;">Phone Numbe</label>
+                <input type="text" name="phoneNumber" id="phoneNumber">  
                </div>
                <div>
-                <input type="text" name="email" id="email" placeholder="Email">  
+               <label for="orphanId" style="float: left;">Email</label>
+                <input type="text" name="email" id="email">  
                </div>
                <div>
-                <input type="text" name="address" id="address"  placeholder="Address">  
+               <label for="orphanId" style="float: left;">Address</label>
+                <input type="text" name="address" id="address">  
                </div>
                <div>
-                <input type="number" name="amount" id="amount" placeholder="Amount">  
+               <label for="orphanId" style="float: left;">Amount</label>
+                <input type="number" name="amount" id="amount">  
                </div>
                <div>
                 <input type="hidden" name="acc_ref" id="acc_ref" value="Test Account">  
@@ -57,6 +63,7 @@
                </div>
               
                <div>
+               <label for="donationTypeId" style="float: left;">Donation Type</label>
                    <select name="donationTypeId" id="donationTypeId">
                        <option value="">Select Donation Type</option>
                         <?php 
@@ -71,7 +78,8 @@
                     </select>   
                </div>
                <div>
-                <textarea name="" id="" cols="30" rows="10" name="description" id="description" placeholder="Description"></textarea>
+               <label for="description" style="float: left;">Description</label>
+                <textarea name="" id="" cols="30" rows="10" name="description" id="description"></textarea>
             </div>
                <div>
                 <input type="submit" name="addDonation" value="Save">

@@ -38,13 +38,16 @@
                         include('../error.php');
                     ?>
                    <div>
-                    <input type="password" id="oldPassword" name="oldPassword" value="" placeholder="Old Password">
+                        <label for="oldPassword" style="float: left;">Old Password</label>
+                        <input type="password" id="oldPassword" name="oldPassword">
                    </div>
                    <div>
-                    <input type="password" id="newPassword" name="newPassword" value="" placeholder="New Password">
+                        <label for="newPassword" style="float: left;">New Password</label>
+                        <input type="password" id="newPassword" name="newPassword">
                    </div>
                    <div>
-                    <input type="password" id="confirmNewPassword" name="confirmNewPassword" value="" placeholder="Confirm New Password">
+                        <label for="confirmNewPassword" style="float: left;">Confirm New Password</label>
+                        <input type="password" id="confirmNewPassword" name="confirmNewPassword">
                    </div>
                           
                    <div>

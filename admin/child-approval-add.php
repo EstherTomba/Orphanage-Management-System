@@ -39,54 +39,56 @@
                         include('../error.php');
                     ?> 
                     <div>
-                        <input type="text" name="applicantFirstName" value="<?php echo $admissionData['applicantFirstName'] ?>" placeholder="Applicant First Name">
+                        <label for="applicantFirstName" style="float: left;">Applicant First Name</label>
+                        <input type="text" name="applicantFirstName" value="<?php echo $admissionData['applicantFirstName'] ?>">
                     </div>
                     
                     <div>
-                        <input type="text" name="applicantLastName" value="<?php echo $admissionData['applicantLastName'] ?>" placeholder="Applicant Last Name">
+                        <label for="applicantLastName" style="float: left;">Applicant Last Name</label>
+                        <input type="text" name="applicantLastName" value="<?php echo $admissionData['applicantLastName'] ?>">
                     </div>
                     <div>
-                        <input type="text" name="applicantEmail" value="<?php echo $admissionData['applicantEmail'] ?>" placeholder="Applicant Email">
+                        <label for="applicantEmail" style="float: left;">Applicant Email</label>
+                        <input type="text" name="applicantEmail" value="<?php echo $admissionData['applicantEmail'] ?>">
                     </div>
                     <div>
-                        <input type="text" name="applicantPhoneNumber" value="<?php echo $admissionData['applicantPhoneNumber'] ?>" placeholder="Applicant Phone Number">
+                        <label for="applicantPhoneNumber" style="float: left;">Applicant Phone Number</label>
+                        <input type="text" name="applicantPhoneNumber" value="<?php echo $admissionData['applicantPhoneNumber'] ?>">
                     </div>
                     <div>
-                        <input type="text" name="applicantAddress" value="<?php echo $admissionData['applicantAddress'] ?>" placeholder="Applicant Address">
+                    <label for="applicantAddress" style="float: left;">Applicant Address</label>
+                        <input type="text" name="applicantAddress" value="<?php echo $admissionData['applicantAddress'] ?>">
                     </div>
                     <div>
-                        <input type="text" name="applicantID" value="<?php echo $admissionData['applicantID'] ?>" placeholder="Applicant ID">
+                    <label for="applicantID" style="float: left;">Applicant ID</label>
+                        <input type="text" name="applicantID" value="<?php echo $admissionData['applicantID'] ?>">
                     </div>
                     <div>
-                        <input type="text" name="childFirstName" value="<?php echo $admissionData['childFirstName'] ?>" placeholder="Child First Name">
+                        <label for="oldPassword" style="float: left;">Child First Name</label>
+                        <input type="text" name="childFirstName" value="<?php echo $admissionData['childFirstName'] ?>">
                     </div>
                     <div>
-                        <input type="text" name="childLastName" value="<?php echo $admissionData['childLastName'] ?>" placeholder="Child Last Name">
+                    <label for="childLastName" style="float: left;">Child Last Name</label>
+                        <input type="text" name="childLastName" value="<?php echo $admissionData['childLastName'] ?>">
                     </div>
                     <div>
-                        <input type="date" name="childDOB" value="<?php echo $admissionData['childDOB'] ?>" placeholder="Child DOB">
+                    <label for="childDOB" style="float: left;">Child DOB</label>
+                        <input type="date" name="childDOB" value="<?php echo $admissionData['childDOB'] ?>">
                     </div>
                     <div>
-                        <input type="text" value="<?php echo $admissionData['childGender'] ?>" placeholder="Child Gender">
+                    <label for="" style="float: left;">Child Gende</label>
+                        <input type="text" value="<?php echo $admissionData['childGender'] ?>">
                     </div>
                     <div>
-                        <input type="text" value="<?php echo $admissionData['childBloodGroup'] ?>" placeholder="Child Blood Group">
+                        <label for="" style="float: left;">Child Blood Group</label>
+                        <input type="text" value="<?php echo $admissionData['childBloodGroup'] ?>">
                     </div>
                     <textarea cols="30" rows="10">
+                    <label for="" style="float: left;">description</label>
                         <?php echo $admissionData['description'] ?>
                     </textarea>
 
                     <div>ADMIN PART</div>
-
-                    <!-- <div>
-                        <select name="status" id="status">
-                            <option value="">Select Status</option>
-                            <option value="Approved">Approved</option>
-                            <option value="Rejected">Rejected </option>
-                            <option value="Pending">Pending</option>
-                          </select>
-                    </div> -->
-
                     <div>
                         <input type="hidden" name="childAdmissionId" id="childAdmissionId" value="<?php echo $admissionData['childAdmissionId'] ?>">
                     </div>
@@ -96,6 +98,7 @@
                     </div>
                     
                     <div>
+                        <label for="description" style="float: left;">Description</label>
                         <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
                     </div>
 

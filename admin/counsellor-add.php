@@ -33,6 +33,7 @@
                     include('../error.php');
                 ?>
                    <div>
+                   <label for="staffId" style="float: left;">Staff</label>
                        <select name="staffId" id="staffId">
                            <option value="">Select Staff</option>
                             <?php
@@ -49,9 +50,11 @@
                    </div>
                    
                  <div>
+                 <label for="workTime" style="float: left;">Working Time</label>
                      <input type="text" name="workTime" id="workTime" placeholder="Working Time">
                  </div>
                  <div>
+                 <label for="workDate" style="float: left;">"Working Date</label>
                     <input type="text" name="workDate" id="workDate" placeholder="Working Date">
                  </div>
                   

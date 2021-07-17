@@ -40,6 +40,7 @@
                     include('../error.php');
                 ?>
                     <div>
+                    <label for="blockId" style="float: left;">Block</label>
                         <select name="blockId" id="blockId">
                             <option value="">Select a block</option>
                             <?php
@@ -54,10 +55,12 @@
                         </select>
                     </div>
                     <div>
-                        <input type="text" name="roomNumber" id="roomNumber" value="<?php echo $roomData['roomNumber'] ?>"  placeholder="Room Number">
+                        <label for="roomNumber" style="float: left;">Room Number</label>
+                        <input type="text" name="roomNumber" id="roomNumber" value="<?php echo $roomData['roomNumber'] ?>">
                     </div>
                     <div>
-                        <input type="hidden" name="blockRoomId" id="blockRoomId" value="<?php echo $roomData['blockRoomId'] ?>"  placeholder="Room Number">
+                        <label for="blockRoomId" style="float: left;">Room Number</label>
+                        <input type="hidden" name="blockRoomId" id="blockRoomId" value="<?php echo $roomData['blockRoomId'] ?>">
                     </div>
                     <div>
                         <input type="submit"  name= "updateRoom" value="Update">
@@ -66,7 +69,7 @@
 
                 <form action="" method="POST">
                     <div>
-                        <input type="hidden" name="blockRoomId" value="<?php echo $roomData['blockRoomId'] ?>" value="Update">
+                        <input type="hidden" name="blockRoomId" value="<?php echo $roomData['blockRoomId'] ?>">
                     </div>
                     <div>
                         <input type="submit" name="deleteBlockRoom" style="background-color:red;" value="Delete">

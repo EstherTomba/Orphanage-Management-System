@@ -36,14 +36,15 @@
                 <?php 
                     include('../error.php');
                     ?>
-                    <div>
-                        <input type="text" name="name" id="name" placeholder="Name" value="<?php echo $activityData['name'] ?>">
-                    </div>
                     
                    <div>
                         <img src="../uploads/<?php echo $activityData['image'] ?>" width="100%" height="300px" alt="">
                         <input type="file" name="image" id="image">
                    </div>
+                   <div>
+                        <label for="name" style="float: left;">Name</label>
+                        <input type="text" name="name" id="name"value="<?php echo $activityData['name'] ?>">
+                    </div>
                    <div>
                         <input type="hidden" name="activityCategoryId" id="activityCategoryId" value="<?php echo $activityData['activityCategoryId'] ?>">
                     </div>

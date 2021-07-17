@@ -66,51 +66,56 @@ function admissionValidation() {
     var applicantID = document.forms["admissionForm"]["applicantID"].value;
     var childFirstName = document.forms["admissionForm"]["childFirstName"].value;
     var childLastName = document.forms["admissionForm"]["childLastName"].value;
-    var dob = document.forms["admissionForm"]["dob"].value;
     var gender = document.forms["admissionForm"]["gender"].value;
     var bloodGroup = document.forms["admissionForm"]["bloodGroup"].value;
     var message = document.forms["admissionForm"]["message"].value;
+    var dob = Date.parse(document.forms["admissionForm"]["dob"].value);
+    var today = new Date();
     if(applicantFirstName == '') {
         alert("Applicant First Name is required");
         document.admissionForm.applicantFirstName.focus();
         return false; 
-    }else if(applicantLastName == '') {
+    } else if(applicantLastName == '') {
         alert("Applicant Last Name is required");
         document.admissionForm.applicantLastName.focus();
         return false; 
-    }else if(email == '') {
+    } else if(email == '') {
         alert("Email is required");
         document.admissionForm.email.focus();
         return false; 
-    }else if(applicantPhoneNumber == '') {
+    } else if(applicantPhoneNumber == '') {
         alert("Applicant Phone Number is required");
         document.admissionForm.applicantPhoneNumber.focus();
         return false; 
-    }else if(applicantAddress == '') {
+    } else if(applicantAddress == '') {
         alert("Applicant Address  is required");
         document.admissionForm.applicantAddress.focus();
         return false;
-    }else if(applicantID == '') {
+    } else if(applicantID == '') {
         alert("ID or Passport Number is required");
         document.admissionForm.file.focus();
         return false; 
-    }else if(childFirstName == '') {
+    } else if(childFirstName == '') {
         alert("Child First Name  is required");
         document.admissionForm.childFirstName.focus();
         return false; 
-    }else if(childLastName == '') {
+    } else if(childLastName == '') {
         alert("Child Last Name  is required");
         document.admissionForm.childLastName.focus();
         return false;
-    }else if(dob == '') {
+    } else if(!dob) {
         alert("Date of Birth  is required");
         document.admissionForm.dob.focus();
         return false;
-    }else if(gender == '') {
+    } else if(dob > today) {
+        alert("Date of Birth should not be greater than the current date");
+        document.admissionForm.dob.focus();
+        return false;
+    } else if(gender == '') {
         alert("Gender  is required");
         document.admissionForm.gender.focus();
         return false; 
-    }else if(bloodGroup == '') {
+    } else if(bloodGroup == '') {
         alert("Blood Group  is required");
         document.admissionForm.bloodGroup.focus();
         return false; 
