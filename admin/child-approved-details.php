@@ -120,7 +120,9 @@
                 </form>
                 <form action="" method="POST">
                     <div>
-                        <input type="hidden" name="childApprovalId" value="<?php echo $approvalData['childApprovalId'] ?>" value="Update">
+                        <input type="hidden" name="childApprovalId" value="<?php echo $approvalData['childApprovalId'] ?>">
+                        <input type="hidden" name="childFirstName" value="<?php echo $admissionData['childFirstName'] ?>">
+                        <input type="hidden" name="childLastName" value="<?php echo $admissionData['childLastName'] ?>">
                     </div>
                     <div>
                         <input type="submit" name="deleteChildApproval" style="background-color:red;" value="Delete">

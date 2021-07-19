@@ -128,7 +128,7 @@
                         <th> Child First Name</th>
                         <th> Child Last Name</th>
                         <th>Status</th>
-                        <th>Date</th>
+                        <th>Date Approved</th>
                     </tr>
                     <?php 
                         if($yearIsTrue) {
@@ -150,7 +150,7 @@
                             $childApprovalQuery= "SELECT a.status, a.childAdmissionId, a.childApprovalId, b.applicantFirstName, 
                             b.applicantLastName, b.applicantEmail, b.applicantPhoneNumber, b.childFirstName, b.childLastName, b.createdAt
                             FROM childapproval AS a INNER JOIN childadmission AS b ON a.childAdmissionId = b.childAdmissionId
-                            WHERE applicantFirstName LIKE '%$search%' OR applicantLastName LIKE '%$search%' OR applicantEmail LIKE '%$search%' OR applicantPhoneNumber LIKE '%$search%'"; 
+                            WHERE applicantFirstName LIKE '%$search%' OR applicantLastName LIKE '%$search%' OR applicantEmail LIKE '%$search%' OR applicantPhoneNumber LIKE '%$search%' OR childFirstName LIKE '%$search%' OR childLastName LIKE '%$search%' ORDER BY  createdAt DESC"; 
                         }
                         $childApprovalResult = mysqli_query($con, $childApprovalQuery);
                         while($row = mysqli_fetch_assoc($childApprovalResult)) {

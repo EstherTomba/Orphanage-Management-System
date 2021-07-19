@@ -57,13 +57,13 @@
                         
                     </tr>
                     <?php 
-                        sif($donationIsTrue) {
+                        if($donationIsTrue) {
                             $donationIsTrue = true;
                             $searchIsTrue   = false;
                             $donationQuery= "SELECT a.donationId, a.donationTypeId, a.firstName, a.lastName, a.email,
                             a.phoneNumber, b.name, a.createdAt
                             FROM donation AS a INNER JOIN donationtype AS b ON a.donationTypeId = b.donationTypeId ORDER BY createdAt DESC";
-                        } elseif($searchIsTrue) {
+                        } else if($searchIsTrue) {
                             $donationQuery= "SELECT a.donationId, a.donationTypeId, a.firstName, a.lastName, a.email,
                             a.phoneNumber, b.name, a.createdAt
                             FROM donation AS a INNER JOIN donationtype AS b ON a.donationTypeId = b.donationTypeId  

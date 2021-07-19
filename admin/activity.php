@@ -13,6 +13,7 @@
         $search = mysqli_real_escape_string($con, $_GET['q']);
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,5 +1,5 @@
 <?php
-     require_once('db.php');
+    require_once('db.php');
     
     
     
@@ -777,39 +777,54 @@
 
     // ADD APPROVAL
     if(isset($_POST['addApproval'])) {
+        $childFirstName = mysqli_real_escape_string($con, $_POST['childFirstName']);
+        $childLastName = mysqli_real_escape_string($con, $_POST['childLastName']);
+        $childDOB = mysqli_real_escape_string($con, $_POST['childDOB']);
+        $childGender = mysqli_real_escape_string($con, $_POST['childGender']);
+        $childBloodGroup = mysqli_real_escape_string($con, $_POST['childBloodGroup']);
+        $userRole = "Orphan";
+        $userPassword = "123456";
         $userId = $_SESSION['userId'];
         $childAdmissionId= mysqli_real_escape_string($con, $_POST['childAdmissionId']);
         $applicantEmail= mysqli_real_escape_string($con, $_POST['applicantEmail']);
         $description= mysqli_real_escape_string($con, $_POST['description']);
-         // CHECK IF THE CHILD ADMISSION ID ALREADY EXISTS
-         $checkAdmissionIDQuery  = "SELECT * FROM childapproval WHERE childAdmissionId='$childAdmissionId' LIMIT 1";
-         $checkAdmissionIDResult = mysqli_query($con, $checkAdmissionIDQuery);
-         $admission = mysqli_fetch_assoc($checkAdmissionIDResult);
-         if($admission) {
+        //  CHECK IF THE CHILD ADMISSION ID ALREADY EXISTS
+        $checkAdmissionIDQuery  = "SELECT * FROM childapproval WHERE childAdmissionId='$childAdmissionId' LIMIT 1";
+        $checkAdmissionIDResult = mysqli_query($con, $checkAdmissionIDQuery);
+        $admission = mysqli_fetch_assoc($checkAdmissionIDResult);
+        if($admission) {
             if($admission['childAdmissionId'] == $childAdmissionId ){
                 array_push($errors, "Admission already checked.");
             }
-         }
+        }
          
-         if(count($errors) == 0 ){
-             $approvalQuery = "INSERT INTO childapproval (childAdmissionId,status,staffid,description) VALUES
-             ('$childAdmissionId', 'Approved', '$userId', '$description')";
-             $approvalResult = mysqli_query($con, $approvalQuery);
-             if($approvalResult) {
-                // SEND EMAIL
-                // $to = $applicantEmail;
-                // $sub = 'Response from Coms';
-                // $msg = $description;
-                // $sendEmail = mail($to, $sub, $msg);
-                // if($sendEmail) {
-                    $_SESSION['success'] = "Request has been approved successfully";
-                    header('Location: child-approved.php');
-                // } else {
-                //     array_push($errors, "Error, Could not send email.");
-                // }
-             } else {
-                 array_push($errors, "Error, Could not create the account.");
-             }
+        if(count($errors) == 0 ){
+            $approvalQuery = "INSERT INTO childapproval (childAdmissionId,status,staffid,description) VALUES
+            ('$childAdmissionId', 'Approved', '$userId', '$description')";
+            $approvalResult = mysqli_query($con, $approvalQuery);
+            if($approvalResult) {
+                $hashedPassword = crypt($userPassword, "salt@#.com");
+                $creatUserQuery = "INSERT INTO user (firstName, lastName, userPassword, gender, dob, bloodGroup, userRole) VALUES
+                ('$childFirstName', '$childLastName', '$hashedPassword', '$childGender', '$childDOB', NULLIF('$childBloodGroup',''), '$userRole')";
+                $creatUserResult = mysqli_query($con, $creatUserQuery);
+                if($creatUserResult) {
+                    // SEND EMAIL
+                    // $to = $applicantEmail;
+                    // $sub = 'Response from Coms';
+                    // $msg = $description;
+                    // $sendEmail = mail($to, $sub, $msg);
+                    // if($sendEmail) {
+                        $_SESSION['success'] = "Request has been approved and Account created successfully";
+                        header('Location: child-approved.php');
+                    // } else {
+                    //     array_push($errors, "Error, Could not send email.");
+                    // }
+                } else {
+                    array_push($errors, "Error, Could not create the account.");
+                }
+            } else {
+                array_push($errors, "Error, Could not create the account.");
+            }
         }
     }
 
@@ -1014,18 +1029,28 @@
             array_push($errors, "Error, Could not create the account.");
         }
     }
-     // DELETE CHILD APPROVAL
-     if(isset($_POST['deleteChildApproval'])) {
+    
+    // DELETE CHILD APPROVAL
+    if(isset($_POST['deleteChildApproval'])) {
         $childApprovalId = mysqli_real_escape_string($con, $_POST['childApprovalId']);
+        $childFirstName =  mysqli_real_escape_string($con, $_POST['childFirstName']);
+        $childLastName =  mysqli_real_escape_string($con, $_POST['childLastName']);
         $childApprovalQuery = "DELETE FROM childapproval WHERE childApprovalId='$childApprovalId'";
         $childApprovalResult = mysqli_query($con, $childApprovalQuery);
         if($childApprovalResult) {
-            $_SESSION['success'] = "Child Approval deleted successfully";
-            header('Location: child-approval.php');
+            $deleteUserQuery = "DELETE FROM user WHERE firstName='$childFirstName' AND lastName='$childLastName'";
+            $deleteUserResult = mysqli_query($con, $deleteUserQuery);
+            if($deleteUserResult) {
+                $_SESSION['success'] = "Child Approval deleted and user Account deleted successfully";
+                header('Location: child-approved.php');
+            } else {
+                array_push($errors, "Error, Could not delete the user account.");
+            }
         } else {
             array_push($errors, "Error, Could not create the account.");
         }
     }
+    
     // DELETE CHILD TRANSFER
     if(isset($_POST['deleteChildTransfer'])) {
         $orphanTransferId = mysqli_real_escape_string($con, $_POST['orphanTransferId']);

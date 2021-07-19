@@ -47,9 +47,11 @@
                     </select>
                  </div>
                 <div>
+                    <label for="date" style="float: left;">Date</label>
                     <input type="date" name="date" id="date">
                 </div>
                 <div>
+                    <label for="time" style="float: left;">Time</label>
                     <input type="time" name="time" id="time">
                 </div>
                 <div>

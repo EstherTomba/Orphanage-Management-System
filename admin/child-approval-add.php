@@ -76,17 +76,20 @@
                         <input type="date" name="childDOB" value="<?php echo $admissionData['childDOB'] ?>">
                     </div>
                     <div>
-                    <label for="" style="float: left;">Child Gende</label>
-                        <input type="text" value="<?php echo $admissionData['childGender'] ?>">
+                    <label for="childGender" style="float: left;">Child Gender</label>
+                        <input type="text" name="childGender" value="<?php echo $admissionData['childGender'] ?>">
                     </div>
                     <div>
-                        <label for="" style="float: left;">Child Blood Group</label>
-                        <input type="text" value="<?php echo $admissionData['childBloodGroup'] ?>">
+                        <label for="childBloodGroup" style="float: left;">Child Blood Group</label>
+                        <input type="text" name="childBloodGroup" value="<?php echo $admissionData['childBloodGroup'] ?>">
                     </div>
-                    <textarea cols="30" rows="10">
-                    <label for="" style="float: left;">description</label>
-                        <?php echo $admissionData['description'] ?>
-                    </textarea>
+                    <div>
+                        <label for="" style="float: left;">Description</label>
+                        <textarea cols="30" rows="10">
+                            <?php echo $admissionData['description'] ?>
+                        </textarea>
+                    </div>
+                    
 
                     <div>ADMIN PART</div>
                     <div>
@@ -99,13 +102,13 @@
                     
                     <div>
                         <label for="description" style="float: left;">Description</label>
-                        <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+                        <textarea name="description" id="description" cols="30" rows="10"></textarea>
                     </div>
 
                     <div>
-                        <input type="submit" value="Approved" name="addApproval" style="width: 33.1%">
-                        <input type="submit" value="Rejected" name="addRejection" style="width: 33.1%; background-color:red">
-                        <input type="submit" value="Pending" name="addPending"  style="width: 33.1%; background-color:orange">
+                        <input type="submit" value="Approved" name="addApproval" style="width: 32.6%">
+                        <input type="submit" value="Rejected" name="addRejection" style="width: 32.6%; background-color:red">
+                        <input type="submit" value="Pending" name="addPending"  style="width: 32.6%; background-color:orange">
                     </div>
                 </form>
 

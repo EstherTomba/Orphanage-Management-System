@@ -89,7 +89,8 @@
                 <br><br>
                 <form name="contactAdminForm" method="POST" onsubmit="return contactAdminValidation()">
                     <div>
-                        <textarea name="description" id="description" cols="30" rows="10" placeholder="Message"></textarea>
+                        <label for="description" style="float: left;">Description</label>
+                        <textarea name="description" id="description" cols="30" rows="10"></textarea>
                     </div>
                     <div>
                         <input type="hidden" id="activityId" name="activityId" value="<?php echo $activityId ?>">

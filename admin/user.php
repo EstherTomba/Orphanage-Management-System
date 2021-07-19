@@ -49,8 +49,9 @@
                         <th>First Name</th>
                         <th>Last Name</th> 
                         <th>Email</th> 
+                        <th>Gender</th>
                          <th>User Role</th>
-                         <th>Date</th> 
+                         <th>Date Added User</th> 
                         
                     </tr>
                     <?php
@@ -68,14 +69,13 @@
                                     <td><a href="user-details.php?id=<?php echo $row['userId'] ?>"><?php echo $row['firstName'] ?></a></td>
                                     <td><?php echo $row['lastName'] ?></td>
                                     <td><?php echo $row['userEmail'] ?></td>
+                                    <td><?php echo $row['gender'] ?></td>
                                     <td><?php echo $row['userRole'] ?></td>
                                     <td><?php echo date('M d Y',strtotime($row['createdAt'])) ?></td>
                                 </tr> 
                             <?php
                         }
                     ?>
-
-
                 </table>
                 <?php include('footer.php'); ?>
             </div>

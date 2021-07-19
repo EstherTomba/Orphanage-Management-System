@@ -36,31 +36,36 @@
                         include('../success.php');
                     ?>
                    <div>
-                    <input type="text" id="fname" name="fname" value="<?php echo $userData['firstName'] ?>" placeholder="First Name">
+                   <label for="fname" style="float: left;">First Name</label>
+                    <input type="text" id="fname" name="fname" value="<?php echo $userData['firstName'] ?>">
                    </div>
                    <div>
-                    <input type="text" id="lname" name="lname" value="<?php echo $userData['lastName'] ?>" placeholder="Last  Name">
+                   <label for="lname" style="float: left;">Last Name</label>
+                    <input type="text" id="lname" name="lname" value="<?php echo $userData['lastName'] ?>">
                    </div>
                    <div>
-                    <input type="text" id="uname" name="uname" value="<?php echo $userData['userName'] ?>" placeholder="User  Name">
+                   <label for="uname" style="float: left;">User  Name</label>
+                    <input type="text" id="uname" name="uname" value="<?php echo $userData['userName'] ?>">
                    </div>
                    <div>
                     <label for="email">Email</label>
-                    <input type="text" id="email" name="email" value="<?php echo $userData['userEmail'] ?>" placeholder="Email" disabled>
+                    <input type="text" id="email" name="email" value="<?php echo $userData['userEmail'] ?>" disabled>
                    </div>
                    <div>
-                    <input type="text" id="address" name="address" value="<?php echo $userData['userAddress'] ?>" placeholder="Address">
+                   <label for="address" style="float: left;">Address</label>
+                    <input type="text" id="address" name="address" value="<?php echo $userData['userAddress'] ?>">
                    </div>
                    <div>
-                    <input type="text" id="pnumber" name="pnumber" value="<?php echo $userData['phoneNumber'] ?>" placeholder="Phone Number">
+                   <label for="pnumber" style="pnumber: left;">Phone Number</label>
+                    <input type="text" id="pnumber" name="pnumber" value="<?php echo $userData['phoneNumber'] ?>">
                    </div>
                    <div>
                     <label for="gender">Gender </label>
-                    <input type="text" id="gender" name="gender" value="<?php echo $userData['gender'] ?>" placeholder="Gender" disabled>
+                    <input type="text" id="gender" name="gender" value="<?php echo $userData['gender'] ?>" disabled>
                    </div>
                    <div>
                     <label for="dob">Date of Birth</label>
-                    <input type="text" id="dob" name="dob" value="<?php echo $userData['dob'] ?>" placeholder="Date of Birth" disabled>
+                    <input type="text" id="dob" name="dob" value="<?php echo $userData['dob'] ?>" disabled>
                    </div>
                    <?php
                         $blockRoomId = $userData['blockRoomId'];
@@ -77,18 +82,17 @@
                                 ?>
                                     <div>
                                         <label for="blockName">Block Name</label>
-                                        <input type="text" id="blockName" name="blockName" value="<?php echo $blockData['blockName'] ?>" placeholder="Block  Name" disabled>
+                                        <input type="text" id="blockName" name="blockName" value="<?php echo $blockData['blockName'] ?>" disabled>
                                     </div>
                                     
                                     <div>
                                         <label for="roomNumber">Room Number</label>
-                                        <input type="text" id="roomNumber" name="roomNumber" value="<?php echo $room['roomNumber'] ?>" placeholder="Room Number"disabled>
+                                        <input type="text" id="roomNumber" name="roomNumber" value="<?php echo $room['roomNumber'] ?>" disabled>
                                     </div>
                                 <?php
                             }
                         }
                    ?>
-
 
                    <div>
                        <label for="bloodGroup">Blood Group</label>
