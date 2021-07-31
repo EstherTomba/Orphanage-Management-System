@@ -88,6 +88,21 @@
         }
     }
 
+    // ACTIVITY PARTICIPATION
+    if(isset($_POST['activityParticipate'])) {
+        $userId = $_SESSION['userId'];
+        $activityId   = mysqli_real_escape_string($con, $_POST['activityId']);
+
+        $participateQuery = "INSERT INTO activityattendance(activityId,userId) 
+        VALUES('$userId','$activityId')";
+        $participateResult = mysqli_query($con, $participateQuery);
+        if($participateResult) {
+            $_SESSION['success'] = "Added successfully";
+        } else {
+            array_push($errors, "Error.");
+        }
+    }
+
 
 
     // COMMENT AN ACTIVITY
@@ -102,6 +117,21 @@
             $_SESSION['success'] = "You have successfully commented this post";
         } else {
             array_push($errors, "Error, Your comment has not been saved.");
+        }
+    }
+
+    // EVENT PARTICIPATION
+    if(isset($_POST['eventParticipate'])) {
+        $userId = $_SESSION['userId'];
+        $eventId   = mysqli_real_escape_string($con, $_POST['eventId']);
+
+        $participateQuery = "INSERT INTO eventattendance(eventId,userId) 
+        VALUES('$userId','$eventId')";
+        $participateResult = mysqli_query($con, $participateQuery);
+        if($participateResult) {
+            $_SESSION['success'] = "Added successfully";
+        } else {
+            array_push($errors, "Error.");
         }
     }
 

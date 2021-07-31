@@ -44,6 +44,12 @@
                         <h1><?php echo $eventData['name'] ?></h1>
                         <div style="font-size: 13px;">Date: <?php echo date('M D Y', strtotime($eventData['createdAt']))  ?></div>
                         <div>Address: <?php echo $eventData['address'] ?></div>
+                        <div>
+                        <form method="POST"> 
+                            <input type="hidden" name="eventId" value="<?php echo $_GET['id'] ?>">
+                            <input type="submit" value="Participate" name="eventParticipate">
+                        </form>
+                        </div>
                         <p><?php echo $eventData['description'] ?></p>
                 
                      </div>

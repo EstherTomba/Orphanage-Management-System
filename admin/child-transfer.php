@@ -51,7 +51,7 @@
                         <th>Orphanage Name</th>
                         <th>Orphanage Email</th>
                         <th>Orphanage Phone Number</th>
-                        <th>Date Transfered</th>
+                        <th>Date Transferred</th>
                     </tr>
 
 

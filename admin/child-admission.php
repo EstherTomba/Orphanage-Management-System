@@ -130,7 +130,7 @@
                         <th>Applicant Phone Number</th>
                         <th>Child First Name</th>
                         <th>Child Last Name</th>
-                        <th>Date Submitted</th>
+                        <th>Date of Submission</th>
                     </tr>
 
                     <?php  

@@ -52,6 +52,12 @@
                         <h1><?php echo $activityData['name'] ?></h1>
                         <div style="font-size: 13px;">Date: <?php echo date('M D Y', strtotime($activityData['createdAt']))  ?></div>
                         <div>Category: Football</div>
+                        <div>
+                        <form method="POST"> 
+                            <input type="hidden" name="activityId" value="<?php echo $_GET['id'] ?>">
+                            <input type="submit" value="Participate" name="activityParticipate">
+                        </form>
+                        </div>
                         <a href="../uploads/<?php echo $activityData['file'] ?>">
                             <div style="background-color:#dcdcdc; padding: 15px; color:#4b4276; text-align: center; font-size: 22px;">
                                 Open File 

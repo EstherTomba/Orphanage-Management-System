@@ -60,13 +60,34 @@
                         <input type="hidden" name="eventId" id="eventId" value="<?php echo $eventData['eventId'] ?>">
                     </div>
                     <div>
-                        <input type="submit" name="updateEvent" value="Update" style="width: 49.8%;">
-                        <input type="submit" name="deleteEvent" style="background-color:red; width: 49.8%;" value="Delete">
+                        <input type="submit" name="updateEvent" value="Update" style="width: 49.5%;">
+                        <input type="submit" name="deleteEvent" style="background-color:red; width: 49.5%;" value="Delete">
                     </div>
                 </form><br>
+                <!-- LIST ALL PARTICIPANTS -->
+                <div style="font-size: 20px">PARTICIPANTS</div>
+                <?php
+                    // GET ACTIVITY COMMENTS DATA
+                    $eventAttendanceQuery = "SELECT * FROM eventattendance WHERE eventId='$eventId'";
+                    $eventAttendanceResult = mysqli_query($con, $eventAttendanceQuery);
+                    while ($attendances = mysqli_fetch_assoc($eventAttendanceResult)) {
+                        // GET USER DETAILS
+                        $getEventUserId = $attendances['userId'];
+                        $getEventUserQuery = "SELECT * FROM user WHERE userId='$getEventUserId'";
+                        $getEventUserResult = mysqli_query($con, $getEventUserQuery);
+                        if($getEventUserResult){
+                            $userEventData = $getEventUserResult->fetch_assoc();
+                        }
+                        ?>
+                            <div style="border: 1px solid #4b4276; padding:10px; border-radius: 15px; background-color: white; margin-bottom: 10px">
+                                <div style="font-size: 20px; color: #4b4276"> <?php echo $userEventData['firstName']; ?> <?php echo $userEventData['lastName']; ?></div>
+                            </div>
+                        <?php
+                    }
+                ?>
 
-                <div style="font-size: 20px">COMMENTS</div>
-
+                <!-- LIST ALL COMMENTS -->
+                <br><br><div style="font-size: 20px">COMMENTS</div>
                 <?php
                     // GET ACTIVITY COMMENTS DATA
                     $eventCommentQuery = "SELECT * FROM eventcomment WHERE eventId='$eventId'";

@@ -51,7 +51,7 @@
                     </div>
                     
                    <div>
-                        <label for="image" style="float: left;">Image</label>
+                        <label for="image" style="float: left;">File</label>
                       <input type="file" name="image" id="image">
                    </div>
                    <div>

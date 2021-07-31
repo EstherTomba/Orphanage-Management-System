@@ -17,40 +17,52 @@
 
     //USER LOGIN
     if(isset($_POST['userLogin'])){
-        $userEmail     = mysqli_real_escape_string($con, $_POST['userEmail']);
-        $userPassword  = mysqli_real_escape_string($con, $_POST['userPassword']);
-        $hashedPassword = crypt($userPassword, "salt@#.com");
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $userEmail     = mysqli_real_escape_string($con, $_POST['userEmail']);
+            $userPassword  = mysqli_real_escape_string($con, $_POST['userPassword']);
+            $hashedPassword = crypt($userPassword, "salt@#.com");
 
-        $query  = "SELECT * FROM user WHERE userEmail='$userEmail' AND userPassword='$hashedPassword' LIMIT 1";
-        $result = mysqli_query($con, $query);
-        if(mysqli_num_rows($result) == 1){
-            $userData = mysqli_fetch_assoc($result);
-            if($userData['userRole']    == 'Admin'){
-                $_SESSION['isAdmin']   = $userData['userRole'];
-                $_SESSION['userId']    = $userData['userId'];
-                $_SESSION['userEmail'] = $userData['userEmail'];
-                $_SESSION['firstName'] = $userData['firstName'];
-                $_SESSION['lastName'] = $userData['lastName'];
-                header('Location: admin/index.php');
-            } else if($userData['userRole']    == 'Staff') {
-                $_SESSION['isStaff']   = $userData['userRole'];
-                $_SESSION['userId']     = $userData['userId'];
-                $_SESSION['userEmail']  = $userData['userEmail'];
-                $_SESSION['firstName'] = $userData['firstName'];
-                $_SESSION['lastName'] = $userData['lastName'];
-                header('Location: user/index.php');
-            }  else if($userData['userRole']    == 'Orphan') {
-                $_SESSION['isOrphan']   = $userData['Orphan'];
-                $_SESSION['userId']     = $userData['userId'];
-                $_SESSION['userEmail']  = $userData['userEmail'];
-                $_SESSION['firstName'] = $userData['firstName'];
-                $_SESSION['lastName'] = $userData['lastName'];
-                header('Location: user/index.php');
+            $query  = "SELECT * FROM user WHERE userEmail='$userEmail' AND userPassword='$hashedPassword' LIMIT 1";
+            $result = mysqli_query($con, $query);
+            if(mysqli_num_rows($result) == 1){
+                $userData = mysqli_fetch_assoc($result);
+                if($userData['userRole']    == 'Admin'){
+                    $_SESSION['isAdmin']   = $userData['userRole'];
+                    $_SESSION['userId']    = $userData['userId'];
+                    $_SESSION['userEmail'] = $userData['userEmail'];
+                    $_SESSION['firstName'] = $userData['firstName'];
+                    $_SESSION['lastName'] = $userData['lastName'];
+                    $log = "Admin: ".$_SESSION['userEmail']." logged in successfully";
+                    logger($log);
+                    header('Location: admin/index.php');
+                } else if($userData['userRole']    == 'Staff') {
+                    $_SESSION['isStaff']   = $userData['userRole'];
+                    $_SESSION['userId']     = $userData['userId'];
+                    $_SESSION['userEmail']  = $userData['userEmail'];
+                    $_SESSION['firstName'] = $userData['firstName'];
+                    $_SESSION['lastName'] = $userData['lastName'];
+                    $log = "Staff: ".$_SESSION['userEmail']." logged in successfully";
+                    logger($log);
+                    header('Location: user/index.php');
+                }  else if($userData['userRole']    == 'Orphan') {
+                    $_SESSION['isOrphan']   = $userData['Orphan'];
+                    $_SESSION['userId']     = $userData['userId'];
+                    $_SESSION['userEmail']  = $userData['userEmail'];
+                    $_SESSION['firstName'] = $userData['firstName'];
+                    $_SESSION['lastName'] = $userData['lastName'];
+                    $log = "Orphan: ".$_SESSION['userEmail']." logged in successfully";
+                    logger($log);
+                    header('Location: user/index.php');
+                } else {
+                    $log = "User: ".$userEmail." entered incorrect credentials";
+                    logger($log);
+                    array_push($errors,"Wrong email/password combination.");
+                }
             } else {
+                $log = "User: ".$userEmail." entered incorrect credentials";
+                logger($log);
                 array_push($errors,"Wrong email/password combination.");
             }
-        } else {
-            array_push($errors,"Wrong email/password combination.");
         }
     }
     // CONTACT
@@ -132,6 +144,17 @@
             array_push($errors,"Sorry, your request  has not been sent. Please try again.");
         }
     } 
+
+    // LOG FILE
+    function logger($log) {
+        if(!file_exists('log.txt')) {
+            file_put_contents('log.txt', '');
+        }
+        $time = date('m/d/y h:iA', time());
+        $contents = file_get_contents('log.txt');
+        $contents .= "$time\t$log\r";
+        file_put_contents('log.txt', $contents);
+    }
     
 
 
