@@ -254,29 +254,22 @@
     if(isset($_POST['addActivity'])) {
         $activityCategoryId= mysqli_real_escape_string($con, $_POST['activityCategoryId']);
         $name= mysqli_real_escape_string($con, $_POST['name']);
-        $file = $_FILES["image"]["name"];
-        $tempname = $_FILES["image"]["tmp_name"]; 
+        $image = $_FILES["image"]["name"];
+        $imageTempname = $_FILES["image"]["tmp_name"]; 
+        $file = $_FILES["file"]["name"];
+        $fileTempname = $_FILES["file"]["tmp_name"];  
         $description= mysqli_real_escape_string($con, $_POST['description']);
-         // CHECK IF THE NAME ALREADY EXISTS
-         $checkNameQuery  = "SELECT * FROM activity WHERE name='$name' LIMIT 1";
-         $checkNameResult = mysqli_query($con, $checkNameQuery);
-         $block = mysqli_fetch_assoc($checkNameResult);
-         if($block) {
-             if($block['name'] == $name ){
-                 array_push($errors, "Name already exists.");
-             }
-         }
-         if(count($errors) == 0 ){
-            move_uploaded_file($tempname, "../uploads/".$file);
-            $creatActivityQuery = "INSERT INTO activity (activityCategoryId,name,file,description) VALUES
-            ('$activityCategoryId','$name','$file', '$description')";
-            $creatActivityResult = mysqli_query($con, $creatActivityQuery);
-            if($creatActivityResult) {
-                $_SESSION['success'] = "Activity created successfully";
-                header('Location: activity.php');
-            } else {
-                array_push($errors, "Error, Could not create the account.");
-            }
+
+        move_uploaded_file($imageTempname, "../uploads/".$image);
+        move_uploaded_file($fileTempname, "../uploads/".$file);
+        $creatActivityQuery = "INSERT INTO activity (activityCategoryId,name,file,description, image) VALUES
+        ('$activityCategoryId','$name','$file', '$description', '$image')";
+        $creatActivityResult = mysqli_query($con, $creatActivityQuery);
+        if($creatActivityResult) {
+            $_SESSION['success'] = "Activity created successfully";
+            header('Location: activity.php');
+        } else {
+            array_push($errors, "Error, Could not create the account.");
         }
     }
 
@@ -618,15 +611,18 @@
 
     // UPDATE ACTIVITY
     if(isset($_POST['updateActivity'])) {
-        $file = $_FILES["image"]["name"];
+        $image = $_FILES["image"]["name"];
         $tempname = $_FILES["image"]["tmp_name"]; 
+        $file = $_FILES["file"]["name"];
+        $fileTempname = $_FILES["file"]["tmp_name"]; 
         $name = mysqli_real_escape_string($con, $_POST['name']);
         $activityCategoryId   = mysqli_real_escape_string($con, $_POST['activityCategoryId']);
         $description   = mysqli_real_escape_string($con, $_POST['description']);
         $activityId   = mysqli_real_escape_string($con, $_POST['activityId']);
-        if($file) {
-            move_uploaded_file($tempname, "../uploads/".$file);
-            $activityQuery = "UPDATE activity SET activityCategoryId='$activityCategoryId', name='$name',file='$file',description='$description' WHERE activityId='$activityId'";
+        if($image) {
+            move_uploaded_file($fileTempname, "../uploads/".$file);
+            move_uploaded_file($imageTempname, "../uploads/".$image);
+            $activityQuery = "UPDATE activity SET activityCategoryId='$activityCategoryId', name='$name', description='$description', image='$image' WHERE activityId='$activityId'";
         } else {
             $activityQuery = "UPDATE activity SET activityCategoryId='$activityCategoryId', name='$name',description='$description' WHERE activityId='$activityId'";
         }

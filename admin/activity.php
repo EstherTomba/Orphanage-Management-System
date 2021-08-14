@@ -145,7 +145,7 @@
                         <div style="width:100%; height: 200px; background-color: white;">
                             <div style="width:400px; height:200px;">
                                 <a href="activity-details.php?id=<?php echo $row['activityId'] ?>">
-                                    <img src="../uploads/<?php echo $activityCategoryData['image'] ?>" width="100%" height="200px" alt="">
+                                    <img src="../uploads/<?php echo $row['image'] ?>" width="100%" height="200px" alt="">
                                 </a>
                             </div>
                             <div style="position: absolute;margin-top:-190px;margin-left:410px; margin-right: 20px;">

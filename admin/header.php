@@ -37,6 +37,7 @@
         <li><a href="event.php">Events</a></li>
         <li><a href="contact.php">Contacts</a></li>
         <li><a href="help.php">Help</a></li>
+        <li><a href="log.php">Log</a></li>
        
     </ul>
 </div>

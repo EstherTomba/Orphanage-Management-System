@@ -46,7 +46,7 @@
             ?>
                 <div>
                     <div>
-                        <img src="../uploads/<?php echo $activityCategoryData['image'] ?>" width="100%" height="400px" alt="">
+                        <img src="../uploads/<?php echo $activityData['image'] ?>" width="100%" height="400px" alt="">
                     </div>
                     <div>
                         <h1><?php echo $activityData['name'] ?></h1>

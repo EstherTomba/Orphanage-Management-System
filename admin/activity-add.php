@@ -25,7 +25,7 @@
                 include("profileLogout.php")
             ?>
             </div>
-            <div class="info" style="width: 60%; margin-left:20%; margin-right:20%;">
+            <div class="info" style="width: 60%; margin-left:20%; margin-right:20%; overflow: scroll">
                 <form name="activityAddForm" method="POST" onsubmit="return activityAddValidation()" enctype="multipart/form-data">
                     <?php 
                         include('../error.php');
@@ -49,10 +49,14 @@
                         <label for="name" style="float: left;">Name</label>
                         <input type="text" name="name" id="name">
                     </div>
+                    <div>
+                        <label for="image" style="float: left;">Image</label>
+                      <input type="file" name="image" id="image">
+                   </div>
                     
                    <div>
-                        <label for="image" style="float: left;">File</label>
-                      <input type="file" name="image" id="image">
+                        <label for="file" style="float: left;">File</label>
+                      <input type="file" name="file" id="file">
                    </div>
                    <div>
                         <label for="description" style="float: left;">Description</label>
@@ -60,7 +64,7 @@
                    </div>
                    <div>
                        <input type="submit" name="addActivity" value="Save">
-                   </div>
+                   </div><br><br><br><br>
                 </form>
             </div>
             <?php include('footer.php'); ?>

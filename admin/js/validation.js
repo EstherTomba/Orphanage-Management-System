@@ -277,7 +277,8 @@ function activityCategoryAddValidation() {
 
 // ACTIVITY  ADD
 function activityAddValidation() {
-    var name = document.forms["activityAddForm"]["name"].value;
+    var name = document.forms["activityAddForm"]["name"].value; 
+    var image = document.forms["activityAddForm"]["image"].value;
     var activityCategoryId = document.forms["activityAddForm"]["activityCategoryId"].value;
     var description = document.forms["activityAddForm"]["description"].value;
 
@@ -288,6 +289,10 @@ function activityAddValidation() {
     } else if (name == '') {
         alert("Name is required");
         document.activityAddForm.name.focus();
+        return false;
+    } else if (image == '') {
+        alert("Image is required");
+        document.activityAddForm.image.focus();
         return false;
     } else if(description == '') {
         alert("Description is required");

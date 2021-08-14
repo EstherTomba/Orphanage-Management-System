@@ -51,11 +51,11 @@
                    
                  <div>
                  <label for="workTime" style="float: left;">Working Time</label>
-                     <input type="text" name="workTime" id="workTime" placeholder="Working Time">
+                     <input type="text" name="workTime" id="workTime" placeholder="">
                  </div>
                  <div>
-                 <label for="workDate" style="float: left;">"Working Date</label>
-                    <input type="text" name="workDate" id="workDate" placeholder="Working Date">
+                 <label for="workDate" style="float: left;">Working Date</label>
+                    <input type="text" name="workDate" id="workDate" placeholder="">
                  </div>
                   
                    <div>

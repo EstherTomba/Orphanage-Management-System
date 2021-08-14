@@ -1,7 +1,6 @@
 <?php
     session_start();
     $errors = array();
-
     $host = "localhost";
     $user = "root";
     $password = "";
@@ -32,8 +31,11 @@
                     $_SESSION['userEmail'] = $userData['userEmail'];
                     $_SESSION['firstName'] = $userData['firstName'];
                     $_SESSION['lastName'] = $userData['lastName'];
-                    $log = "Admin: ".$_SESSION['userEmail']." logged in successfully";
-                    logger($log);
+                    $logUserId = $userData['userId'];
+                    $logAction = 'logged in successfully';
+                    $adminLogQuery = "INSERT INTO log (userId,action) VALUES
+                    ('$logUserId', '$logAction')";
+                    mysqli_query($con, $adminLogQuery);
                     header('Location: admin/index.php');
                 } else if($userData['userRole']    == 'Staff') {
                     $_SESSION['isStaff']   = $userData['userRole'];
@@ -41,8 +43,10 @@
                     $_SESSION['userEmail']  = $userData['userEmail'];
                     $_SESSION['firstName'] = $userData['firstName'];
                     $_SESSION['lastName'] = $userData['lastName'];
-                    $log = "Staff: ".$_SESSION['userEmail']." logged in successfully";
-                    logger($log);
+                    $logUserId = $userData['userId'];
+                    $logAction = 'logged in successfully';
+                    $staffLogQuery = "INSERT INTO log (userId,action) VALUES ('$logUserId', '$logAction')";
+                    mysqli_query($con, $staffLogQuery);
                     header('Location: user/index.php');
                 }  else if($userData['userRole']    == 'Orphan') {
                     $_SESSION['isOrphan']   = $userData['Orphan'];
@@ -50,17 +54,20 @@
                     $_SESSION['userEmail']  = $userData['userEmail'];
                     $_SESSION['firstName'] = $userData['firstName'];
                     $_SESSION['lastName'] = $userData['lastName'];
-                    $log = "Orphan: ".$_SESSION['userEmail']." logged in successfully";
-                    logger($log);
+                    $logUserId = $userData['userId'];
+                    $logAction = 'logged in successfully';
+                    $orphanLogQuery = "INSERT INTO log (userId,action) VALUES ('$logUserId', '$logAction')";
+                    mysqli_query($con, $orphanLogQuery);
                     header('Location: user/index.php');
                 } else {
-                    $log = "User: ".$userEmail." entered incorrect credentials";
-                    logger($log);
                     array_push($errors,"Wrong email/password combination.");
                 }
             } else {
-                $log = "User: ".$userEmail." entered incorrect credentials";
-                logger($log);
+                $logUserEmail = $userEmail;
+                $logAction = 'entered incorrect credentials';
+                $incorrectLogQuery = "INSERT INTO log (email,action) VALUES
+                ('$logUserEmail', '$logAction')";
+                mysqli_query($con, $incorrectLogQuery);
                 array_push($errors,"Wrong email/password combination.");
             }
         }

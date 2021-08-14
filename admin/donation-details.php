@@ -93,7 +93,7 @@
            </form>
            <form action="" method="POST">
                     <div>
-                    <label for="workTime" style="float: left;">Working Time</label>
+                    <label for="workTime" style="float: left;"></label>
                         <input type="hidden" name="donationId" value="<?php echo $donationData['donationId'] ?>" value="Update">
                     </div>
                     <div>

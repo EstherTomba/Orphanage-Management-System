@@ -42,15 +42,17 @@
             </div>
             
             <div class="info" style="width: 60%; margin-left:20%; margin-right:20%;">
-                <div>
-                    <img src="../uploads/<?php echo $activityCategoryData['image'] ?>" width="100%" height="400px" alt="">
-                </div>
-                <div style="font-size: 15px; background-color: green; color:white; margin-top: 10px;">Activity Date: <?php echo date('M d Y H:i',strtotime($activityData['activityDate'])) ?></div>
-                <div style="font-size: 13px;">Date: <?php echo date('M d Y',strtotime($activityData['createdAt'])) ?></div>
                 <form name="donationAddForm" method="POST" enctype="multipart/form-data">
                     <?php 
                         include('../error.php');
                     ?>
+                                    <div>
+                    <img src="../uploads/<?php echo $activityData['image'] ?>" width="100%" height="400px" alt="">
+                    <label>Change image</label>
+                    <input type="file" name="image" id="image">
+                </div>
+                <div style="font-size: 15px; background-color: green; color:white; margin-top: 10px;">Activity Date: <?php echo date('M d Y H:i',strtotime($activityData['activityDate'])) ?></div>
+                <div style="font-size: 13px;">Date: <?php echo date('M d Y',strtotime($activityData['createdAt'])) ?></div>
                     <div>
                         <label for="name" style="float: left;">Name</label>
                         <input type="text" name="name" id="name" value="<?php echo $activityData['name'] ?>">
@@ -75,7 +77,8 @@
                         <a href="../uploads/<?php echo $activityData['file'] ?>">
                             <div style="background-color:#dcdcdc; padding: 15px; color:#4b4276; text-align: center; font-size: 22px;">Open File</div>
                         </a>
-                        <input type="file" name="image" id="image">
+                        <label>Change file</label>
+                        <input type="file" name="file" id="file">
                     </div>
                     <div>
                         <label for="" style="float: left;">Description</label>

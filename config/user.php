@@ -94,7 +94,7 @@
         $activityId   = mysqli_real_escape_string($con, $_POST['activityId']);
 
         $participateQuery = "INSERT INTO activityattendance(activityId,userId) 
-        VALUES('$userId','$activityId')";
+        VALUES('$activityId', '$userId')";
         $participateResult = mysqli_query($con, $participateQuery);
         if($participateResult) {
             $_SESSION['success'] = "Added successfully";
@@ -126,7 +126,7 @@
         $eventId   = mysqli_real_escape_string($con, $_POST['eventId']);
 
         $participateQuery = "INSERT INTO eventattendance(eventId,userId) 
-        VALUES('$userId','$eventId')";
+        VALUES('$eventId', '$userId')";
         $participateResult = mysqli_query($con, $participateQuery);
         if($participateResult) {
             $_SESSION['success'] = "Added successfully";
