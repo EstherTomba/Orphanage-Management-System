@@ -37,7 +37,7 @@
                     
                    <div>
                         <label for="description" style="float: left;">Image</label>
-                      <input type="file" image="image" id="image">
+                      <input type="file" name="image" id="image">
                    </div>
                    <div>
                        <input type="submit" name="addActivityCategory" value="Save">

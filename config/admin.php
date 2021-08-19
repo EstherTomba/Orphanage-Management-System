@@ -245,7 +245,7 @@
                 $_SESSION['success'] = "Activity Category created successfully";
                 header('Location: activity-category.php');
             } else {
-                array_push($errors, "Error, Could not create the account.");
+                array_push($errors, "Error, Could not create.");
             }
         }
 
@@ -273,35 +273,6 @@
         }
     }
 
-    // ADD ACTIVITY CATEGORY
-    if(isset($_POST['addActivityCategory'])) {
-        $name= mysqli_real_escape_string($con, $_POST['name']);
-        $image = $_FILES["image"]["name"];
-        $tempname = $_FILES["image"]["tmp_name"]; 
-        // CHECK IF THE NAME ALREADY EXISTS
-        $checkNameQuery  = "SELECT * FROM activitycategory WHERE name='$name' LIMIT 1";
-        $checkNameResult = mysqli_query($con, $checkNameQuery);
-        $block = mysqli_fetch_assoc($checkNameResult);
-        if($block) {
-            if($block['name'] == $name ){
-                array_push($errors, "Name already exists.");
-            }
-        }
-        
-        if(count($errors) == 0 ){
-            move_uploaded_file($tempname, "../uploads/".$image);
-            $creatCategoryQuery = "INSERT INTO activitycategory (name,image) VALUES
-            ('$name', '$image')";
-            $creatCategoryResult = mysqli_query($con, $creatCategoryQuery);
-            if($creatCategoryResult) {
-                $_SESSION['success'] = "Activity Category created successfully";
-                header('Location: activity-category.php');
-            } else {
-                array_push($errors, "Error, Could not create the account.");
-            }
-        }
-
-    }
     // ADD MEDICAL RECORD
     if(isset($_POST['addMedicalRecord'])) {
         $userId = mysqli_real_escape_string($con, $_POST['userId']);
@@ -962,14 +933,17 @@
     // DELETE EVENT
     if(isset($_POST['deleteEvent'])) {
         $eventId = mysqli_real_escape_string($con, $_POST['eventId']);
-
+        // DELETE EVENT COMMENTS
+        $eventCommetQuery = "DELETE FROM eventcomment WHERE eventId='$eventId'";
+        $eventCommetResult =  mysqli_query($con, $eventCommetQuery);
+        // DELETE EVENT 
         $eventQuery = "DELETE FROM event WHERE eventId='$eventId'";
         $eventResult = mysqli_query($con, $eventQuery);
         if($eventResult) {
             $_SESSION['success'] = "Event deleted successfully";
             header('Location: event.php');
         } else {
-            array_push($errors, "Error, Could not create the account.");
+            array_push($errors, "Error, Could not delete the event.");
         }
     }
 
